@@ -26,7 +26,6 @@ Both list1 and list2 are sorted in non-decreasing order.
 # Sorted the elements in list C
 # Print out the sorted elements of list C
 
-
 listA = [1, 2, 4]
 listB = [1, 3, 4]
 
@@ -36,20 +35,27 @@ listB = []
 listA = []
 listB = [0]
 
-"""code does not works"""
-
+"""code A does not work"""
 def mergeList(listA, listB):
     listC = listA + listB
     listC.sort()
     return print(ListC)
-
 mergeList(listA, listB)
 
-"""code works"""
+
+"""code B does not work"""
+def mergeList(listA, listB):
+    listC = listA + listB
+    listC.sort()
+    output = print(ListC)
+    return output
+mergeList(listA, listB)
+
+
+"""code C works"""
 def mergeList(listA, listB):
     listC = listA + listB
     listC.sort()
     return listC
-
 mergeList(listA, listB)
 
