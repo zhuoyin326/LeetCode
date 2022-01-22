@@ -35,7 +35,7 @@ listB = []
 listA = []
 listB = [0]
 
-"""code A does not work"""
+"""code A works"""
 def mergeList(listA, listB):
     listC = listA + listB
     listC.sort()
@@ -43,7 +43,7 @@ def mergeList(listA, listB):
 mergeList(listA, listB)
 
 
-"""code B does not work"""
+"""code B works"""
 def mergeList(listA, listB):
     listC = listA + listB
     listC.sort()
