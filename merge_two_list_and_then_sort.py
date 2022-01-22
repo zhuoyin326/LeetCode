@@ -39,7 +39,7 @@ listB = [0]
 def mergeList(listA, listB):
     listC = listA + listB
     listC.sort()
-    return print(ListC)
+    return print(listC)
 mergeList(listA, listB)
 
 
@@ -47,7 +47,7 @@ mergeList(listA, listB)
 def mergeList(listA, listB):
     listC = listA + listB
     listC.sort()
-    output = print(ListC)
+    output = print(listC)
     return output
 mergeList(listA, listB)
 
