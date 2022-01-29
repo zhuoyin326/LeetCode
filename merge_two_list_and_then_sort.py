@@ -35,24 +35,6 @@ listB = []
 listA = []
 listB = [0]
 
-"""code A works"""
-def mergeList(listA, listB):
-    listC = listA + listB
-    listC.sort()
-    return print(listC)
-mergeList(listA, listB)
-
-
-"""code B works"""
-def mergeList(listA, listB):
-    listC = listA + listB
-    listC.sort()
-    output = print(listC)
-    return output
-mergeList(listA, listB)
-
-
-"""code C works"""
 def mergeList(listA, listB):
     listC = listA + listB
     listC.sort()
