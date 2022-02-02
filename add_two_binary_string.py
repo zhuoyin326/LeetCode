@@ -1,17 +1,15 @@
 # -*- coding: utf-8 -*-
 """
-Created on Sat Jan 15 21:44:31 2022
+Problem: Give a list of binary strings, return their sum as a binary string.
 
-@author: zhuo
+Algorithm:
+
+1. We got all the strings, all of them are located at the representation where base is 2.
+2. Convert all strings in base 2 into base 10 which is decimal representation.The length of binary string should be the same as the decimal list.
+3. Sum over all the values in the representation of base 10.
+4. We converted the sum which is at the representation of base 10 into binary representation to obtain final results.
+
 """
-
-"""Joe's code"""
-
-binary_string_list = ["11", "1", "1010", "1011"]
-print(len(binary_string_list))
-
-decimal_integer_list = [0]*len(binary_string_list)
-print(decimal_integer_list)
 
 def sum_strings(binary_string_list):
     decimal_integer_list = binary_to_integer(binary_string_list)
