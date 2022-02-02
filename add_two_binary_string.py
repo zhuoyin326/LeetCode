@@ -29,22 +29,3 @@ def binary_to_integer(binary_string_list):
     return decimal_integer_list
 
 print(sum_strings( ["11", "1", "1010", "1011"]))
-
-"""Yunsong's code""""
-def sum_strings(binary_string_list):
-    decimal_integer_list = binary_to_integer(binary_string_list)
-    string_c = bin(sum(decimal_integer_list))
-    output_string_c = string_c[2:]
-    return output_string_c
-
-def binary_to_integer(binary_string_list):
-    
-    decimal_integer_list = []
-
-    for value in binary_string_list:
-        decimal_integer_list.append(int(value, 2))
-
-    return decimal_integer_list
-
-print(sum_strings( ["11", "1", "1010", "1011"]))
-
