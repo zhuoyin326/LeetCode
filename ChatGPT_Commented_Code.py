@@ -1,3 +1,21 @@
+
+def save_empty_data_curve(feature):
+    with open(f"/Users/yunsong/Documents/zhuo/data_curve_output/{feature}.json", "w") as write_file:
+        data = {
+            "results": [],
+            "importance": {
+                "importance_fold_1": None,
+                "importance_fold_2": None,
+                "importance_fold_3": None,
+                "importance_fold_4": None,
+                "importance_fold_5": None,
+                "importance_fold_average": None,
+                "importance_fold_std": None
+            }
+        }
+        json.dump(data, write_file, indent=4, sort_keys=True)
+
+
 def save_data_curve(feature):
     # Check if the given feature is present in the loaded data_dict_folds
     hasFeature = False
