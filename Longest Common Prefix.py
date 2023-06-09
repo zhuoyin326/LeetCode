@@ -23,7 +23,7 @@ strs[i] consists of only lower-case English letters.
 def longestCommonPrefix(stringList):
 	stringListLength = len(stringList)
 	if stringListLength == 0:
-		return “”
+		return ""
 	If stringListLength == 1:
 		return stringList[0]
 	stringList.sort()
@@ -34,8 +34,8 @@ def longestCommonPrefix(stringList):
 	prefix = stringList[0][0:charIndex]
 	return prefix
 
-stringList1 = [“flower”, “flow”, “flight”]
-stringList2 = [“dog”, “racecar”, “car”]
+stringList1 = ["flower", "flow", "flight"]
+stringList2 = ["dog", "racecar", "car"]
 
 print(longestCommonPrefix(stringList1))
 
