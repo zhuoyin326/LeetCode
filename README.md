@@ -1,3 +1,3 @@
 # Documentation
 
-![](./graph.drawio.svg)
+![graph structure](./graph.drawio.svg)
