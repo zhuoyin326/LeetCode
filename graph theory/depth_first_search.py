@@ -35,12 +35,12 @@ graph = {
 # as arguments. The visited set will keep track of the visited vertices to avoid revisiting
 # them.
 
-def depthFirstSearch(graph, start, visited):
-    visited.add(start)
+def depthFirstSearch(graph, current, visited):
+    visited.add(current)
     # print or process the current vertex
-    print(start)
+    print(current)
     
-    for neighbor in graph[start]:
+    for neighbor in graph[current]:
         if neighbor not in visited:
             depthFirstSearch(graph, neighbor, visited)
          
