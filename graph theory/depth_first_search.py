@@ -1,5 +1,5 @@
 """
-These are basic steps involved in depth first search:
+These are basic steps involved in depth-first search:
 
 1. Initialize a stack to keep track of the vertices to be explored.
 2. Choose a starting vertex and mark it as visited.
@@ -29,28 +29,35 @@ graph = {
 }
 
 
-# step 2: define the depth first search function
+# step 2: define the depth-first search function
 
 # create a funciton called "depthFirstSearch" that takes the graph, starting vertex, and visited set 
 # as arguments. The visited set will keep track of the visited vertices to avoid revisiting
 # them.
 
+# treat the current vertex as the starting vertex for depth-first search
 def depthFirstSearch(graph, current, visited):
+    # add current vertex into the visited set
     visited.add(current)
     # print or process the current vertex
     print(current)
     
+    # Loop through all the neighbors of the current vertex 
+    # by accessing the values of the graph dictionary
     for neighbor in graph[current]:
+        # if the neighbor of the current vertex is not found in the visited set
         if neighbor not in visited:
+            # treat this neighbor as the current vertex for depth-first search
             depthFirstSearch(graph, neighbor, visited)
          
             
-# step 3: invoke the depth first search function
+# step 3: invoke the depth-first search function
 
-# you can invoke "depthFirstSearch" function to perform depth first search on the graph.
+# you can invoke "depthFirstSearch" function to perform depth-first search on the graph.
 
 # create an empty set to store visited vertices
 visited = set()
+# treat vertex A as the starting vertex
 depthFirstSearch(graph, 'A', visited)
 
 # update code to github
