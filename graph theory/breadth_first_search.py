@@ -1,9 +1,9 @@
 """
 
-breathFirstSearch is an algorithm used to traverse or search through a graph or tree data structure 
+breath-first search is an algorithm used to traverse or search through a graph or tree data structure 
 in a breadthward motion.
 
-Here's a step-by-step guide to implementing breathFirstSearch in Python:
+Here's a step-by-step guide to implementing breath-first search in Python:
 
 """
 
@@ -23,8 +23,8 @@ graph = {
 }
 
 
-# Step 2: Implement the breathFirstSearch algorithm
-# Now let's implement the breathFirstSearch algorithm itself. 
+# Step 2: Implement the breath-first search algorithm
+# Now let's implement the breath-first search algorithm itself. 
 # We'll use a queue to keep track of the nodes to visit.
 
 from collections import deque
@@ -52,7 +52,7 @@ def breathFirstSearch(graph, start_node):
 
 
 # Step 3: Test the breath-first search algorithm
-# To see the breath-first search algorithm in action, you can call the breathFirstSearch function with your graph 
+# To see the breath-first search algorithm in action, you can call the breath-first search function with your graph 
 # and a starting node.
 
 breathFirstSearch(graph, 'A')
