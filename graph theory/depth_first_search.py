@@ -40,11 +40,13 @@ def depthFirstSearch(graph, current, visited):
     # add current vertex into the visited set
     visited.add(current)
     # print or process the current vertex
-    print(current)
+    print("current vertex:", current)
+    print("visited set:", visited)
     
     # Loop through all the neighbors of the current vertex 
     # by accessing the values of the graph dictionary
     for neighbor in graph[current]:
+        print("neighbor of the current vertex", current, ":", neighbor, "\n")
         # if the neighbor of the current vertex is not found in the visited set
         if neighbor not in visited:
             # treat this neighbor as the current vertex for depth-first search
@@ -60,4 +62,5 @@ visited = set()
 # treat vertex A as the starting vertex
 depthFirstSearch(graph, 'A', visited)
 
-# update code to github
+# All vertices that the depth-first search will visit sequentially
+# [A, B, D, E, F, C]
