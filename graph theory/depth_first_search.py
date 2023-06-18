@@ -1,7 +1,9 @@
 """
+A standard DFS implementation puts each node of the graph into one of two categories:
+1. Visited
+2. Not Visited
 
 These are basic steps involved in depth-first search:
-
 1. Initialize a stack to keep track of the nodes to be explored.
 2. Choose a starting node and mark it as visited.
 3. Push the starting node onto the stack.
