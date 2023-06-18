@@ -10,8 +10,8 @@ Here's a step-by-step guide to implementing breath-first search in Python:
 # step 1: define the graph representation
 
 # We have an adjacency list representation of the graph. 
-# We can represent the graph using a dictionary, where the keys represent the vertices, 
-# and the values are lists containing their adjacent vertices.
+# We can represent the graph using a dictionary, where each keys represent the node, 
+# and the values are lists containing their adjacent nodes.
 
 graph = {
     'A': ['B', 'C'],
@@ -27,6 +27,13 @@ graph = {
 # Now let's implement the breath-first search algorithm itself. 
 # We'll use a queue to keep track of the nodes to visit.
 
+
+# A deque in Python is a double-ended queue that allows you to efficiently append 
+# and pop items from both ends of the underlying data structure1. It is implemented 
+# using the module collections. 
+
+# A deque is useful for implementing queues and stacks, which are common list-like 
+# data types in computing.
 from collections import deque
 
 def breathFirstSearch(graph, start_node):
