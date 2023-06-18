@@ -48,17 +48,20 @@ def breathFirstSearch(graph, startNode):
     while queue:
         # Dequeue the node from the front of the queue
         currentNode = queue.popleft()  
+        # print or process the current node
+        print("current node:", currentNode)
         
         if currentNode not in visited:
             # Mark the node as visited
             visited.add(currentNode)
-            # Process or perform any action on the node  
-            print(currentNode)  
+            # print the visited set
+            print(visited)
 
             # Enqueue all the adjacent nodes that haven't been visited
             for neighbor in graph[currentNode]:
                 if neighbor not in visited:
                     queue.append(neighbor)
+                    print("current queue:", queue)
 
 
 # Step 3: Test the breath-first search algorithm
