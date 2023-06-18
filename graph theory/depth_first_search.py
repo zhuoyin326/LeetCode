@@ -35,7 +35,6 @@ graph = {
 # create a funciton called "depthFirstSearch" that takes the graph and starting node as 
 # arguments. The visited set will keep track of the visited nodes to avoid revisiting them.
 
-# treat the current node as the starting node for depth-first search
 def depthFirstSearch(graph, startNode):
     # keep track of visited nodes
     visited = set()
@@ -55,12 +54,12 @@ def depthFirstSearch(graph, startNode):
             print("visited set:", visited)
     
             # add the unvisited neighbors of the current node to the stack
-            for neighbor in graph[currentNode]:
-                print("neighbor of the current node", currentNode, ":", neighbor, "\n")
-                
+            for neighbor in graph[currentNode]:                
                 # if the neighbor of the current node is not found in the visited set
                 if neighbor not in visited:
                     stack.append(neighbor)
+                    print("current stack", stack)
+
          
             
 # step 3: invoke the depth-first search function
