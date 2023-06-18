@@ -10,8 +10,8 @@ Here's a step-by-step guide to implementing breath-first search in Python:
 # step 1: define the graph representation
 
 # We have an adjacency list representation of the graph. 
-# We can represent the graph using a dictionary, where each keys represent the node, 
-# and the values are lists containing their adjacent nodes.
+# We can represent the graph using a dictionary, where each key represents a node, 
+# and the value is a list of its adjacent nodes.
 
 graph = {
     'A': ['B', 'C'],
