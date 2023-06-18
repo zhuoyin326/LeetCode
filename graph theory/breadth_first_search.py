@@ -55,7 +55,7 @@ def breathFirstSearch(graph, startNode):
             # Mark the node as visited
             visited.add(currentNode)
             # print the visited set
-            print(visited)
+            print("visited set:", visited)
 
             # Enqueue all the adjacent nodes that haven't been visited
             for neighbor in graph[currentNode]:
