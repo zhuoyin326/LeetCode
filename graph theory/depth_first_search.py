@@ -2,12 +2,12 @@
 
 These are basic steps involved in depth-first search:
 
-1. Initialize a stack to keep track of the vertices to be explored.
-2. Choose a starting vertex and mark it as visited.
-3. Push the starting vertex onto the stack.
+1. Initialize a stack to keep track of the nodes to be explored.
+2. Choose a starting node and mark it as visited.
+3. Push the starting node onto the stack.
 4. While the stack is not empty, repeat steps 5-8.
-5. Pop a vertex from the stack and process it.
-6. Explore all unvisited neighbors of the current vertex.
+5. Pop a node from the stack and process it.
+6. Explore all unvisited neighbors of the current node.
 7. Mark each unvisited neighbor as visited and push it onto the stack.
 8. Repeat steps 5-7 until the stack is empty.
 
@@ -17,8 +17,8 @@ These are basic steps involved in depth-first search:
 # step 1: define the graph representation
 
 # We have an adjacency list representation of the graph. 
-# We can represent the graph using a dictionary, where the keys represent the vertices, 
-# and the values are lists containing their adjacent vertices.
+# We can represent the graph using a dictionary, where the keys represent the nodes, 
+# and the values are lists containing their adjacent nodes.
 
 graph = {
     'A': ['B', 'C'],
@@ -32,36 +32,43 @@ graph = {
 
 # step 2: define the depth-first search function
 
-# create a funciton called "depthFirstSearch" that takes the graph, starting vertex, and visited set 
-# as arguments. The visited set will keep track of the visited vertices to avoid revisiting
-# them.
+# create a funciton called "depthFirstSearch" that takes the graph and starting node as 
+# arguments. The visited set will keep track of the visited nodes to avoid revisiting them.
 
-# treat the current vertex as the starting vertex for depth-first search
-def depthFirstSearch(graph, current, visited):
-    # add current vertex into the visited set
-    visited.add(current)
-    # print or process the current vertex
-    print("current vertex:", current)
-    print("visited set:", visited)
+# treat the current node as the starting node for depth-first search
+def depthFirstSearch(graph, startNode):
+    # keep track of visited nodes
+    visited = set()
+    # iniitialize the stack with the start node
+    stack = [startNode]
     
-    # Loop through all the neighbors of the current vertex 
-    # by accessing the values of the graph dictionary
-    for neighbor in graph[current]:
-        print("neighbor of the current vertex", current, ":", neighbor, "\n")
-        # if the neighbor of the current vertex is not found in the visited set
-        if neighbor not in visited:
-            # treat this neighbor as the current vertex for depth-first search
-            depthFirstSearch(graph, neighbor, visited)
+    while stack:
+        # take the last node from the stack
+        currentNode = stack.pop()
+        # print or process the current node
+        print("current node:", currentNode)
+    
+        if currentNode not in visited:
+            # add current node into the visited set
+            visited.add(currentNode)
+            # print the visited set
+            print("visited set:", visited)
+    
+            # add the unvisited neighbors of the current node to the stack
+            for neighbor in graph[currentNode]:
+                print("neighbor of the current node", currentNode, ":", neighbor, "\n")
+                
+                # if the neighbor of the current node is not found in the visited set
+                if neighbor not in visited:
+                    stack.append(neighbor)
          
             
 # step 3: invoke the depth-first search function
 
 # you can invoke "depthFirstSearch" function to perform depth-first search on the graph.
 
-# create an empty set to store visited vertices
-visited = set()
-# treat vertex A as the starting vertex
-depthFirstSearch(graph, 'A', visited)
+# treat node A as the starting node
+depthFirstSearch(graph, 'A')
 
-# All vertices that the depth-first search will visit sequentially
+# All nodes that the depth-first search will visit sequentially
 # [A, B, D, E, F, C]
