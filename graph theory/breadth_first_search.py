@@ -36,24 +36,24 @@ graph = {
 # data types in computing.
 from collections import deque
 
-def breathFirstSearch(graph, start_node):
+def breathFirstSearch(graph, startNode):
     # To keep track of visited nodes
     visited = set()  
     # Initialize the queue with the start node
-    queue = deque([start_node])  
+    queue = deque(startNode)  
 
     while queue:
         # Dequeue the node from the front of the queue
-        node = queue.popleft()  
+        currentNode = queue.popleft()  
         
-        if node not in visited:
+        if currentNode not in visited:
             # Mark the node as visited
-            visited.add(node)
+            visited.add(currentNode)
             # Process or perform any action on the node  
-            print(node)  
+            print(currentNode)  
 
             # Enqueue all the adjacent nodes that haven't been visited
-            for neighbor in graph[node]:
+            for neighbor in graph[currentNode]:
                 if neighbor not in visited:
                     queue.append(neighbor)
 
