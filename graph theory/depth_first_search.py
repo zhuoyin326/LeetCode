@@ -1,5 +1,5 @@
 """
-A standard DFS implementation puts each node of the graph into one of two categories:
+A standard depth-first search implementation puts each node of the graph into one of two categories:
 1. Visited
 2. Not Visited
 

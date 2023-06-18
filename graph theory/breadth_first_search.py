@@ -1,4 +1,7 @@
 """
+A standard breadth-first search implementation puts each node of the graph into one of two categories:
+1. Visited
+2. Not Visited
 
 breath-first search is an algorithm used to traverse or search through a graph or tree data structure 
 in a breadthward motion.
