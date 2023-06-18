@@ -58,7 +58,7 @@ def depthFirstSearch(graph, startNode):
                 # if the neighbor of the current node is not found in the visited set
                 if neighbor not in visited:
                     stack.append(neighbor)
-                    print("current stack", stack)
+                    print("current stack:", stack)
 
          
             
