@@ -70,6 +70,3 @@ def depthFirstSearch(graph, startNode):
 
 # treat node A as the starting node
 depthFirstSearch(graph, 'A')
-
-# All nodes that the depth-first search will visit sequentially
-# [A, B, D, E, F, C]
