@@ -41,6 +41,7 @@ def depthFirstSearch(graph, startNode):
     # keep track of visited nodes
     visited = set()
     # iniitialize the stack with the start node
+    # stack keeps track of nodes to be explored
     stack = [startNode]
     
     while stack:
@@ -59,6 +60,7 @@ def depthFirstSearch(graph, startNode):
             for neighbor in graph[currentNode]:                
                 # if the neighbor of the current node is not found in the visited set
                 if neighbor not in visited:
+                    # add neighbor to the stack (to be explored)
                     stack.append(neighbor)
                     print("current stack:", stack)
 
