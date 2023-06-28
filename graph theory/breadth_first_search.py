@@ -43,6 +43,7 @@ def breathFirstSearch(graph, startNode):
     # To keep track of visited nodes
     visited = set()  
     # Initialize the queue with the start node
+    # queue keeps track of nodes to be explored
     queue = deque(startNode)  
 
     while queue:
@@ -52,14 +53,16 @@ def breathFirstSearch(graph, startNode):
         print("current node:", currentNode)
         
         if currentNode not in visited:
-            # Mark the node as visited
+            # mark the node as visited
             visited.add(currentNode)
             # print the visited set
             print("visited set:", visited)
 
             # Enqueue all the adjacent nodes that haven't been visited
             for neighbor in graph[currentNode]:
+                # if the neighbor of the current node is not found in the visited set
                 if neighbor not in visited:
+                    # add the adjacent node to the queue (to be explored)
                     queue.append(neighbor)
                     print("current queue:", queue)
 

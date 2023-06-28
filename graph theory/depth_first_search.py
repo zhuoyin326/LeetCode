@@ -51,7 +51,7 @@ def depthFirstSearch(graph, startNode):
         print("current node:", currentNode)
     
         if currentNode not in visited:
-            # add current node into the visited set
+            # mark the node as visited
             visited.add(currentNode)
             # print the visited set
             print("visited set:", visited)
