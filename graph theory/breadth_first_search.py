@@ -32,7 +32,7 @@ graph = {
 
 
 # A deque in Python is a double-ended queue that allows you to efficiently append 
-# and pop items from both ends of the underlying data structure1. It is implemented 
+# and pop items from both ends of the underlying data structure. It is implemented 
 # using the module collections. 
 
 # A deque is useful for implementing queues and stacks, which are common list-like 
