@@ -60,9 +60,9 @@ def breathFirstSearch(graph, startNode):
 
             # Enqueue all the adjacent nodes that haven't been visited
             for neighbor in graph[currentNode]:
-                # if the neighbor of the current node is not found in the visited set
+                # if the current node's neighbor is not found in the visited set
                 if neighbor not in visited:
-                    # add the adjacent node to the queue (to be explored)
+                    # add the current node's neighbor to the queue (to be explored)
                     queue.append(neighbor)
                     print("current queue:", queue)
 

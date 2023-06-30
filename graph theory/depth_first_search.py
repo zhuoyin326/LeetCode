@@ -56,11 +56,11 @@ def depthFirstSearch(graph, startNode):
             # print the visited set
             print("visited set:", visited)
     
-            # add the unvisited neighbors of the current node to the stack
+            # add the current node's unvisited neighbors to the stack
             for neighbor in graph[currentNode]:                
-                # if the neighbor of the current node is not found in the visited set
+                # if the current node's neighbor is not found in the visited set
                 if neighbor not in visited:
-                    # add the neighbor of the current node to the stack (to be explored)
+                    # add the current node's neighbor to the stack (to be explored)
                     stack.append(neighbor)
                     print("current stack:", stack)
 
