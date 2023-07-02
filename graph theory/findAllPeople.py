@@ -13,7 +13,7 @@ meetings = [[1,2,5],[2,3,8],[1,5,10],[3,1,3],[1,2,2],[0,3,3],[3,4,2],[1,2,1],[2,
 # sort the meeting by time: the element at index 2
 meetings.sort(key=lambda x:x[2])
 
-print("meetings",meetings, "\n")
+print("meetings:", meetings, "\n")
 
 # group by the multiple meetings using the meeting time
 groups = itertools.groupby(meetings, key = lambda x:x[2])
