@@ -37,10 +37,16 @@ for key, group in groups:
 		# each element of the queue is a person who knows the secret
         queue = deque(currentSecret)
 
+        print("currentSecret", queue)
+        
         # perform breadth-first search on the graph
         while queue:
             # dequeue the person from the front of the queue
             person = queue.popleft()
+            print("person:", person)
+            
+            print("graph:", graph, "\n")
+            
             # enqueue all the people had meetings with the person
             for neighbor in graph[person]:
                 # if the person’s neighbor does not know the secret
