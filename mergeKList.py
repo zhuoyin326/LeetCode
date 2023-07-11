@@ -17,7 +17,9 @@ class Solution:
         pq = []
         # iterate over the lists and push the first node of each list to the queue
         for i, l in enumerate(lists):
-            if l: # check if the list is not empty
+            # check if the list is not empty
+            if l: 
+                print("index i:", i, "ListNode's value:", l.val, "ListNode:", l, end="\n")
                 heapq.heappush(pq, (l.val, i, l)) # push a tuple of (value, index, node)
         # while the queue is not empty
         while pq:
