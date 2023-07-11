@@ -20,7 +20,8 @@ class Solution:
             # check if the list is not empty
             if l: 
                 print("index i:", i, "ListNode's value:", l.val, "ListNode:", l, end="\n")
-                heapq.heappush(pq, (l.val, i, l)) # push a tuple of (value, index, node)
+                # push a tuple of (value, index, node)
+                heapq.heappush(pq, (l.val, i, l))
         # while the queue is not empty
         while pq:
             # pop the smallest node from the queue
