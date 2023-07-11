@@ -8,7 +8,7 @@ class ListNode:
         self.next = next
 
 class Solution:
-    def mergeKLists(self, lists: List[ListNode]) -> ListNode:
+    def mergeKLists(self, lists):
         # create a dummy head node for the merged list
         dummy = ListNode()
         # create a pointer to the current node of the merged list
@@ -47,8 +47,11 @@ list2.next.next = ListNode(4)
 list3 = ListNode(2)
 list3.next = ListNode(6)
 
+# Create a Solution object
+s = Solution()
+
 # Merge the linked lists
-merged = mergeKLists([list1, list2, list3])
+merged = s.mergeKLists([list1, list2, list3])
 
 # Print the merged list
 while merged:
