@@ -1,41 +1,38 @@
+# to use priority queue
 import heapq
 
+# Definition for singly-linked list.
 class ListNode:
     def __init__(self, val=0, next=None):
         self.val = val
         self.next = next
 
-def mergeKLists(lists):
-    if not lists:
-        return None
-
-    # Custom comparison function for ListNode objects
-    def compare_nodes(node1, node2):
-        return node1.val - node2.val
-
-    # Initialize the priority queue
-    pq = []
-    heapq.heapify(pq)
-
-    # Push the head of each linked list into the priority queue
-    for head in lists:
-        if head:
-            heapq.heappush(pq, (head.val, head))
-
-    # Create a dummy node to build the merged list
-    dummy = ListNode(0)
-    current = dummy
-
-    # Pop the smallest element from the priority queue and append it to the merged list
-    while pq:
-        _, node = heapq.heappop(pq)
-        current.next = node
-        current = current.next
-
-        if node.next:
-            heapq.heappush(pq, (node.next.val, node.next))
-
-    return dummy.next
+class Solution:
+    def mergeKLists(self, lists: List[ListNode]) -> ListNode:
+        # create a dummy head node for the merged list
+        dummy = ListNode()
+        # create a pointer to the current node of the merged list
+        curr = dummy
+        # create a priority queue to store the nodes from each list
+        pq = []
+        # iterate over the lists and push the first node of each list to the queue
+        for i, l in enumerate(lists):
+            if l: # check if the list is not empty
+                heapq.heappush(pq, (l.val, i, l)) # push a tuple of (value, index, node)
+        # while the queue is not empty
+        while pq:
+            # pop the smallest node from the queue
+            val, i, node = heapq.heappop(pq)
+            # append it to the merged list
+            curr.next = node
+            # move the pointer to the next node
+            curr = curr.next
+            # if the popped node has a next node
+            if node.next:
+                # push it to the queue
+                heapq.heappush(pq, (node.next.val, i, node.next))
+        # return the head of the merged list
+        return dummy.next
 
 # Example usage
 # Create linked lists
