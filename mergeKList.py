@@ -6,11 +6,11 @@ heapq.heappush(heap, (5, 1, 'write code'))
 heapq.heappush(heap, (7, 2, 'release product'))
 heapq.heappush(heap, (1, 3, 'write spec'))
 heapq.heappush(heap, (3, 4, 'create tests'))
-heapq.heappop(heap)
-heapq.heappop(heap)
-heapq.heappop(heap)
-heapq.heappop(heap)
-
+print(heapq.heappop(heap))
+print(heapq.heappop(heap))
+print(heapq.heappop(heap))
+print(heapq.heappop(heap))
+print("\n")
 
 # Definition for singly-linked list.
 class ListNode:
@@ -30,14 +30,19 @@ class Solution:
         for i, l in enumerate(lists):
             # check if the list is not empty
             if l: 
-                print("index i:", i, "ListNode's value:", l.val, "ListNode:", l, end="\n")
+                print("heappush whinin the for loop")
+                print("index i:", i, "List Node's value:", l.val, "List Node:", l)
                 # push a tuple of (value, index, node)
                 heapq.heappush(pq, (l.val, i, l))
+        
+        print("\n")
+        
         # while the queue is not empty
         while pq:
             # pop the smallest node from the queue
             val, i, node = heapq.heappop(pq)
-            print("index i:", i, "ListNode's value:", val, "ListNode:", l, end="\n")
+            print("heappop within the while loop")
+            print("index i:", i, "current List Node's value:", val, "current List Node:", l, end="\n")
             # append it to the merged list
             lastListNode.next = node
             # move the pointer to the next node
@@ -46,6 +51,9 @@ class Solution:
             if node.next:
                 # push it to the queue
                 heapq.heappush(pq, (node.next.val, i, node.next))
+                print("heappush within the while lop")
+                print("index i:", i, "next List Node's value", node.next.val, "next List Node's value", node.next,end = "\n")
+                print("\n")
         # return the head of the merged list
         return zerothListNode.next
 
