@@ -42,7 +42,7 @@ class Solution:
             # pop the smallest node from the priority queue
             val, i, poppedNode = heapq.heappop(priorityqueue)
             print("heappop within the while loop")
-            print("index i:", i, "current List Node's value:", val, "current List Node:", l, end="\n")
+            print("index i:", i, "popped List Node's value:", val, "popped List Node:", l, end="\n")
             # append it to the merged list
             lastListNode.next = poppedNode
             # move the pointer to the next node
