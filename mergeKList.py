@@ -1,6 +1,17 @@
 # to use priority queue
 import heapq
 
+heap = []
+heapq.heappush(heap, (5, 1, 'write code'))
+heapq.heappush(heap, (7, 2, 'release product'))
+heapq.heappush(heap, (1, 3, 'write spec'))
+heapq.heappush(heap, (3, 4, 'create tests'))
+heapq.heappop(heap)
+heapq.heappop(heap)
+heapq.heappop(heap)
+heapq.heappop(heap)
+
+
 # Definition for singly-linked list.
 class ListNode:
     def __init__(self, val=0, next=None):
@@ -9,10 +20,10 @@ class ListNode:
 
 class Solution:
     def mergeKLists(self, lists):
-        # create a dummy head node for the merged list
-        dummy = ListNode()
+        # create a zeroth list node for the merged list
+        zerothListNode = ListNode(-1)
         # create a pointer to the current node of the merged list
-        curr = dummy
+        lastListNode = ListNode(-1)
         # create a priority queue to store the nodes from each list
         pq = []
         # iterate over the lists and push the first node of each list to the queue
@@ -26,16 +37,17 @@ class Solution:
         while pq:
             # pop the smallest node from the queue
             val, i, node = heapq.heappop(pq)
+            print("index i:", i, "ListNode's value:", val, "ListNode:", l, end="\n")
             # append it to the merged list
-            curr.next = node
+            lastListNode.next = node
             # move the pointer to the next node
-            curr = curr.next
+            lastListNode = lastListNode.next
             # if the popped node has a next node
             if node.next:
                 # push it to the queue
                 heapq.heappush(pq, (node.next.val, i, node.next))
         # return the head of the merged list
-        return dummy.next
+        return zerothListNode.next
 
 # Example usage
 # Create linked lists
