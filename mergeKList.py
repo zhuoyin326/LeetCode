@@ -26,7 +26,7 @@ class Solution:
         lastListNode = ListNode(-1)
         # create a priority queue to store the nodes from each list
         priorityqueue = []
-        # iterate over the lists and push the first node of each list to the queue
+        # iterate over the lists and push the first node of each list to the priority queue
         for i, l in enumerate(lists):
             # check if the list is not empty
             if l: 
@@ -37,9 +37,9 @@ class Solution:
         
         print("\n")
         
-        # while the queue is not empty
+        # while the priority queue is not empty
         while priorityqueue:
-            # pop the smallest node from the queue
+            # pop the smallest node from the priority queue
             val, i, node = heapq.heappop(priorityqueue)
             print("heappop within the while loop")
             print("index i:", i, "current List Node's value:", val, "current List Node:", l, end="\n")
@@ -49,7 +49,7 @@ class Solution:
             lastListNode = lastListNode.next
             # if the popped node has a next node
             if node.next:
-                # push it to the queue
+                # push the next node to the priority queue
                 heapq.heappush(priorityqueue, (node.next.val, i, node.next))
                 print("heappush within the while lop")
                 print("index i:", i, "next List Node's value", node.next.val, "next List Node's value", node.next,end = "\n")
