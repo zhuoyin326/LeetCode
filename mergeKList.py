@@ -40,19 +40,19 @@ class Solution:
         # while the priority queue is not empty
         while priorityqueue:
             # pop the smallest node from the priority queue
-            val, i, node = heapq.heappop(priorityqueue)
+            val, i, poppedNode = heapq.heappop(priorityqueue)
             print("heappop within the while loop")
             print("index i:", i, "current List Node's value:", val, "current List Node:", l, end="\n")
             # append it to the merged list
-            lastListNode.next = node
+            lastListNode.next = poppedNode
             # move the pointer to the next node
             lastListNode = lastListNode.next
             # if the popped node has a next node
-            if node.next:
+            if poppedNode.next:
                 # push the next node to the priority queue
-                heapq.heappush(priorityqueue, (node.next.val, i, node.next))
+                heapq.heappush(priorityqueue, (poppedNode.next.val, i, poppedNode.next))
                 print("heappush within the while lop")
-                print("index i:", i, "next List Node's value", node.next.val, "next List Node's value", node.next,end = "\n")
+                print("index i:", i, "next List Node's value", poppedNode.next.val, "next List Node's value", poppedNode.next,end = "\n")
                 print("\n")
         # return the head of the merged list
         return zerothListNode.next
