@@ -32,6 +32,31 @@ Constraints:
 -104 <= nums[i] <= 104
 1 <= k <= nums.length
 
-
-
 """
+from collections import deque
+
+nums = [1,3,-1,-3,5,3,6,7]
+k = 3
+
+class Solution:
+    def maxSlidingWindow(self, nums, k):
+        dq = deque()
+        res = []
+
+        for i in range(k):
+            while dq and nums[i] >= nums[dq[-1]]:
+                dq.pop()
+            dq.append(i)
+
+        res.append(nums[dq[0]])
+
+        for i in range(k, len(nums)):
+            if dq and dq[0] == i - k:
+                dq.popleft()
+            while dq and nums[i] >= nums[dq[-1]]:
+                dq.pop()
+
+            dq.append(i)
+            res.append(nums[dq[0]])
+
+        return res
