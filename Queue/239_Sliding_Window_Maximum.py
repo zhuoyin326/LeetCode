@@ -40,7 +40,7 @@ class Solution:
         dq = deque()
         res = []
         
-        # Process the indices of input list covered by the first sliding window
+        # Process the indices of the input list covered by the first sliding window
         for i in range(k):
             while dq and nums[i] >= nums[dq[-1]]:
                 # Remove the last element from the monotonic queue
@@ -48,10 +48,10 @@ class Solution:
             dq.append(i)
 
         # Add the maximum number within the first sliding window to the result
-        # The maximum number is located at the index of the first element in the monotonic queue 
+        # Obtain the maximum number using the index of the first element in the monotonic queue 
         res.append(nums[dq[0]])
 
-        # Process the indices of input list covered by the second sliding window and beyond
+        # Process the indices of the input list covered by the second sliding window and beyond
         for i in range(k, len(nums)):
             if dq and dq[0] == i - k:
                 dq.popleft()
@@ -61,7 +61,7 @@ class Solution:
 
             dq.append(i)
             # Add the maximum number within the current sliding window to the result
-            # The maximum number is located at the index of first element in the monotonic queue 
+            # Obtain the maximum number using the index of first element in the monotonic queue 
             res.append(nums[dq[0]])
             
             
