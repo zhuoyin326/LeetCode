@@ -58,5 +58,7 @@ class Solution:
 
             dq.append(i)
             res.append(nums[dq[0]])
-
+            
+            
+        print(res)
         return res
