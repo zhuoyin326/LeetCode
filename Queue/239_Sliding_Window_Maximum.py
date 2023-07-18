@@ -35,8 +35,7 @@ Constraints:
 """
 from collections import deque
 
-nums = [1,3,-1,-3,5,3,6,7]
-k = 3
+
 
 class Solution:
     def maxSlidingWindow(self, nums, k):
@@ -62,3 +61,12 @@ class Solution:
             
         print(res)
         return res
+    
+# Create a Solution object
+s = Solution()
+
+# find maximum of all sliding window
+res = s.maxSlidingWindow([1,3,-1,-3,5,3,6,7], 3)
+
+# print the final results
+print(res)
