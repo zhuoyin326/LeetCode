@@ -64,8 +64,6 @@ class Solution:
             # Obtain the maximum number using the index of first element in the monotonic queue 
             res.append(nums[dq[0]])
             
-            
-        print(res)
         return res
     
 # Create a Solution object
