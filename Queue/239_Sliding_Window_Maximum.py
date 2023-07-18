@@ -35,27 +35,33 @@ Constraints:
 """
 from collections import deque
 
-
-
 class Solution:
     def maxSlidingWindow(self, nums, k):
         dq = deque()
         res = []
-
+        
+        # Process the indices of input list covered by the first sliding window
         for i in range(k):
             while dq and nums[i] >= nums[dq[-1]]:
+                # Remove the last element from the monotonic queue
                 dq.pop()
             dq.append(i)
 
+        # Add the maximum number within the first sliding window to the result
+        # The maximum number is located at the index of the first element in the monotonic queue 
         res.append(nums[dq[0]])
 
+        # Process the indices of input list covered by the second sliding window and beyond
         for i in range(k, len(nums)):
             if dq and dq[0] == i - k:
                 dq.popleft()
             while dq and nums[i] >= nums[dq[-1]]:
+                # Remove the last element from the monotonic queue
                 dq.pop()
 
             dq.append(i)
+            # Add the maximum number within the current sliding window to the result
+            # The maximum number is located at the index of first element in the monotonic queue 
             res.append(nums[dq[0]])
             
             
@@ -65,8 +71,8 @@ class Solution:
 # Create a Solution object
 s = Solution()
 
-# find maximum of all sliding window
+# Find the maximum of all elements within each sliding window
 res = s.maxSlidingWindow([1,3,-1,-3,5,3,6,7], 3)
 
-# print the final results
+# Print the final results
 print(res)
