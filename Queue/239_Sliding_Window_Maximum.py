@@ -38,39 +38,57 @@ from collections import deque
 class Solution:
     def maxSlidingWindow(self, nums, k):
         dq = deque()
-        res = []
+        result = []
         
         # Process the indices of the input list covered by the first sliding window
         for i in range(k):
+            # Print index i
+            print("the monotonic queue before appending:", dq)
+            print("i for the first sliding window:", i)
             while dq and nums[i] >= nums[dq[-1]]:
                 # Remove the last element from the monotonic queue
-                dq.pop()
+                poppedIndex = dq.pop()
+                # Print the popped index
+                print("popped index:", poppedIndex)
             dq.append(i)
+            print("the monotonic queue after appending:", dq)
 
         # Add the maximum number within the first sliding window to the result
         # Obtain the maximum number using the index of the first element in the monotonic queue 
-        res.append(nums[dq[0]])
+        result.append(nums[dq[0]])
+        # Print result after the first sliding window
+        print(result)
 
         # Process the indices of the input list covered by the second sliding window and beyond
         for i in range(k, len(nums)):
+            print("i for the second sliding window and beyond", i)
             if dq and dq[0] == i - k:
-                dq.popleft()
+                # 
+                poppedLeftIndex = dq.popleft()
+                # Print the popped index
+                print("popped left index:", poppedLeftIndex)
             while dq and nums[i] >= nums[dq[-1]]:
                 # Remove the last element from the monotonic queue
-                dq.pop()
+                poppedIndex = dq.pop()
+                print("popped index:", poppedIndex)
 
             dq.append(i)
+            print("the monotonic queue after appending:", dq)
+            
             # Add the maximum number within the current sliding window to the result
             # Obtain the maximum number using the index of first element in the monotonic queue 
-            res.append(nums[dq[0]])
+            result.append(nums[dq[0]])
             
-        return res
+            # Print result after the second sliding window and beyond
+            print(result)
+            
+        return result
     
 # Create a Solution object
 s = Solution()
 
 # Find the maximum of all elements within each sliding window
-res = s.maxSlidingWindow([1,3,-1,-3,5,3,6,7], 3)
+result = s.maxSlidingWindow([1,3,-1,-3,5,3,6,7], 3)
 
 # Print the final results
-print(res)
+print(result)
