@@ -80,7 +80,7 @@ class Solution:
             result.append(nums[dq[0]])
             
             # Print result after the second sliding window and beyond
-            print("result after the second sliding window:", result, "\n")
+            print("result after the second sliding window and beyond:", result, "\n")
             
         return result
     
