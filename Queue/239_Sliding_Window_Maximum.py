@@ -45,6 +45,8 @@ class Solution:
             # Print index i
             print("the monotonic queue before appending:", dq)
             print("i for the first sliding window:", i)
+            # If (a) the current element is larger than or equal to the last elememt in the monotonic queue,
+            # and (b) the monotonic queue is not empty.
             while dq and nums[i] >= nums[dq[-1]]:
                 # Remove the last element from the monotonic queue
                 poppedIndex = dq.pop()
@@ -67,6 +69,8 @@ class Solution:
                 poppedLeftIndex = dq.popleft()
                 # Print the popped index
                 print("popped left index:", poppedLeftIndex)
+            # If (a) the current element is larger than or equal to the last elememt in the monotonic queue, 
+            # and (b) the monotonic queue is not empty.
             while dq and nums[i] >= nums[dq[-1]]:
                 # Remove the last element from the monotonic queue
                 poppedIndex = dq.pop()
