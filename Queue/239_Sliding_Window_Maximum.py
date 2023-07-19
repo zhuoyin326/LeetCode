@@ -51,17 +51,17 @@ class Solution:
                 # Print the popped index
                 print("popped index:", poppedIndex)
             dq.append(i)
-            print("the monotonic queue after appending:", dq)
+            print("the monotonic queue after appending:", dq, "\n")
 
         # Add the maximum number within the first sliding window to the result
         # Obtain the maximum number using the index of the first element in the monotonic queue 
         result.append(nums[dq[0]])
         # Print result after the first sliding window
-        print(result)
+        print("result after the first sliding window:", result, "\n")
 
         # Process the indices of the input list covered by the second sliding window and beyond
         for i in range(k, len(nums)):
-            print("i for the second sliding window and beyond", i)
+            print("i for the second sliding window and beyond:", i)
             if dq and dq[0] == i - k:
                 # 
                 poppedLeftIndex = dq.popleft()
@@ -73,14 +73,14 @@ class Solution:
                 print("popped index:", poppedIndex)
 
             dq.append(i)
-            print("the monotonic queue after appending:", dq)
+            print("the monotonic queue after appending:", dq, "\n")
             
             # Add the maximum number within the current sliding window to the result
             # Obtain the maximum number using the index of first element in the monotonic queue 
             result.append(nums[dq[0]])
             
             # Print result after the second sliding window and beyond
-            print(result)
+            print("result after the second sliding window:", result, "\n")
             
         return result
     
