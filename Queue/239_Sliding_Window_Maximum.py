@@ -95,7 +95,7 @@ s = Solution()
 result = s.maxSlidingWindow([1,3,-1,-3,5,3,6,7], 3)
 
 # Print the final results
-print(result)
+print("result:", result)
 
 
 # Import deque from collections module
@@ -132,4 +132,4 @@ s2 = Solution2()
 result2 = s2.maxSlidingWindow2([1,3,-1,-3,5,3,6,7], 3)
 
 # Print the final results
-print("result2", result2)
+print("result2:", result2)
