@@ -129,7 +129,7 @@ class Solution2:
             # Append the current index to the deque
             dq.append(i)
             print("index i append to the dq:", i, "deque after appending the index i:", dq)
-            # If the window size is reached
+            # If the index i reaches the right boundary of the sliding window
             if i >= k - 1:
                 # append the element at the leftmost index within the dq to the result list
                 result.append(nums[dq[0]])
