@@ -96,3 +96,40 @@ result = s.maxSlidingWindow([1,3,-1,-3,5,3,6,7], 3)
 
 # Print the final results
 print(result)
+
+
+# Import deque from collections module
+from collections import deque
+
+class Solution2:
+    # Define a function that takes an array of integers, a window size, and returns the max sliding window
+    def maxSlidingWindow2(self, nums, k):
+        # Initialize an empty list to store the results
+        result = []
+        # Initialize a deque to store the indices of the elements in the window
+        window = deque()
+        # Loop through the array
+        for i in range(len(nums)):
+            # If the leftmost element in the window is out of range, pop it from the deque
+            if window and window[0] <= i - k:
+                window.popleft()
+            # While the deque is not empty and the current element is larger than the rightmost element in the window, pop it from the deque
+            while window and nums[i] >= nums[window[-1]]:
+                window.pop()
+            # Append the current index to the deque
+            window.append(i)
+            # If the window size is reached, append the leftmost element in the window to the result list
+            if i >= k - 1:
+                result.append(nums[window[0]])
+        # Return the result list
+        return result
+
+
+# Create a Solution object
+s2 = Solution2()
+
+# Find the maximum of all elements within each sliding window
+result2 = s2.maxSlidingWindow2([1,3,-1,-3,5,3,6,7], 3)
+
+# Print the final results
+print("result2", result2)
