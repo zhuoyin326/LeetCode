@@ -102,23 +102,25 @@ print("result:", result)
 from collections import deque
 
 class Solution2:
-    # Define a function that takes an array of integers, a dq size, and returns the max sliding dq
+    # Define a function that takes a list of integers, a dq size, and returns the max sliding window
     def maxSlidingWindow2(self, nums, k):
         # Initialize an empty list to store the results
         result = []
-        # Initialize a deque to store the indices of the elements in the dq
+        # Initialize a deque to store the indices of the elements in the window
         dq = deque()
-        # Loop through the array
+        # Loop through the list
         for i in range(len(nums)):
             # If the leftmost element in the dq is out of range, pop it from the deque
             if dq and dq[0] <= i - k:
                 dq.popleft()
-            # While the deque is not empty and the current element is larger than the rightmost element in the dq, pop it from the deque
+            # While the deque is not empty and the current element is larger than the rightmost element 
+            # in the window, pop the rightmost element from the deque
             while dq and nums[i] >= nums[dq[-1]]:
                 dq.pop()
             # Append the current index to the deque
             dq.append(i)
-            # If the dq size is reached, append the leftmost element in the dq to the result list
+            # If the window size is reached, 
+            # append the element at the leftmost index within the dq to the result list
             if i >= k - 1:
                 result.append(nums[dq[0]])
         # Return the result list
