@@ -130,8 +130,8 @@ class Solution2:
             # If the window size is reached
             if i >= k - 1:
                 # append the element at the leftmost index within the dq to the result list
-                print("result:", result, "nums[dq[0]]:", nums[dq[0]])
                 result.append(nums[dq[0]])
+                print("result:", result, "nums[dq[0]]:", nums[dq[0]])
         # Return the result list
         return result
 
