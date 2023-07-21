@@ -110,18 +110,28 @@ class Solution2:
         dq = deque()
         # Loop through the list
         for i in range(len(nums)):
+            print("deque:", dq, "index i:", i)
+            print("the leftmost element in the dq:", dq[0], "i-k", i-k)
             # If the leftmost element in the dq is too far to the left boundary, pop it from the deque
             if dq and dq[0] <= i - k:
-                dq.popleft()
+                poppedLeftElement = dq.popleft()
+                print("popped left element:", poppedLeftElement, "dq after popping left:", dq)
             # While the deque is not empty and the current element is larger than the rightmost element 
             # in the window, pop the rightmost element from the deque
             while dq and nums[i] >= nums[dq[-1]]:
-                dq.pop()
+                print("deque:", dq, "num[i]:", nums[i], "nums[dq[-1]]", nums[dq[-1]])
+                poppedElement = dq.pop()
+                print("popped element:", poppedElement, "dq after popping:", dq)
+
             # Append the current index to the deque
+            print("index i append to the dq:", i)
             dq.append(i)
-            # If the window size is reached, 
+            
+            print("deque after appending the index i", dq)
+            # If the window size is reached
             if i >= k - 1:
                 # append the element at the leftmost index within the dq to the result list
+                print("result:", result, "nums[dq[0]]", nums[dq[0]])
                 result.append(nums[dq[0]])
         # Return the result list
         return result
