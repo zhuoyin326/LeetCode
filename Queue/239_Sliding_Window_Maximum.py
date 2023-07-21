@@ -33,6 +33,8 @@ Constraints:
 1 <= k <= nums.length
 
 """
+"""
+
 from collections import deque
 
 class Solution:
@@ -97,6 +99,7 @@ result = s.maxSlidingWindow([1,3,-1,-3,5,3,6,7], 3)
 # Print the final results
 print("result:", result)
 
+"""
 
 # Import deque from collections module
 from collections import deque
