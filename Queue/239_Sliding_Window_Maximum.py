@@ -121,7 +121,7 @@ class Solution2:
             # While the deque is not empty and the current element is larger than the rightmost element 
             # in the window, pop the rightmost element from the deque
             while dq and nums[i] >= nums[dq[-1]]:
-                print("deque:", dq, "num[i]:", nums[i], "nums[dq[-1]]:", nums[dq[-1]])
+                print("deque:", dq, "num[i] > = nums[dq[-1]]", nums[i], ">=", nums[dq[-1]])
                 poppedElement = dq.pop()
                 print("popped element:", poppedElement, "dq after popping:", dq)
             # Append the current index to the deque
