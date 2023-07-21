@@ -113,7 +113,8 @@ class Solution2:
         dq = deque()
         # Loop through the list
         for i in range(len(nums)):
-            # If the leftmost element in the dq is too far to the left boundary, pop it from the deque
+            # If the leftmost element in the deque is too far from the left boundary of the sliding window, 
+            # pop it from the deque.
             if dq and dq[0] <= i - k:
                 print("deque:", dq, "index i:", i, "the leftmost element in the dq:", dq[0], "i-k:", i-k)
                 poppedLeftElement = dq.popleft()
