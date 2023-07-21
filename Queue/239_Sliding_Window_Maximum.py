@@ -118,12 +118,13 @@ class Solution2:
                 print("deque:", dq, "index i:", i, "the leftmost element in the dq:", dq[0], "i-k:", i-k)
                 poppedLeftElement = dq.popleft()
                 print("popped left element:", poppedLeftElement, "dq after popping left:", dq)
-            # While the deque is not empty and the current element is larger than the rightmost element 
+            # While the deque is not empty and the current element is larger than or equal to the rightmost element 
             # in the window, pop the rightmost element from the deque
             while dq and nums[i] >= nums[dq[-1]]:
                 print("deque:", dq, "num[i] > = nums[dq[-1]]:", nums[i], ">=", nums[dq[-1]])
                 poppedElement = dq.pop()
                 print("popped element:", poppedElement, "dq after popping:", dq)
+            # If the current element is smaller than the rightmost element in the window,
             # Append the current index to the deque
             dq.append(i)
             print("index i append to the dq:", i, "deque after appending the index i:", dq)
@@ -139,7 +140,7 @@ class Solution2:
 # Create a Solution object
 s2 = Solution2()
 
-# Find the maximum of all elements within each sliding dq
+# Find the maximum of all elements within each sliding window
 result2 = s2.maxSlidingWindow2([1,3,-1,-3,5,3,6,7], 3)
 
 # Print the final results
