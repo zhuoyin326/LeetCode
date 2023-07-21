@@ -110,7 +110,7 @@ class Solution2:
         dq = deque()
         # Loop through the list
         for i in range(len(nums)):
-            # If the leftmost element in the dq is out of range, pop it from the deque
+            # If the leftmost element in the dq is too far to the left boundary, pop it from the deque
             if dq and dq[0] <= i - k:
                 dq.popleft()
             # While the deque is not empty and the current element is larger than the rightmost element 
@@ -120,8 +120,8 @@ class Solution2:
             # Append the current index to the deque
             dq.append(i)
             # If the window size is reached, 
-            # append the element at the leftmost index within the dq to the result list
             if i >= k - 1:
+                # append the element at the leftmost index within the dq to the result list
                 result.append(nums[dq[0]])
         # Return the result list
         return result
