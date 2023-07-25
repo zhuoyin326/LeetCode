@@ -38,29 +38,29 @@ graph = {
 # arguments. The visited set will keep track of the visited nodes to avoid revisiting them.
 
 def depthFirstSearch(graph, startNode):
-    # keep track of visited nodes
+    # Keep track of visited nodes
     visited = set()
-    # iniitialize the stack with the start node
-    # stack keeps track of nodes to be explored
+    # Iniitialize the stack with the start node
+    # Stack keeps track of nodes to be explored
     stack = [startNode]
     
     while stack:
-        # take the last node from the stack
+        # Take the last node from the stack
         currentNode = stack.pop()
-        # print or process the current node
+        # Print or process the current node
         print("current node:", currentNode)
     
         if currentNode not in visited:
-            # mark the node as visited
+            # Mark the node as visited
             visited.add(currentNode)
-            # print the visited set
+            # Print the visited set
             print("visited set:", visited)
     
-            # add the current node's unvisited neighbors to the stack
+            # Add the current node's unvisited neighbors to the stack
             for neighbor in graph[currentNode]:                
-                # if the current node's neighbor is not found in the visited set
+                # If the current node's neighbor is not found in the visited set
                 if neighbor not in visited:
-                    # add the current node's neighbor to the stack (to be explored)
+                    # Add the current node's neighbor to the stack (to be explored)
                     stack.append(neighbor)
                     print("current stack:", stack)
 

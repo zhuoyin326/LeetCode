@@ -51,7 +51,7 @@ def dijkstra(graph, startNode):
         
         # If we've not visited the current node
         if currentNode not in visited:
-        # mark the node as visited
+        # Mark the node as visited
             visited.add(currentNode)
             
             # Look at all the neighboring nodes
