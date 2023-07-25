@@ -34,35 +34,34 @@ with neighbouring nodes as keys and the distances to them as values.
 import heapq
 
 # Define a function that takes a graph and a starting node as arguments
-def dijkstra(graph, start):
-    # Create a dictionary to save the shortest distance of each node from the start node
-    shortest_distances = {node: float('infinity') for node in graph}
+def dijkstra(graph, startNode):
+    # Create a dictionary to save the shortest distance of each node from the starting node
+    shortestDistances = {node: float('infinity') for node in graph}
     # Set the shortest distance of the start node to itself as 0
-    shortest_distances[start] = 0
+    shortestDistances[startNode] = 0
     # Create a tuple for the heap queue: (shortest distance to node, node)
-    heap = [(0, start)]
-    # Keep a set of nodes processed so far
-    processed_nodes = set()
+    heap = [(0, startNode)]
+    # To keep track of visited nodes
+    visited = set()
 
     while heap:
         # Get the node with the smallest distance so far
-        (dist, current_node) = heapq.heappop(heap)
-        # If we've processed the node already, skip
-        if current_node in processed_nodes:
-            continue
-        # Add the current node to the processed nodes
-        processed_nodes.add(current_node)
-        # Look at all the neighboring nodes
-        for neighbor, distance in graph[current_node].items():
-            old_distance = shortest_distances[neighbor]
-            new_distance = shortest_distances[current_node] + distance
-            # If the new distance is shorter than the old distance, update it
-            if new_distance < old_distance:
-                shortest_distances[neighbor] = new_distance
-                # Add the updated node to the heap
-                heapq.heappush(heap, (new_distance, neighbor))
+        (dist, currentNode) = heapq.heappop(heap)
+        # If we've not visited processed the node
+        if currentNode not in visited:
+        # mark the node as visited
+            visited.add(currentNode)
+            # Look at all the neighboring nodes
+            for neighbor, distance in graph[currentNode].items():
+                oldDistance = shortestDistances[neighbor]
+                newDistance = shortestDistances[currentNode] + distance
+                # If the new distance is shorter than the old distance, update it
+                if newDistance < oldDistance:
+                    shortestDistances[neighbor] = newDistance
+                    # Add the updated node to the heap
+                    heapq.heappush(heap, (newDistance, neighbor))
 
-    return shortest_distances  # Dictionary of shortest distances
+    return shortestDistances  # Dictionary of shortest distances
 
 # Define the graph
 graph = {'A': {'B': 1, 'C': 3}, 'B': {'A': 1, 'D': 2}, 'C': {'A': 3}, 'D': {'B': 2}}
