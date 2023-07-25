@@ -35,22 +35,25 @@ import heapq
 
 # Define a function that takes a graph and a starting node as arguments
 def dijkstra(graph, startNode):
+    # To keep track of visited nodes
+    visited = set()
     # Create a dictionary to save the shortest distance of each node from the starting node
     shortestDistances = {node: float('infinity') for node in graph}
     # Set the shortest distance of the start node to itself as 0
     shortestDistances[startNode] = 0
     # Create a tuple for the heap queue: (shortest distance to node, node)
     heap = [(0, startNode)]
-    # To keep track of visited nodes
-    visited = set()
+
 
     while heap:
         # Get the node with the smallest distance so far
         (dist, currentNode) = heapq.heappop(heap)
-        # If we've not visited processed the node
+        
+        # If we've not visited the current node
         if currentNode not in visited:
         # mark the node as visited
             visited.add(currentNode)
+            
             # Look at all the neighboring nodes
             for neighbor, distance in graph[currentNode].items():
                 oldDistance = shortestDistances[neighbor]
