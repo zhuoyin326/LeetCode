@@ -37,8 +37,14 @@ import heapq
 def dijkstra(graph, startNode):
     # To keep track of visited nodes
     visited = set()
-    # Create a dictionary to save the shortest distance of each node from the starting node
-    shortestDistances = {node: float('infinity') for node in graph}
+    
+    # Create an empty dictionary to store the shortest distances of each node from the start node
+    shortestDistances = {}
+    # Iterate over each node in the graph
+    for node in graph:
+        # Set the initial shortest distance for each node to infinity
+        shortestDistances[node] = float('infinity')
+    
     # Set the shortest distance of the start node to itself as 0
     shortestDistances[startNode] = 0
     print("Shortest Distances:", shortestDistances)
