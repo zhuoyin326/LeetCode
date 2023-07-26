@@ -5,8 +5,8 @@ A standard depth-first search implementation puts each node of the graph into on
 
 These are basic steps involved in depth-first search:
 1. Initialize a stack to keep track of the nodes to be explored.
-2. Choose a starting node and mark it as visited.
-3. Push the starting node onto the stack.
+2. Choose a start node and mark it as visited.
+3. Push the start node onto the stack.
 4. While the stack is not empty, repeat steps 5-8.
 5. Pop a node from the stack and process it.
 6. Explore all unvisited neighbors of the current node.
@@ -34,7 +34,7 @@ graph = {
 
 # step 2: define the depth-first search function
 
-# create a funciton called "depthFirstSearch" that takes the graph and starting node as 
+# create a funciton called "depthFirstSearch" that takes the graph and start node as 
 # arguments. The visited set will keep track of the visited nodes to avoid revisiting them.
 
 def depthFirstSearch(graph, startNode):
@@ -70,5 +70,5 @@ def depthFirstSearch(graph, startNode):
 
 # you can invoke "depthFirstSearch" function to perform depth-first search on the graph.
 
-# treat node A as the starting node
+# treat node A as the start node
 depthFirstSearch(graph, 'A')

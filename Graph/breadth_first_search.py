@@ -69,6 +69,6 @@ def breathFirstSearch(graph, startNode):
 
 # Step 3: Test the breath-first search algorithm
 # To see the breath-first search algorithm in action, you can call the breath-first search function with your graph 
-# and a starting node.
+# and a start node.
 
 breathFirstSearch(graph, 'A')

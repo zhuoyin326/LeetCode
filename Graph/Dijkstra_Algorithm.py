@@ -3,7 +3,7 @@
 Dijkstra's Algorithm is a popular algorithm in graph theory. It was developed by computer scientist 
 Edsger W. Dijkstra in 1959. 
 
-This algorithm is used to find the shortest path from a starting node to all other nodes in a graph, 
+This algorithm is used to find the shortest path from a start node to all other nodes in a graph, 
 which may represent, for example, road networks. 
 
 Here are the basic steps of the algorithm:
@@ -33,7 +33,7 @@ with neighbouring nodes as keys and the distances to them as values.
 # Import heapq module for priority queue operations
 import heapq
 
-# Define a function that takes a graph and a starting node as arguments
+# Define a function that takes a graph and a start node as arguments
 def dijkstra(graph, startNode):
     # To keep track of visited nodes
     visited = set()
