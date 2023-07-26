@@ -50,8 +50,9 @@ def dijkstra(graph, startNode):
     while priorityQueue:
         # Get the node with the smallest distance so far
         (dist, currentNode) = heapq.heappop(priorityQueue)
-        
         print("current node", currentNode, "with smallest distance:", dist)
+        # Print priority queue after heap pop
+        print("Priority Queue:", priorityQueue)
         # If we've not visited the current node
         if currentNode not in visited:
         # Mark the node as visited
