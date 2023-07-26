@@ -64,6 +64,7 @@ def dijkstra(graph, startNode):
             
             # Look at all the neighboring nodes
             for neighbor, distance in graph[currentNode].items():
+                print("neighbor:", neighbor, "distance:", distance)
                 oldDistance = shortestDistances[neighbor]
                 newDistance = shortestDistances[currentNode] + distance
                 print("Old Distance:", oldDistance, "New Distance:", newDistance)
