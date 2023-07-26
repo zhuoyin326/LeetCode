@@ -44,7 +44,7 @@ def dijkstra(graph, startNode):
     print("Shortest Distances:", shortestDistances)
     # Create a tuple for the priorityQueue queue: (shortest distance to node, node)
     priorityQueue = [(0, startNode)]
-    print("Priority Queue", priorityQueue)
+    print("Priority Queue", priorityQueue, "\n")
 
 
     while priorityQueue:
@@ -56,7 +56,7 @@ def dijkstra(graph, startNode):
         if currentNode not in visited:
         # Mark the node as visited
             visited.add(currentNode)
-            print("visited set:", visited)
+            print("visited set:", visited, "\n")
             
             # Look at all the neighboring nodes
             for neighbor, distance in graph[currentNode].items():
@@ -67,10 +67,10 @@ def dijkstra(graph, startNode):
                 if newDistance < oldDistance:
                     # Replace the shortest distance with the new distance
                     shortestDistances[neighbor] = newDistance
-                    print("Shortest Distances:", shortestDistances)
+                    print("Shortest Distances:", shortestDistances, "\n")
                     # Add the updated node to the priorityQueue
                     heapq.heappush(priorityQueue, (newDistance, neighbor))
-                    print("Priority Queue:", priorityQueue)
+                    print("Priority Queue:", priorityQueue, "\n")
 
     return shortestDistances  # Dictionary of shortest distances
 
