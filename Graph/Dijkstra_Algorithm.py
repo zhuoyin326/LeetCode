@@ -70,10 +70,10 @@ def dijkstra(graph, startNode):
                 print("Old Distance:", oldDistance, "New Distance:", newDistance)
                 # If the new distance is shorter than the old distance
                 if newDistance < oldDistance:
-                    # Replace the shortest distance with the new distance
+                    # Replace the neighbor's shortest distance with the new distance
                     shortestDistances[neighbor] = newDistance
                     print("Shortest Distances:", shortestDistances, "\n")
-                    # Add the updated node to the priorityQueue
+                    # Add the current node's neighbor to the priorityQueue
                     heapq.heappush(priorityQueue, (newDistance, neighbor))
                     print("Priority Queue:", priorityQueue, "\n")
 
