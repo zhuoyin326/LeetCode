@@ -37,21 +37,18 @@ import heapq
 def dijkstra(graph, startNode):
     # To keep track of visited nodes
     visited = set()
-    
     # Create an empty dictionary to store the shortest distances of each node from the start node
     shortestDistances = {}
     # Iterate over each node in the graph
     for node in graph:
         # Set the initial shortest distance for each node to infinity
         shortestDistances[node] = float('infinity')
-    
     # Set the shortest distance of the start node to itself as 0
     shortestDistances[startNode] = 0
     print("Shortest Distances:", shortestDistances)
     # Create a tuple for the priorityQueue queue: (shortest distance to node, node)
     priorityQueue = [(0, startNode)]
     print("Priority Queue", priorityQueue, "\n")
-
 
     while priorityQueue:
         # Get the node with the smallest distance so far
