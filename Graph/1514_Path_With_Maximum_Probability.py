@@ -42,23 +42,44 @@ from collections import defaultdict
 import heapq
 
 class Solution:
-    def maxProbability(self, n: int, edges: List[List[int]], succProb: List[float], start: int, end: int) -> float:
+    def maxProbability(self, n: int, edges: List[List[int]], 
+                       succProb: List[float], start: int, end: int) -> float:
+        # Create an empty dictionary to store the graph
         graph = defaultdict(list)
-        for i, (u, v) in enumerate(edges):
-            graph[u].append((v, succProb[i]))
-            graph[v].append((u, succProb[i]))
         
+        # Iterate over edges to create the graph. We also store the probabilities in the graph.
+        for i, edge in enumerate(edges):
+            graph[edge[0]].append((edge[1], succProb[i]))
+            graph[edge[1]].append((edge[0], succProb[i]))
+        
+        # Initialize the max probabilities for each node with 0
         maxProb = [0.0] * n
+        # The max probability of start node is 1
         maxProb[start] = 1.0
         
+        # Initialize the priority queue using a min heap, and push the start node into it
         priorityQueue = [(-1.0, start)]    
+        
+        # While the priority queue is not empty
         while priorityQueue:
+            # Pop the current node with max probability (negative smallest probability) from the priority queue
+            # Pop the max probability of the current node from the priority queue
             currentProb, currentNode = heapq.heappop(priorityQueue)
+            
+            # If the node is the end node
             if currentNode == end:
+                # Then we have found the max probability path
                 return -currentProb
+            
+            # Iterate over the neighbors of the current node
             for neighborNode, pathProb in graph[currentNode]:
-
+                
+                # If we can reach the neighbor with larger probability
                 if -currentProb * pathProb > maxProb[neighborNode]:
+                    # Substitute the neighbor's max probability with the new probability
                     maxProb[neighborNode] = -currentProb * pathProb
+                    # Push the new probability and neighbor node into the priority queue
                     heapq.heappush(priorityQueue, (-maxProb[neighborNode], neighborNode))
+                    
+        # If there is no path from start to end, return 0
         return 0.0
