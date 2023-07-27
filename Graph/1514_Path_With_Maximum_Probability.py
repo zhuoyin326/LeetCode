@@ -83,3 +83,12 @@ class Solution:
                     
         # If there is no path from start to end, return 0.
         return 0.0
+
+# Create a Solution object
+s = Solution()
+
+# Invoke max probability method within the Solution object
+result = s.maxProbability(4, [[0,1], [1,2], [0,2], [1,3], [2,3]], [0.5, 0.8, 0.3, 1, 1], 0, 2)
+
+# Print the result
+print(result)
