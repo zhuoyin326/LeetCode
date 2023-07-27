@@ -43,8 +43,7 @@ from collections import defaultdict
 import heapq
 
 class Solution:
-    def maxProbability(self, n: int, edges: List[List[int]], 
-                       succProb: List[float], start: int, end: int) -> float:
+    def maxProbability(self, n: int, edges: List[List[int]], succProb: List[float], start: int, end: int) -> float:
         # Create an empty dictionary to store the graph.
         graph = defaultdict(list)
         
@@ -88,7 +87,7 @@ class Solution:
 s = Solution()
 
 # Invoke max probability method within the Solution object
-result = s.maxProbability(4, [[0,1], [1,2], [0,2], [1,3], [2,3]], [0.5, 0.8, 0.3, 1, 1], 0, 2)
+result = s.maxProbability(4, [[0,1], [1,2], [0,2], [1,3], [2,3]], [0.8, 0.8, 0.3, 1, 1], 0, 2)
 
 # Print the result
 print(result)
