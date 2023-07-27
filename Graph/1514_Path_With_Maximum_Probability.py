@@ -38,7 +38,6 @@ There is at most one edge between every two nodes.
 
 """
   
-    
 from typing import List
 from collections import defaultdict
 import heapq
@@ -46,38 +45,41 @@ import heapq
 class Solution:
     def maxProbability(self, n: int, edges: List[List[int]], 
                        succProb: List[float], start: int, end: int) -> float:
-        # Creating a dictionary to store the graph where the nodes are keys and the edges are values.
+        # Create an empty dictionary to store the graph.
         graph = defaultdict(list)
         
-        # Iterating over edges to build the graph where each edge also carries the corresponding success probability.
+        # Iterate over edges to create the graph. We also store the probabilities in the graph.
         for i, edge in enumerate(edges):
             graph[edge[0]].append((edge[1], succProb[i]))
             graph[edge[1]].append((edge[0], succProb[i]))
         
-        # Initializing an array with all elements as 0.0 representing the maximum probability to reach each node.
+        # Initialize the max probabilities for each node with 0.
         maxProb = [0.0] * n
-        # Setting the maximum probability of reaching the start node to 1.
+        # The max probability of the start node is 1.
         maxProb[start] = 1.0
         
-        # Initializing the priority queue using a min heap, and inserting the start node into it.
+        # Initialize the priority queue using a min heap and push the start node into it.
         priorityQueue = [(-1.0, start)]    
         
-        # Processing the nodes in the priority queue until it becomes empty.
+        # While the priority queue is not empty
         while priorityQueue:
-            # Removing the node with the highest probability from the priority queue.
+            # Pop the current node with max probability (negative smallest probability) from the priority queue.
             currentProb, currentNode = heapq.heappop(priorityQueue)
             
-            # If the current node is the end node, we have found the path with the maximum probability and return it.
+            # If the node is the end node
             if currentNode == end:
+                # Then we have found the max probability path.
                 return -currentProb
             
-            # Iterating over the neighbors of the current node.
+            # Iterate over the neighbors of the current node.
             for neighborNode, pathProb in graph[currentNode]:
-                # If the probability of reaching the neighbor node via the current node is greater than the previously known maximum,
-                # we update the maximum probability and add the neighbor node to the priority queue.
+                
+                # If the neighbor's newly calculated probability is larger than the max probability
                 if -currentProb * pathProb > maxProb[neighborNode]:
+                    # Substitute the neighbor's max probability with the new probability.
                     maxProb[neighborNode] = -currentProb * pathProb
+                    # Push the new probability and neighbor node into the priority queue.
                     heapq.heappush(priorityQueue, (-maxProb[neighborNode], neighborNode))
                     
-        # If no path exists between the start and end nodes, we return 0.
+        # If there is no path from start to end, return 0.
         return 0.0
