@@ -49,8 +49,12 @@ class Solution:
         
         # Iterate over edges to create the graph. We also store the probabilities in the graph.
         for i, edge in enumerate(edges):
+            print("i:", i, "edge:", edge)
+            print("edge[0]:", edge[0], "edge[1]:", edge[1], "succProb[i]:", succProb[i])
             graph[edge[0]].append((edge[1], succProb[i]))
+            print("graph after", i, "iteration:", graph)
             graph[edge[1]].append((edge[0], succProb[i]))
+            print("graph after", i, "iteration:", graph, "\n")
         
         print("Graph:", graph, "\n")
         
