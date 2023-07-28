@@ -13,7 +13,7 @@ Here are the basic steps of the algorithm:
 (or a sufficiently large value).
 (3) For the current node, consider all of its neighbor nodes and calculate their tentative distances through 
 the current node.
-(4) If the newly calculated tentative distance to an neighbor node is less than its current assigned value, 
+(4) If the newly calculated tentative distance to a neighbor node is less than its current assigned value, 
 update this.
 (5) Once all neighbor nodes of the current node have been considered, mark the current node as visited. 
 The visited nodes will not be checked again.
