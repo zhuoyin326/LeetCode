@@ -51,6 +51,10 @@ class Solution:
         for i, edge in enumerate(edges):
             print("i:", i, "edge:", edge)
             print("edge[0]:", edge[0], "edge[1]:", edge[1], "succProb[i]:", succProb[i])
+            # Key represents each node 
+            # Append turple as value for each node (each key in the dictionary)
+            # The turple has two values; 
+            # the first value is the neighbor node, while the second value is the probaility
             graph[edge[0]].append((edge[1], succProb[i]))
             print("graph after", i, "iteration:", graph)
             graph[edge[1]].append((edge[0], succProb[i]))
