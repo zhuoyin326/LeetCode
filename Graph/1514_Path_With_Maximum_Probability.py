@@ -52,34 +52,42 @@ class Solution:
             graph[edge[0]].append((edge[1], succProb[i]))
             graph[edge[1]].append((edge[0], succProb[i]))
         
+        print("Graph:", graph, "\n")
+        
         # Initialize the max probabilities for each node with 0.
         maxProb = [0.0] * n
         # The max probability of the start node is 1.
         maxProb[start] = 1.0
+        print("Max Probabilities:", maxProb)
         
         # Initialize the priority queue using a min heap and push the start node into it.
         priorityQueue = [(-1.0, start)]    
+        print("Initial Priority Queue:", priorityQueue, "\n")
         
         # While the priority queue is not empty
         while priorityQueue:
             # Pop the current node with max probability (negative smallest probability) from the priority queue.
             currentProb, currentNode = heapq.heappop(priorityQueue)
+            print("Current Probability:", currentProb, "Current Node:", currentNode, "\n")
             
             # If the node is the end node
             if currentNode == end:
                 # Then we have found the max probability path.
+                print("Max Probability:", -currentProb, "\n")
                 return -currentProb
             
             # Iterate over the neighbors of the current node.
             for neighborNode, pathProb in graph[currentNode]:
-                
+                print("Neighbor Node:", neighborNode, "Max Probability of Neighbor Node:", maxProb[neighborNode])
+                print("Current Probability:", -currentProb, "Path Probability:", pathProb)
                 # If the neighbor's newly calculated probability is larger than the max probability
                 if -currentProb * pathProb > maxProb[neighborNode]:
                     # Substitute the neighbor's max probability with the new probability.
                     maxProb[neighborNode] = -currentProb * pathProb
+                    print("Newly Calculated Probability:", maxProb[neighborNode])
                     # Push the new probability and neighbor node into the priority queue.
                     heapq.heappush(priorityQueue, (-maxProb[neighborNode], neighborNode))
-                    
+                    print("Priority Queue after pushing:", priorityQueue, "\n")
         # If there is no path from start to end, return 0.
         return 0.0
 
