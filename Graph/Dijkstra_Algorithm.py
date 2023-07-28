@@ -8,14 +8,14 @@ which may represent, for example, road networks.
 
 Here are the basic steps of the algorithm:
 
-(1) Set the initial node as the current node.
-(2) Set the initial node distance as 0 and for all other nodes set distance as infinity 
+(1) Set the start node as the current node.
+(2) Set the start node distance as 0 and for all other nodes set distance as infinity 
 (or a sufficiently large value).
-(3) For the current node, consider all of its adjacent nodes and calculate their tentative distances through 
+(3) For the current node, consider all of its neighbor nodes and calculate their tentative distances through 
 the current node.
-(4) If the newly calculated tentative distance to an adjacent node is less than its current assigned value, 
+(4) If the newly calculated tentative distance to an neighbor node is less than its current assigned value, 
 update this.
-(5) Once all adjacent nodes of the current node have been considered, mark the current node as visited. 
+(5) Once all neighbor nodes of the current node have been considered, mark the current node as visited. 
 The visited nodes will not be checked again.
 (6) If the destination node has been marked visited (when planning a route between two specific nodes) 
 or if the smallest tentative distance among the nodes left is infinity (when planning a complete traversal), 
@@ -41,7 +41,7 @@ def dijkstra(graph, startNode):
     shortestDistances = {}
     # Iterate over each node in the graph
     for node in graph:
-        # Set the initial shortest distance for each node to infinity
+        # Set the start shortest distance for each node to infinity
         shortestDistances[node] = float('infinity')
     # Set the shortest distance of the start node to itself as 0
     shortestDistances[startNode] = 0
@@ -62,7 +62,7 @@ def dijkstra(graph, startNode):
             visited.add(currentNode)
             print("visited set:", visited, "\n")
             
-            # Look at all the neighboring nodes
+            # Look at all the neighbor nodes
             for neighbor, distance in graph[currentNode].items():
                 print("current node:", currentNode, "neighbor:", neighbor, "distance:", distance)
                 oldDistance = shortestDistances[neighbor]
