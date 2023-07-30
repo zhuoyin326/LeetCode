@@ -3,10 +3,15 @@ A standard breadth-first search implementation puts each node of the graph into 
 1. Visited
 2. Not Visited
 
-breath-first search is an algorithm used to traverse or search through a graph or tree data structure 
-in a breadthward motion.
-
-Here's a step-by-step guide to implementing breath-first search in Python:
+These are basic steps involved in breadth-first search:
+1. Initialize a queue to keep track of the nodes to be explored.
+2. Choose a start node and mark it as visited.
+3. Push the start node onto the queue.
+4. While the queue is not empty, repeat steps 5-8.
+5. Pop a node from the queue and process it.
+6. Explore all unvisited neighbors of the current node.
+7. Mark each unvisited neighbor as visited and push it onto the queue.
+8. Repeat steps 5-7 until the queue is empty.
 
 """
 
@@ -35,7 +40,7 @@ graph = {
 # and pop items from both ends of the underlying data structure. It is implemented 
 # using the module collections. 
 
-# A deque is useful for implementing queues and stacks, which are common list-like 
+# A deque is useful for implementing queues and queues, which are common list-like 
 # data types in computing.
 from collections import deque
 
