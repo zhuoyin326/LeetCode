@@ -15,7 +15,6 @@ These are basic steps involved in depth-first search:
 
 """
 
-
 # step 1: define the graph representation
 
 # We have an adjacency list representation of the graph. 
