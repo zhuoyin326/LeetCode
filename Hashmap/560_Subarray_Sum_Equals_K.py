@@ -42,7 +42,8 @@ def subarraySum(nums, k):
         cumulative_sum += num
 
         # If cumulative_sum - k is in sum_dict, add its count to our answer
-        # This is because if there's a cumulative sum j such that j - k (i.e., the current cumulative_sum) exists in the array,
+        # This is because if there's a cumulative sum j such that j - k 
+        # (i.e., the current cumulative_sum) exists in the array,
         # it means that there are some subarrays ending at current index with sum k
         if cumulative_sum - k in sum_dict:
             count += sum_dict[cumulative_sum - k]
