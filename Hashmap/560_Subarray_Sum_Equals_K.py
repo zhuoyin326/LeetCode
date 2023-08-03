@@ -1,8 +1,9 @@
 """
 
 Joe’s code problem on August 5th, 2023
+
 Title: 560. Subarray Sum Equals K
-Tag: Array, Graph, Heap (Priority Queue), Shortest Path
+Tag: Array, Hash Table, Prefix Sum
 Difficulty: Medium
 
 Given an array of integers nums and an integer k, return the total number of subarrays whose sum equals to k.
