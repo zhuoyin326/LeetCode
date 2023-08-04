@@ -44,7 +44,8 @@ class Solution:
             largerPrefixSum += num
 
             # If largerPrefixSum - k is in smallerPrefixSums, 
-            # This is because if there's a larger prefix sum j such that j - k exists in the array, it means that there are some subarrays ending at current index with sum k
+            # This is because if there's a larger prefix sum j such that j - k exists in the array, 
+            # it means that there are some subarrays ending at current index with sum k
             if largerPrefixSum - k in smallerPrefixSums:
                 # add its count to our answer
                 count += smallerPrefixSums[largerPrefixSum - k]
