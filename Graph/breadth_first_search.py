@@ -31,8 +31,8 @@ graph = {
 }
 
 
-# Step 2: Implement the breath-first search algorithm
-# Now let's implement the breath-first search algorithm itself. 
+# Step 2: Implement the breadth-first search algorithm
+# Now let's implement the breadth-first search algorithm itself. 
 # We'll use a queue to keep track of the nodes to visit.
 
 
@@ -44,7 +44,7 @@ graph = {
 # data types in computing.
 from collections import deque
 
-def breathFirstSearch(graph, startNode):
+def breadthFirstSearch(graph, startNode):
     # To keep track of visited nodes
     visited = set()  
     # Initialize the queue with the start node
@@ -72,8 +72,8 @@ def breathFirstSearch(graph, startNode):
                     print("current queue:", queue)
 
 
-# Step 3: Test the breath-first search algorithm
-# To see the breath-first search algorithm in action, you can call the breath-first search function with your graph 
+# Step 3: Test the breadth-first search algorithm
+# To see the breadth-first search algorithm in action, you can call the breadth-first search function with your graph 
 # and a start node.
 
-breathFirstSearch(graph, 'A')
+breadthFirstSearch(graph, 'A')
