@@ -39,7 +39,7 @@ graph = {
 def depthFirstSearch(graph, startNode):
     # Keep track of visited nodes
     visited = set()
-    # Iniitialize the stack with the start node
+    # Initialize the stack with the start node
     # Stack keeps track of nodes to be explored
     stack = [startNode]
     
