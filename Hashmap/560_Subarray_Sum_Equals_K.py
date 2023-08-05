@@ -28,46 +28,42 @@ from typing import List
 
 class Solution:
     def subarraySum(self, nums: List[int], k: int) -> int:
-    	# Initialize count to 0. 
-        # This variable will hold the total number of subarrays that sum up to k
+    	# Initialize the count of the subarrays with a sum equal to k to 0.
         count = 0
-        # Initialize largerPrefixSum to 0. 
-        # This variable will keep track of the larger prefix sum while traversing the array
-        largerPrefixSum = 0
-        # Initialize smallerPrefixSums dictionary to keep track of smaller prefix sums and their counts
-        # Key 0 is initialized with a count of 1 because smaller prefix sum 0 can be obtained by taking no elements
-        smallerPrefixSums = {0: 1}
+        # Initialize the prefix sums dictionary to keep track of all the past prefix sum values (as dictionary keys) and their corresponding frequencies (as dictionary values).
+        prefixSum = 0
+        # Initialize the prefix sums dictionary to keep track of all the past prefix sum values (as dictionary keys) and their corresponding frequencies (as dictionary values).
+        # Key 0 is initialized with a count of 1, because the prefix sum of 0 can be obtained by taking no elements.
+        prefixSums = {0: 1}
 
         # Iterate over each number in the nums array
         for num in nums:
-            # Add the current number to largerPrefixSum
-            largerPrefixSum += num
+            # Add the current number from the nums array to the prefix sum
+            prefixSum += num
 
-            # If largerPrefixSum - k is in smallerPrefixSums, 
-            # This is because if there's a larger prefix sum j such that j - k exists in the array, 
-            # it means that there are some subarrays ending at current index with sum k
-            if largerPrefixSum - k in smallerPrefixSums:
-                # add its count to our answer
-                count += smallerPrefixSums[largerPrefixSum - k]
+            # If prefix sum - k can be found in the keys of the prefix sums dictionary
+            if prefixSum - k in prefixSums:
+                #  Add its frequency to the count of the subarray
+                count += prefixSums[prefixSum - k]
+                # This is because if there's a later prefix sum j such that j - k exists in the array, it means that there are some subarrays ending at current index with sum k
 
-            # If largerPrefixSum is already a key in smallerPrefixSums,
-            if largerPrefixSum in smallerPrefixSums:
-                # increment its count
-                smallerPrefixSums[largerPrefixSum] += 1
-            # Otherwise, 
+            # If the prefix sum is already a key in the prefix sums dictionary
+            if prefixSum in prefixSums:
+                # Increase its frequency by 1
+                prefixSums[prefixSum] += 1
+            # Otherwise
             else:
-                # add largerPrefixSum to smallerPrefixSums with a count of 1
-                smallerPrefixSums[largerPrefixSum] = 1
+                # Add the prefix sum value as a key in the prefix sums dictionary with a count of 1
+                prefixSums[prefixSum] = 1
 
-        # After traversing the entire array, return count
-        # This will be the total number of contiguous subarrays that sum up to k
+        # After traversing the entire array, return the count of the subarrays with a sum equal to k.
         return count
 
 # Create a Solution object
 s = Solution()
 
 # Invoke the method (a function) within the Solution object
-count = s.subarraySum([1, 2, 3], 3)
+count = s.subarraySum([-1, 2, 5, -3, -1, 1, 1], 2)
 
 # Print the final results
 print(count)
