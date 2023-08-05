@@ -30,7 +30,7 @@ class Solution:
     def subarraySum(self, nums: List[int], k: int) -> int:
     	# Initialize the count of the subarrays with a sum equal to k to 0.
         count = 0
-        # Initialize the prefix sums dictionary to keep track of all the past prefix sum values (as dictionary keys) and their corresponding frequencies (as dictionary values).
+        # Initialize the prefix sum to 0.
         prefixSum = 0
         # Initialize the prefix sums dictionary to keep track of all the past prefix sum values (as dictionary keys) and their corresponding frequencies (as dictionary values).
         # Key 0 is initialized with a count of 1, because the prefix sum of 0 can be obtained by taking no elements.
