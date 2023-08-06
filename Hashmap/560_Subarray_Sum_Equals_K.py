@@ -32,7 +32,7 @@ class Solution:
         count = 0
         # Initialize the prefix sum to 0.
         prefixSum = 0
-        # Initialize the prefix sums dictionary to keep track of all the past prefix sum values (as dictionary keys) and their corresponding frequencies (as dictionary values).
+        # Initialize the prefix sums dictionary to keep track of all the past prefix sum values (as dictionary keys) and their corresponding occurrences (as dictionary values).
         # Key 0 is initialized with a count of 1, because the prefix sum of 0 can be obtained by taking no elements.
         prefixSums = {0: 1}
 
