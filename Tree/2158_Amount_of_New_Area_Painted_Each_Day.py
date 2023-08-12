@@ -71,9 +71,6 @@ class Solution:
                 if line[start] == 0:
                     res[i] += 1
                     print("res[i]:", res[i])
-                else:
-                    0
-                    print("0:", 0)
                 
                 print("line[start]:", line[start])
                 line[start] = max(line[start], end)  # compression
