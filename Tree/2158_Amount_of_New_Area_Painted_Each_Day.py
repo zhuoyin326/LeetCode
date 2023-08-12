@@ -74,10 +74,9 @@ class Solution:
                 else:
                     0
                     print("0:", 0)
-                    
-                print("line[start]:", line[start], "end:", end)
+                 
                 line[start] = max(line[start], end)  # compression
-                print("line[start]:", line[start], "line:", line)
+                print("line[start]:", line[start], "end:", end)
                 
                 start = jump
                 print("start:", start, "jump:", jump, "\n")
