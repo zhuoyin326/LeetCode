@@ -58,23 +58,23 @@ from typing import List
 
 class Solution:
     def amountPainted(self, paint: List[List[int]]) -> List[int]:
-        line = [0] * 50001
+        paintedArea = [0] * 50001
         res = [0] * len(paint)
         for i, (start, end) in enumerate(paint):
             
             print("i:", i, "start:", start, "end:", end, "\n")
             
             while start < end:
-                jump = max(start + 1, line[start])
-                print("jump:", jump, "start + 1:", start + 1, "line[start]:", line[start])
+                jump = max(start + 1, paintedArea[start])
+                print("jump:", jump, "start + 1:", start + 1, "paintedArea[start]:", paintedArea[start])
                 
-                if line[start] == 0:
+                if paintedArea[start] == 0:
                     res[i] += 1
                     print("res[i]:", res[i])
                 
-                print("line[start]:", line[start])
-                line[start] = max(line[start], end)  # compression
-                print("line[start]:", line[start], "end:", end)
+                print("paintedArea[start]:", paintedArea[start])
+                paintedArea[start] = max(paintedArea[start], end)  # compression
+                print("paintedArea[start]:", paintedArea[start], "end:", end)
                 
                 start = jump
                 print("start:", start, "jump:", jump, "\n")
