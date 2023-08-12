@@ -54,71 +54,32 @@ paint[i].length == 2
 0 <= starti < endi <= 5 * 104    
         
 """
-
-
-import math
 from typing import List
-
-class SegmentTree:
-    def __init__(self, n):
-        # Initializing the segment tree with proper size
-        self.tree = [0] * ((1 << (math.ceil(math.log2(n)) + 1)) - 1)
-
-    def query(self, segL, segR, queryL, queryR, treeInd):
-        # Checking if query is outside the range
-        if queryR < segL or queryL > segR:
-            return 0
-        # Checking if the current segment node is fully populated
-        if self.tree[treeInd] == segR - segL + 1:
-            return min(segR, queryR) - max(queryL, segL) + 1
-        # If query range is completely inside segment range
-        if queryL <= segL and segR <= queryR:
-            return self.tree[treeInd]
-        # If query range is partially inside segment range, recurse
-        mid = segL + (segR - segL) // 2
-        l = self.query(segL, mid, queryL, queryR, 2 * treeInd + 1)
-        r = self.query(mid + 1, segR, queryL, queryR, 2 * treeInd + 2)
-        return l + r
-
-    def update(self, segL, segR, queryL, queryR, treeInd):
-        # If the current segment node is fully populated
-        if self.tree[treeInd] == segR - segL + 1:
-            return 0
-
-        oldV = self.tree[treeInd]
-        # If update query is outside the range
-        if queryR < segL or queryL > segR:
-            return 0
-        # If update query is completely inside range
-        if queryL <= segL and segR <= queryR:
-            self.tree[treeInd] = segR - segL + 1
-            diff = self.tree[treeInd] - oldV
-            return diff
-        # If update query is partially inside range, recurse
-        mid = segL + (segR - segL) // 2
-        diffL = self.update(segL, mid, queryL, queryR, 2 * treeInd + 1)
-        diffR = self.update(mid + 1, segR, queryL, queryR, 2 * treeInd + 2)
-        # Merging the updated values to the current node
-        self.tree[treeInd] += diffL + diffR
-        return self.tree[treeInd] - oldV
 
 class Solution:
     def amountPainted(self, paint: List[List[int]]) -> List[int]:
-        # Using a segment tree to store the count of the representing range
-
-        # Constructing the segment tree
-        l_len = 0
-        for p in paint:
-            l_len = max(l_len, p[1])
-
-        segTree = SegmentTree(l_len + 1)
-
-        # Getting results for each day
-        res = []
-        for p in paint:
-            painted = segTree.query(0, l_len, p[0], p[1] - 1, 0)
-            res.append(p[1] - p[0] - painted)
-            segTree.update(0, l_len, p[0], p[1] - 1, 0)
-
+        line = [0] * 50001
+        res = [0] * len(paint)
+        for i, (start, end) in enumerate(paint):
+            
+            while start < end:
+                jump = max(start + 1, line[start])
+                
+                if line[start] == 0:
+                    res[i] += 1
+                else:
+                    0
+                 
+                line[start] = max(line[start], end)  # compression
+                start = jump
+                
         return res
 
+# Create a Solution object
+s = Solution()
+
+# Invoke method with the Solution object
+res = s.amountPainted([[1,4],[4,7],[5,8]])
+
+# Print the result
+print(res)
