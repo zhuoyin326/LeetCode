@@ -62,16 +62,24 @@ class Solution:
         res = [0] * len(paint)
         for i, (start, end) in enumerate(paint):
             
+            print("i:", i, "start:", start, "end:", end, "\n")
+            
             while start < end:
                 jump = max(start + 1, line[start])
+                print("jump:", jump, "start + 1:", start + 1, "line[start]:", line[start])
                 
                 if line[start] == 0:
                     res[i] += 1
+                    print("res[i]:", res[i])
                 else:
                     0
+                    print("0:", 0)
                  
                 line[start] = max(line[start], end)  # compression
+                print("line[start]:", line[start], "end:", end)
+                
                 start = jump
+                print("start:", start, "jump:", jump, "\n")
                 
         return res
 
