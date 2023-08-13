@@ -61,7 +61,7 @@ class Solution:
         # Initialize an array with zeros to represent the painted area
         paintedArea = [0] * 50001
         # Initialize an array with zeros to store the painting length for each day of painting
-        res = [0] * len(paint)
+        result = [0] * len(paint)
         
         # Iterate over the paint array to obtain start and end points for each painting day
         for i, (start, end) in enumerate(paint):
@@ -79,8 +79,8 @@ class Solution:
                 # If the current start point of the paintedArea array has not been painted yet
                 if paintedArea[start] == 0:
                     # Increase the painting length by 1 for that day
-                    res[i] += 1
-                    print("res[i]:", res[i])
+                    result[i] += 1
+                    print("result[i]:", result[i])
                 
                 print("paintedArea[start]:", paintedArea[start])
                 
@@ -93,13 +93,13 @@ class Solution:
                 print("start:", start, "next:", next, "\n")
         
         # Return the array that stores the painting length for each day of painting
-        return res
+        return result
 
 # Create a Solution object
 s = Solution()
 
 # Invoke method with the Solution object
-res = s.amountPainted([[1,4],[4,7],[5,8]])
+result = s.amountPainted([[1,4],[4,7],[5,8]])
 
 # Print the result
-print(res)
+print(result)
