@@ -58,27 +58,41 @@ from typing import List
 
 class Solution:
     def amountPainted(self, paint: List[List[int]]) -> List[int]:
+        # Initialize an array with zeros to represent the painted area
         paintedArea = [0] * 50001
+        # Initialize an array with zeros to store the painting length for each day of painting
         res = [0] * len(paint)
+        
+        # Iterate over the paint array to obtain start and end points for each painting day
         for i, (start, end) in enumerate(paint):
             
             print("i:", i, "start:", start, "end:", end, "\n")
             
+            # When the current start point is smaller than the end point for the paint day
             while start < end:
-                jump = max(start + 1, paintedArea[start])
-                print("jump:", jump, "start + 1:", start + 1, "paintedArea[start]:", paintedArea[start])
                 
+                # There are 2 options for the next start point: either the next point or the value stored within the paintedArea array. 
+                # We will compare both and assign the maximum of the two to the next start point.
+                next = max(start + 1, paintedArea[start])
+                print("next:", next, "start + 1:", start + 1, "paintedArea[start]:", paintedArea[start])
+                
+                # If the current start point of the paintedArea array has not been painted yet
                 if paintedArea[start] == 0:
+                    # Increase the painting length by 1 for that day
                     res[i] += 1
                     print("res[i]:", res[i])
                 
                 print("paintedArea[start]:", paintedArea[start])
+                
+                # Replace the value stored at the current start point with the maximum value between the value stored in the paintedArea array and the end point for the paint day
                 paintedArea[start] = max(paintedArea[start], end)  # compression
                 print("paintedArea[start]:", paintedArea[start], "end:", end)
                 
-                start = jump
-                print("start:", start, "jump:", jump, "\n")
-                
+                # Substitute the value of the current start point with the value of the next start point
+                start = next
+                print("start:", start, "next:", next, "\n")
+        
+        # Return the array that stores the painting length for each day of painting
         return res
 
 # Create a Solution object
