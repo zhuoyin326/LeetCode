@@ -54,6 +54,8 @@ paint[i].length == 2
 0 <= starti < endi <= 5 * 104    
         
 """
+
+"""
 from typing import List
 
 class Solution:
@@ -94,6 +96,72 @@ class Solution:
         
         # Return the array that stores the painting length for each day of painting
         return result
+"""
+
+import math
+
+class SegmentTree:
+    def __init__(self, n):
+        # Initializing the segment tree with 0 values
+        self.tree = [0] * ((1 << (math.ceil(math.log2(n)) + 1)) - 1)
+
+    def query(self, segL, segR, queryL, queryR, treeInd):
+        # Outside of the query range
+        if queryR < segL or queryL > segR:
+            return 0
+        # If the current node has maximum capacity (i.e., segR-segL+1), we know all children
+        # are fully populated so we don't need to traverse further
+        if self.tree[treeInd] == segR - segL + 1:
+            return min(segR, queryR) - max(queryL, segL) + 1
+        # If the current segment is completely inside the query range
+        if queryL <= segL and segR <= queryR:
+            return self.tree[treeInd]
+        # If the current segment is partially inside the query range
+        mid = segL + (segR - segL) // 2
+        l = self.query(segL, mid, queryL, queryR, 2 * treeInd + 1)
+        r = self.query(mid + 1, segR, queryL, queryR, 2 * treeInd + 2)
+
+        return l + r
+
+    def update(self, segL, segR, queryL, queryR, treeInd):
+        # If the node is at its maximum capacity
+        if self.tree[treeInd] == segR - segL + 1:
+            return 0
+        oldV = self.tree[treeInd]
+        # Outside of the update range
+        if queryR < segL or queryL > segR:
+            return 0
+        # If the current segment is completely inside the update range
+        if queryL <= segL and segR <= queryR:
+            self.tree[treeInd] = segR - segL + 1
+            diff = self.tree[treeInd] - oldV
+            return diff
+        # If the current segment is partially inside the update range
+        mid = segL + (segR - segL) // 2
+        diffL = self.update(segL, mid, queryL, queryR, 2 * treeInd + 1)
+        diffR = self.update(mid + 1, segR, queryL, queryR, 2 * treeInd + 2)
+        # Merge the results in the current node
+        self.tree[treeInd] += diffL + diffR
+        return self.tree[treeInd] - oldV
+
+class Solution:
+    def amountPainted(self, paint: List[List[int]]) -> List[int]:
+        # Constructing a segment tree where each node stores the count of the representing range
+        l_len = 0
+        for p in paint:
+            l_len = max(l_len, p[1])
+
+        segTree = SegmentTree(l_len + 1)
+
+        # Calculate the result for each day
+        res = []
+        for p in paint:
+            painted = segTree.query(0, l_len, p[0], p[1] - 1, 0)
+            res.append(p[1] - p[0] - painted)
+            segTree.update(0, l_len, p[0], p[1] - 1, 0)
+
+        return res
+
 
 # Create a Solution object
 s = Solution()
