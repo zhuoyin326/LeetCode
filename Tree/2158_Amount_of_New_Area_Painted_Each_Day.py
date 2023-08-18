@@ -99,6 +99,7 @@ class Solution:
 """
 
 import math
+from typing import List
 
 class SegmentTree:
     def __init__(self, n):
