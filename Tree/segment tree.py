@@ -32,13 +32,13 @@ def queryTree(tree, start, end, l, r, treeIndex):
     mid = (start + end) // 2
     
     # Partial overlap: if the queried range partially overlaps with the left child
-    left_sum = queryTree(tree, start, mid, l, r, 2*treeIndex + 1)
+    leftSum = queryTree(tree, start, mid, l, r, 2*treeIndex + 1)
     
     # Partial overlap: if the queried range partially overlaps with the right child
-    right_sum = queryTree(tree, mid+1, end, l, r, 2*treeIndex + 2)
+    rightSum = queryTree(tree, mid+1, end, l, r, 2*treeIndex + 2)
     
     # Return the sum of results from left and right children
-    return left_sum + right_sum
+    return leftSum + rightSum
 
 
 # Updating the Segment Tree
