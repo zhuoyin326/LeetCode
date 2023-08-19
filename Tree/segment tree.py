@@ -1,5 +1,5 @@
 # Building the Segment Tree
-def build_tree(arr, tree, start, end, treeIndex):
+def buildTree(arr, tree, start, end, treeIndex):
     # Base case: If start equals end, it means we're at a leaf node
     if start == end:
         # Set the value at this leaf node
@@ -9,17 +9,17 @@ def build_tree(arr, tree, start, end, treeIndex):
         mid = (start + end) // 2
         
         # Recursively build the left child segment tree
-        build_tree(arr, tree, start, mid, 2*treeIndex + 1)
+        buildTree(arr, tree, start, mid, 2*treeIndex + 1)
         
         # Recursively build the right child segment tree
-        build_tree(arr, tree, mid+1, end, 2*treeIndex + 2)
+        buildTree(arr, tree, mid+1, end, 2*treeIndex + 2)
         
         # The parent node's value is the sum of its children nodes
         tree[treeIndex] = tree[2*treeIndex + 1] + tree[2*treeIndex + 2]
 
 
 # Querying the Segment Tree
-def query_tree(tree, start, end, l, r, treeIndex):
+def queryTree(tree, start, end, l, r, treeIndex):
     # No overlap case: if the queried range is outside the current segment
     if r < start or l > end: 
         return 0
@@ -32,17 +32,17 @@ def query_tree(tree, start, end, l, r, treeIndex):
     mid = (start + end) // 2
     
     # Partial overlap: if the queried range partially overlaps with the left child
-    left_sum = query_tree(tree, start, mid, l, r, 2*treeIndex + 1)
+    left_sum = queryTree(tree, start, mid, l, r, 2*treeIndex + 1)
     
     # Partial overlap: if the queried range partially overlaps with the right child
-    right_sum = query_tree(tree, mid+1, end, l, r, 2*treeIndex + 2)
+    right_sum = queryTree(tree, mid+1, end, l, r, 2*treeIndex + 2)
     
     # Return the sum of results from left and right children
     return left_sum + right_sum
 
 
 # Updating the Segment Tree
-def update_tree(arr, tree, start, end, treeIndex, arrIndex, value):
+def updateTree(arr, tree, start, end, treeIndex, arrIndex, value):
     # Base case: If we're at the exact treeIndex to be updated
     if start == end:
         # Update the original array
@@ -56,11 +56,11 @@ def update_tree(arr, tree, start, end, treeIndex, arrIndex, value):
         # If the update treeIndex is in the left half
         if start <= arrIndex <= mid:
             # Recursively update the left child
-            update_tree(arr, tree, start, mid, 2*treeIndex + 1, arrIndex, value)
+            updateTree(arr, tree, start, mid, 2*treeIndex + 1, arrIndex, value)
         # Otherwise
         else:
             # Recursively update the right child
-            update_tree(arr, tree, mid+1, end, 2*treeIndex + 2, arrIndex, value)
+            updateTree(arr, tree, mid+1, end, 2*treeIndex + 2, arrIndex, value)
         
         # After updating child(ren), update the current node
         tree[treeIndex] = tree[2*treeIndex + 1] + tree[2*treeIndex + 2]
@@ -78,14 +78,14 @@ n = len(arr)
 tree = [0] * (4 * n) 
 
 # Build the segment tree from the array
-build_tree(arr, tree, 0, n-1, 0) 
+buildTree(arr, tree, 0, n-1, 0) 
 
 # Query the sum from treeIndex 1 to 3. Expected output: 9
-print(query_tree(tree, 0, n-1, 1, 3, 0)) 
+print(queryTree(tree, 0, n-1, 1, 3, 0)) 
 
 # Update the element at treeIndex 2 to 6
-update_tree(arr, tree, 0, n-1, 0, 2, 6) 
+updateTree(arr, tree, 0, n-1, 0, 2, 6) 
 
 # Query the sum from treeIndex 1 to 3 again. Expected output: 12
-print(query_tree(tree, 0, n-1, 1, 3, 0)) 
+print(queryTree(tree, 0, n-1, 1, 3, 0)) 
 
