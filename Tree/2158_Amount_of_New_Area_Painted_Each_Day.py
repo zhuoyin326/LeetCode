@@ -106,44 +106,44 @@ class SegmentTree:
         # Initializing the segment tree with 0 values
         self.tree = [0] * ((1 << (math.ceil(math.log2(n)) + 1)) - 1)
 
-    def query(self, segL, segR, queryL, queryR, treeInd):
+    def query(self, start, end, l, r, treeIndex):
         # Outside of the query range
-        if queryR < segL or queryL > segR:
+        if r < start or l > end:
             return 0
-        # If the current node has maximum capacity (i.e., segR-segL+1), we know all children
+        # If the current node has maximum capacity (i.e., end-start+1), we know all children
         # are fully populated so we don't need to traverse further
-        if self.tree[treeInd] == segR - segL + 1:
-            return min(segR, queryR) - max(queryL, segL) + 1
+        if self.tree[treeIndex] == end - start + 1:
+            return min(end, r) - max(l, start) + 1
         # If the current segment is completely inside the query range
-        if queryL <= segL and segR <= queryR:
-            return self.tree[treeInd]
+        if l <= start and end <= r:
+            return self.tree[treeIndex]
         # If the current segment is partially inside the query range
-        mid = segL + (segR - segL) // 2
-        l = self.query(segL, mid, queryL, queryR, 2 * treeInd + 1)
-        r = self.query(mid + 1, segR, queryL, queryR, 2 * treeInd + 2)
+        mid = start + (end - start) // 2
+        leftSum = self.query(start, mid, l, r, 2 * treeIndex + 1)
+        rightSum = self.query(mid + 1, end, l, r, 2 * treeIndex + 2)
 
-        return l + r
+        return leftSum + rightSum
 
-    def update(self, segL, segR, queryL, queryR, treeInd):
+    def update(self, start, end, l, r, treeIndex):
         # If the node is at its maximum capacity
-        if self.tree[treeInd] == segR - segL + 1:
+        if self.tree[treeIndex] == end - start + 1:
             return 0
-        oldV = self.tree[treeInd]
+        oldValue = self.tree[treeIndex]
         # Outside of the update range
-        if queryR < segL or queryL > segR:
+        if r < start or l > end:
             return 0
         # If the current segment is completely inside the update range
-        if queryL <= segL and segR <= queryR:
-            self.tree[treeInd] = segR - segL + 1
-            diff = self.tree[treeInd] - oldV
+        if l <= start and end <= r:
+            self.tree[treeIndex] = end - start + 1
+            diff = self.tree[treeIndex] - oldValue
             return diff
         # If the current segment is partially inside the update range
-        mid = segL + (segR - segL) // 2
-        diffL = self.update(segL, mid, queryL, queryR, 2 * treeInd + 1)
-        diffR = self.update(mid + 1, segR, queryL, queryR, 2 * treeInd + 2)
+        mid = start + (end - start) // 2
+        LeftDiff = self.update(start, mid, l, r, 2 * treeIndex + 1)
+        RightDiff = self.update(mid + 1, end, l, r, 2 * treeIndex + 2)
         # Merge the results in the current node
-        self.tree[treeInd] += diffL + diffR
-        return self.tree[treeInd] - oldV
+        self.tree[treeIndex] += LeftDiff + RightDiff
+        return self.tree[treeIndex] - oldValue
 
 class Solution:
     def amountPainted(self, paint: List[List[int]]) -> List[int]:
