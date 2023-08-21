@@ -62,7 +62,7 @@ def updateTree(arr, tree, start, end, treeIndex, arrIndex, value):
         if start <= arrIndex <= mid:
             # Recursively update the left child
             updateTree(arr, tree, start, mid, 2*treeIndex + 1, arrIndex, value)
-        # Otherwise
+        # If the update treeIndex is in the right half
         else:
             # Recursively update the right child
             updateTree(arr, tree, mid+1, end, 2*treeIndex + 2, arrIndex, value)
