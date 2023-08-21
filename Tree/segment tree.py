@@ -20,21 +20,26 @@ def buildTree(arr, tree, start, end, treeIndex):
 
 # Querying the Segment Tree
 def queryTree(tree, start, end, l, r, treeIndex):
-    # No overlap case: if the queried range is outside the current segment
+    #  If the query range [l, r] does not encompass the current segment represented by the node
     if r < start or l > end: 
+        # Return an identity value (e.g., 0 for sum, infinity for minimum)
         return 0
     
-    # Total overlap case: if the queried range encompasses the current segment
+    # If the query range entirely encompasses the current segment
     if l <= start and r >= end:
+        # Return the value of the current node
         return tree[treeIndex]
+    
+    # If the query range partially encompasses the current segment
+    # Recursively query both the left and right children and combine their results.
     
     # Calculate the mid-point
     mid = (start + end) // 2
     
-    # Partial overlap: if the queried range partially overlaps with the left child
+    # If the query range partially encompasses the left child
     leftSum = queryTree(tree, start, mid, l, r, 2*treeIndex + 1)
     
-    # Partial overlap: if the queried range partially overlaps with the right child
+    # If the query range partially encompasses the right child
     rightSum = queryTree(tree, mid+1, end, l, r, 2*treeIndex + 2)
     
     # Return the sum of results from left and right children
