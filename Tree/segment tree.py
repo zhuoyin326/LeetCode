@@ -67,7 +67,7 @@ def updateTree(arr, tree, start, end, treeIndex, arrIndex, value):
             # Recursively update the right child
             updateTree(arr, tree, mid+1, end, 2*treeIndex + 2, arrIndex, value)
         
-        # After updating child(ren), update the current node
+        # After updating the child node, update the current node's value based on its children
         tree[treeIndex] = tree[2*treeIndex + 1] + tree[2*treeIndex + 2]
 
 
