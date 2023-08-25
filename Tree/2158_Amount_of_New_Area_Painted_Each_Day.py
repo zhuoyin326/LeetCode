@@ -103,9 +103,15 @@ from typing import List
 
 class SegmentTree:
     def __init__(self, n):
-        # Initializing the segment tree with 0 values
-        self.tree = [0] * ((1 << (math.ceil(math.log2(n)) + 1)) - 1)
+        # Calculate the next power of 2 for n
+        nextPowerOf2 = 2**math.ceil(math.log2(n))
 
+        # Calculate the size of the complete binary tree
+        treeSize = 2 * nextPowerOf2 - 1
+
+        # Initializing the segment tree with 0 values
+        self.tree = [0] * treeSize
+        
     def query(self, start, end, l, r, treeIndex):
         # Outside of the query range
         if r < start or l > end:
