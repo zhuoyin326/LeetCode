@@ -154,18 +154,18 @@ class SegmentTree:
 class Solution:
     def amountPainted(self, paint: List[List[int]]) -> List[int]:
         # Constructing a segment tree where each node stores the count of the representing range
-        l_len = 0
+        maxRange = 0
         for p in paint:
-            l_len = max(l_len, p[1])
+            maxRange = max(maxRange, p[1])
 
-        segTree = SegmentTree(l_len + 1)
+        segTree = SegmentTree(maxRange + 1)
 
         # Calculate the result for each day
         res = []
         for p in paint:
-            painted = segTree.query(0, l_len, p[0], p[1] - 1, 0)
+            painted = segTree.query(0, maxRange, p[0], p[1] - 1, 0)
             res.append(p[1] - p[0] - painted)
-            segTree.update(0, l_len, p[0], p[1] - 1, 0)
+            segTree.update(0, maxRange, p[0], p[1] - 1, 0)
 
         return res
 
