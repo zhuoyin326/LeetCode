@@ -129,8 +129,9 @@ class SegmentTree:
         # If the current segment is partially inside the query range
         # Find the midpoint of the current segment tree node using the start and end indices
         mid = start + (end - start) // 2
-        # 
+        # The index of the left child node in the segment tree array is 2*treeIndex + 1
         leftSum = self.query(start, mid, l, r, 2 * treeIndex + 1)
+        # The index of the right child node in the segment tree array is 2*treeIndex + 2
         rightSum = self.query(mid + 1, end, l, r, 2 * treeIndex + 2)
 
         return leftSum + rightSum
@@ -156,7 +157,9 @@ class SegmentTree:
         # If the current segment is partially inside the update range
         # Find the midpoint of the current segment tree node using the start and end indices
         mid = start + (end - start) // 2
+        # The index of the left child node in the segment tree array is 2*treeIndex + 1
         LeftDiff = self.update(start, mid, l, r, 2 * treeIndex + 1)
+        # The index of the right child node in the segment tree array is 2*treeIndex + 2
         RightDiff = self.update(mid + 1, end, l, r, 2 * treeIndex + 2)
         # Merge the results in the current node
         self.tree[treeIndex] += LeftDiff + RightDiff
