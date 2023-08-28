@@ -111,7 +111,10 @@ class SegmentTree:
 
         # Initializing the segment tree with 0 values
         self.tree = [0] * treeSize
-        
+    
+    # The start and end indices of the current segment tree node are start and end
+    # The left and right indices of the query range are l and r
+    # The index of the segment tree node in the segment tree array is treeIndex
     def query(self, start, end, l, r, treeIndex):
         # Outside of the query range
         if r < start or l > end:
@@ -126,11 +129,15 @@ class SegmentTree:
         # If the current segment is partially inside the query range
         # Find the midpoint of the current segment tree node using the start and end indices
         mid = start + (end - start) // 2
+        # 
         leftSum = self.query(start, mid, l, r, 2 * treeIndex + 1)
         rightSum = self.query(mid + 1, end, l, r, 2 * treeIndex + 2)
 
         return leftSum + rightSum
 
+    # The start and end indices of the current segment tree node are start and end
+    # The left and right indices of the query range are l and r
+    # The index of the segment tree node in the segment tree array is treeIndex
     def update(self, start, end, l, r, treeIndex):
         # If the node is at its maximum capacity
         if self.tree[treeIndex] == end - start + 1:

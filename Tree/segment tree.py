@@ -1,4 +1,7 @@
 # Building the Segment Tree
+# The start and end indices of the current segment tree node are start and end
+# The left and right indices of the query range are l and r
+# The index of the segment tree node in the segment tree array is treeIndex
 def buildTree(arr, tree, start, end, treeIndex):
     # Base case: If start equals end, it means we're at a leaf node
     if start == end:
@@ -19,6 +22,9 @@ def buildTree(arr, tree, start, end, treeIndex):
 
 
 # Querying the Segment Tree
+# The start and end indices of the current segment tree node are start and end
+# The left and right indices of the query range are l and r
+# The index of the segment tree node in the segment tree array is treeIndex
 def queryTree(tree, start, end, l, r, treeIndex):
     #  If the query range [l, r] does not encompass the current segment represented by the node
     if r < start or l > end: 
@@ -47,6 +53,9 @@ def queryTree(tree, start, end, l, r, treeIndex):
 
 
 # Updating the Segment Tree
+# The start and end indices of the current segment tree node are start and end
+# The left and right indices of the query range are l and r
+# The index of the segment tree node in the segment tree array is treeIndex
 def updateTree(arr, tree, start, end, treeIndex, arrIndex, value):
     # Base case: If we're at the exact treeIndex to be updated
     if start == end:
