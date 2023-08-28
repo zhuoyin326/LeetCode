@@ -116,14 +116,15 @@ class SegmentTree:
         # Outside of the query range
         if r < start or l > end:
             return 0
-        # If the current node has maximum capacity (i.e., end-start+1), we know all children
-        # are fully populated so we don't need to traverse further
+        # If the current node has maximum capacity (i.e., end-start+1)
+        # All children are fully populated so we don't need to traverse further
         if self.tree[treeIndex] == end - start + 1:
             return min(end, r) - max(l, start) + 1
         # If the current segment is completely inside the query range
         if l <= start and end <= r:
             return self.tree[treeIndex]
         # If the current segment is partially inside the query range
+        # Find the midpoint of the current segment tree node using the start and end indices
         mid = start + (end - start) // 2
         leftSum = self.query(start, mid, l, r, 2 * treeIndex + 1)
         rightSum = self.query(mid + 1, end, l, r, 2 * treeIndex + 2)
@@ -144,6 +145,7 @@ class SegmentTree:
             diff = self.tree[treeIndex] - oldValue
             return diff
         # If the current segment is partially inside the update range
+        # Find the midpoint of the current segment tree node using the start and end indices
         mid = start + (end - start) // 2
         LeftDiff = self.update(start, mid, l, r, 2 * treeIndex + 1)
         RightDiff = self.update(mid + 1, end, l, r, 2 * treeIndex + 2)

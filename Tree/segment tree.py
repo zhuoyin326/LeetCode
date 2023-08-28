@@ -5,8 +5,8 @@ def buildTree(arr, tree, start, end, treeIndex):
         # Set the value at this leaf node
         tree[treeIndex] = arr[start]
     else:
-        # Calculate the mid-point to divide the array into two halves
-        mid = (start + end) // 2
+        # Find the midpoint of the current segment tree node using the start and end indices
+        mid = start + (end - start) // 2
         
         # Recursively build the left child segment tree
         buildTree(arr, tree, start, mid, 2*treeIndex + 1)
@@ -33,8 +33,8 @@ def queryTree(tree, start, end, l, r, treeIndex):
     # If the query range partially encompasses the current segment
     # Recursively query both the left and right children and combine their results.
     
-    # Calculate the mid-point
-    mid = (start + end) // 2
+    # Find the midpoint of the current segment tree node using the start and end indices
+    mid = start + (end - start) // 2
     
     # If the query range partially encompasses the left child
     leftSum = queryTree(tree, start, mid, l, r, 2*treeIndex + 1)
@@ -55,8 +55,8 @@ def updateTree(arr, tree, start, end, treeIndex, arrIndex, value):
         # Update the segment tree node
         tree[treeIndex] = value
     else:
-        # Calculate the mid-point
-        mid = (start + end) // 2
+        # Find the midpoint of the current segment tree node using the start and end indices
+        mid = start + (end - start) // 2
         
         # If the update treeIndex is in the left half
         if start <= arrIndex <= mid:
