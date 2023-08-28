@@ -1,7 +1,7 @@
 # Building the Segment Tree
 # The start and end indices of the current segment tree node are start and end
 # The left and right indices of the query range are l and r
-# The index of the segment tree node in the segment tree array is treeIndex
+# The index of the current segment tree node in the segment tree array is treeIndex
 def buildTree(arr, tree, start, end, treeIndex):
     # Base case: If start equals end, it means we're at a leaf node
     if start == end:
@@ -24,7 +24,7 @@ def buildTree(arr, tree, start, end, treeIndex):
 # Querying the Segment Tree
 # The start and end indices of the current segment tree node are start and end
 # The left and right indices of the query range are l and r
-# The index of the segment tree node in the segment tree array is treeIndex
+# The index of the current segment tree node in the segment tree array is treeIndex
 def queryTree(tree, start, end, l, r, treeIndex):
     #  If the query range [l, r] does not encompass the current segment represented by the node
     if r < start or l > end: 
@@ -43,9 +43,11 @@ def queryTree(tree, start, end, l, r, treeIndex):
     mid = start + (end - start) // 2
     
     # If the query range partially encompasses the left child
+    # The index of the left child node in the segment tree array is 2*treeIndex + 1
     leftSum = queryTree(tree, start, mid, l, r, 2*treeIndex + 1)
     
     # If the query range partially encompasses the right child
+    # The index of the right child node in the segment tree array is 2*treeIndex + 2
     rightSum = queryTree(tree, mid+1, end, l, r, 2*treeIndex + 2)
     
     # Return the sum of results from left and right children
@@ -55,7 +57,7 @@ def queryTree(tree, start, end, l, r, treeIndex):
 # Updating the Segment Tree
 # The start and end indices of the current segment tree node are start and end
 # The left and right indices of the query range are l and r
-# The index of the segment tree node in the segment tree array is treeIndex
+# The index of the current segment tree node in the segment tree array is treeIndex
 def updateTree(arr, tree, start, end, treeIndex, arrIndex, value):
     # Base case: If we're at the exact treeIndex to be updated
     if start == end:
@@ -70,10 +72,12 @@ def updateTree(arr, tree, start, end, treeIndex, arrIndex, value):
         # If the update treeIndex is in the left half
         if start <= arrIndex <= mid:
             # Recursively update the left child
+            # The index of the left child node in the segment tree array is 2*treeIndex + 1
             updateTree(arr, tree, start, mid, 2*treeIndex + 1, arrIndex, value)
         # If the update treeIndex is in the right half
         else:
             # Recursively update the right child
+            # The index of the right child node in the segment tree array is 2*treeIndex + 2
             updateTree(arr, tree, mid+1, end, 2*treeIndex + 2, arrIndex, value)
         
         # After updating the child node, update the current node's value based on its children

@@ -114,7 +114,7 @@ class SegmentTree:
     
     # The start and end indices of the current segment tree node are start and end
     # The left and right indices of the query range are l and r
-    # The index of the segment tree node in the segment tree array is treeIndex
+    # The index of the current segment tree node in the segment tree array is treeIndex
     def query(self, start, end, l, r, treeIndex):
         # Outside of the query range
         if r < start or l > end:
@@ -137,11 +137,13 @@ class SegmentTree:
 
     # The start and end indices of the current segment tree node are start and end
     # The left and right indices of the query range are l and r
-    # The index of the segment tree node in the segment tree array is treeIndex
+    # The index of the current segment tree node in the segment tree array is treeIndex
     def update(self, start, end, l, r, treeIndex):
         # If the node is at its maximum capacity
         if self.tree[treeIndex] == end - start + 1:
             return 0
+        # If the node is not at full capacity
+        # Set the current value to old value
         oldValue = self.tree[treeIndex]
         # Outside of the update range
         if r < start or l > end:
