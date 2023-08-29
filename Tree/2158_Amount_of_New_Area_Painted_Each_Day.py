@@ -102,11 +102,13 @@ import math
 from typing import List
 
 class SegmentTree:
+    # n refers to the size of the input array
+    # The input array represents the maximum paint area
     def __init__(self, n):
         # Calculate the next power of 2 for n
         nextPowerOf2 = 2**math.ceil(math.log2(n))
 
-        # Calculate the size of the segment tree
+        # Calculate the size of the segment tree array based on the size of the input array
         treeSize = 2 * nextPowerOf2 - 1
 
         # Initializing the segment tree with 0 values
@@ -117,13 +119,17 @@ class SegmentTree:
     # l and r refer to the left and right indices of the query range, respectively
     # treeIndex represents the index of the current segment tree node in the segment tree array
     def query(self, start, end, l, r, treeIndex):
-        # If the query range [l, r] does not encompass the current segment represented by the node
+        # Scenarios A: If the query range [l, r] does not encompass the current segment represented by the node
         if r < start or l > end:
             # Return 0 for sum
             return 0
+        
+        # Scenario B: If the query range entirely or partially encompasses the current segment
+        
         # If the current node has maximum capacity (i.e., end-start+1)
-        # All children are fully populated so we don't need to traverse further
+        # This means all leaf nodes under the current node have been painted
         if self.tree[treeIndex] == end - start + 1:
+            # Calculate painted area using 
             return min(end, r) - max(l, start) + 1
         # If the query range entirely encompasses the current segment
         if l <= start and end <= r:
