@@ -39,7 +39,7 @@ def queryTree(tree, start, end, l, r, treeIndex):
         return tree[treeIndex]
     
     # If the query range partially encompasses the current segment
-    # Recursively query both the left and right children and combine their results.
+    # Recursively query both the left and right children and combine their results
     
     # Find the midpoint of the current segment tree node using the start and end indices
     mid = start + (end - start) // 2

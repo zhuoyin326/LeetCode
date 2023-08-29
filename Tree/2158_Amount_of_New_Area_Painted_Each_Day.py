@@ -116,17 +116,20 @@ class SegmentTree:
     # l and r refer to the left and right indices of the query range, respectively
     # treeIndex represents the index of the current segment tree node in the segment tree array
     def query(self, start, end, l, r, treeIndex):
-        # Outside of the query range
+        # If the query range [l, r] does not encompass the current segment represented by the node
         if r < start or l > end:
+            # Return 0 for sum
             return 0
         # If the current node has maximum capacity (i.e., end-start+1)
         # All children are fully populated so we don't need to traverse further
         if self.tree[treeIndex] == end - start + 1:
             return min(end, r) - max(l, start) + 1
-        # If the current segment is completely inside the query range
+        # If the query range entirely encompasses the current segment
         if l <= start and end <= r:
+            # Return the value of the current node
             return self.tree[treeIndex]
-        # If the current segment is partially inside the query range
+        # If the query range partially encompasses the current segment
+        # Recursively query both the left and right children and combine their results
         # Find the midpoint of the current segment tree node using the start and end indices
         mid = start + (end - start) // 2
         # The index of the left child node in the segment tree array is 2*treeIndex + 1
