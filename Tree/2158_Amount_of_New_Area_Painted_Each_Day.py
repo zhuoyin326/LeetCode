@@ -129,7 +129,9 @@ class SegmentTree:
         # If the current node has maximum capacity (i.e., end-start+1)
         # This means all leaf nodes under the current node have been painted
         if self.tree[treeIndex] == end - start + 1:
-            # Calculate painted area using 
+            # Calculate the painted area using the left and right boundaries of the encompassed segment area
+            # The left boundary is calculated using the minimum of the "end paint area" and the right index of the query range
+            # The right boundary is calculated using the maximum of the "start paint area" and the left index of the query range
             return min(end, r) - max(l, start) + 1
         # If the query range entirely encompasses the current segment
         if l <= start and end <= r:
