@@ -106,10 +106,11 @@ class SegmentTree:
         # Calculate the next power of 2 for n
         nextPowerOf2 = 2**math.ceil(math.log2(n))
 
-        # Calculate the size of the complete binary tree
+        # Calculate the size of the segment tree
         treeSize = 2 * nextPowerOf2 - 1
 
         # Initializing the segment tree with 0 values
+        # 0 refers to the area that has not been painted before
         self.tree = [0] * treeSize
     
     # start and end refer to the start and end indices of the current segment tree node, respectively
