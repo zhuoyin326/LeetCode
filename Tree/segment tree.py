@@ -1,7 +1,8 @@
 # Building the Segment Tree
-# The start and end indices of the current segment tree node are start and end
-# The left and right indices of the query range are l and r
-# The index of the current segment tree node in the segment tree array is treeIndex
+# arr represents the input array
+# tree represents the segment tree array
+# start and end refer to the start and end indices of the current segment tree node, respectively
+# treeIndex represents the index of the current segment tree node in the segment tree array
 def buildTree(arr, tree, start, end, treeIndex):
     # Base case: If start equals end, it means we're at a leaf node
     if start == end:
@@ -22,9 +23,10 @@ def buildTree(arr, tree, start, end, treeIndex):
 
 
 # Querying the Segment Tree
-# The start and end indices of the current segment tree node are start and end
-# The left and right indices of the query range are l and r
-# The index of the current segment tree node in the segment tree array is treeIndex
+# tree represents the segment tree array
+# start and end refer to the start and end indices of the current segment tree node, respectively
+# l and r refer to the left and right indices of the query range, respectively
+# treeIndex represents the index of the current segment tree node in the segment tree array
 def queryTree(tree, start, end, l, r, treeIndex):
     #  If the query range [l, r] does not encompass the current segment represented by the node
     if r < start or l > end: 
@@ -55,9 +57,12 @@ def queryTree(tree, start, end, l, r, treeIndex):
 
 
 # Updating the Segment Tree
-# The start and end indices of the current segment tree node are start and end
-# The left and right indices of the query range are l and r
-# The index of the current segment tree node in the segment tree array is treeIndex
+# arr represents the input array
+# tree represents the segment tree array
+# start and end refer to the start and end indices of the current segment tree node, respectively
+# treeIndex represents the index of the current segment tree node in the segment tree array
+# arrIndex represents the index of the input array
+# value represents the value that needs to be updated within the input array
 def updateTree(arr, tree, start, end, treeIndex, arrIndex, value):
     # Base case: If we're at the exact treeIndex to be updated
     if start == end:
