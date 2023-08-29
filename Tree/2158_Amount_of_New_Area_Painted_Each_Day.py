@@ -167,13 +167,13 @@ class SegmentTree:
 
 class Solution:
     def amountPainted(self, paint: List[List[int]]) -> List[int]:
-        # Construct a segment tree where each leaf node represents whether the corresponding painting area was painted or not
+        # Construct a segment tree where each leaf node represents whether the corresponding paint area was painted or not
         # If painted, assign 1; otherwise, assign 0
         # Initialize maxPaintArea as 0
         maxPaintArea = 0
-        # Iterate over the painting area for different days
+        # Iterate over the paint area for each day
         for p in paint:
-            # Compare current maxPaintArea with the last painting area for the day
+            # Compare the current maxPaintArea with the end paint area for each day
             # Update maxPaintArea with the larger value
             maxPaintArea = max(maxPaintArea, p[1])
 
@@ -181,13 +181,15 @@ class Solution:
         segTree = SegmentTree(maxPaintArea + 1)
 
         # Calculate the result for each day
-        res = []
+        result = []
+        # Iterate over the paint area for each day
         for p in paint:
+            # 
             painted = segTree.query(0, maxPaintArea, p[0], p[1] - 1, 0)
-            res.append(p[1] - p[0] - painted)
+            result.append(p[1] - p[0] - painted)
             segTree.update(0, maxPaintArea, p[0], p[1] - 1, 0)
 
-        return res
+        return result
 
 
 # Create a Solution object
