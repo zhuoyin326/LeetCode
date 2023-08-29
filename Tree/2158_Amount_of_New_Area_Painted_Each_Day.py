@@ -173,7 +173,7 @@ class Solution:
         maxPaintArea = 0
         # Iterate over the paint area for each day
         for p in paint:
-            # Compare the current maxPaintArea with the end paint area for each day
+            # Compare the current maxPaintArea with the "end paint area" for each day
             # Update maxPaintArea with the larger value
             maxPaintArea = max(maxPaintArea, p[1])
 
@@ -184,9 +184,12 @@ class Solution:
         result = []
         # Iterate over the paint area for each day
         for p in paint:
-            # 
+            # Query the segment tree with the start and end of the paint area for that day 
+            # Determine the painted area within that range
             painted = segTree.query(0, maxPaintArea, p[0], p[1] - 1, 0)
+            # The workload for that day: "end paint area" - "start paint area" - "previous painted area"
             result.append(p[1] - p[0] - painted)
+            # Update the segment tree using the "start paint area" and the "end paint area"
             segTree.update(0, maxPaintArea, p[0], p[1] - 1, 0)
 
         return result
