@@ -133,7 +133,7 @@ class SegmentTree:
         leftSum = self.query(start, mid, l, r, 2 * treeIndex + 1)
         # The index of the right child node in the segment tree array is 2*treeIndex + 2
         rightSum = self.query(mid + 1, end, l, r, 2 * treeIndex + 2)
-
+        # Return the sum of results from left and right children
         return leftSum + rightSum
 
     # start and end refer to the start and end indices of the current segment tree node, respectively
@@ -167,19 +167,25 @@ class SegmentTree:
 
 class Solution:
     def amountPainted(self, paint: List[List[int]]) -> List[int]:
-        # Constructing a segment tree where each node stores the count of the representing range
-        maxRange = 0
+        # Construct a segment tree where each leaf node represents whether the corresponding painting area was painted or not
+        # If painted, assign 1; otherwise, assign 0
+        # Initialize maxPaintArea as 0
+        maxPaintArea = 0
+        # Iterate over the painting area for different days
         for p in paint:
-            maxRange = max(maxRange, p[1])
+            # Compare current maxPaintArea with the last painting area for the day
+            # Update maxPaintArea with the larger value
+            maxPaintArea = max(maxPaintArea, p[1])
 
-        segTree = SegmentTree(maxRange + 1)
+        # Instantiate the segment tree object using maxPaintArea
+        segTree = SegmentTree(maxPaintArea + 1)
 
         # Calculate the result for each day
         res = []
         for p in paint:
-            painted = segTree.query(0, maxRange, p[0], p[1] - 1, 0)
+            painted = segTree.query(0, maxPaintArea, p[0], p[1] - 1, 0)
             res.append(p[1] - p[0] - painted)
-            segTree.update(0, maxRange, p[0], p[1] - 1, 0)
+            segTree.update(0, maxPaintArea, p[0], p[1] - 1, 0)
 
         return res
 
