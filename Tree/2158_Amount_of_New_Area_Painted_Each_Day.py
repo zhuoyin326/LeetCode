@@ -155,17 +155,21 @@ class SegmentTree:
         # If the node is at its maximum capacity
         if self.tree[treeIndex] == end - start + 1:
             return 0
+        
         # If the node is not at full capacity
         # Set the current value to old value
         oldValue = self.tree[treeIndex]
+        
         # Outside of the update range
         if r < start or l > end:
             return 0
+        
         # If the current segment is completely inside the update range
         if l <= start and end <= r:
             self.tree[treeIndex] = end - start + 1
             diff = self.tree[treeIndex] - oldValue
             return diff
+        
         # If the current segment is partially inside the update range
         # Find the midpoint of the current segment tree node using the start and end indices
         mid = start + (end - start) // 2
