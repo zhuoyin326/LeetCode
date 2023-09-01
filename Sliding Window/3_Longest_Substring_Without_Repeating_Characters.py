@@ -29,33 +29,36 @@ s consists of English letters, digits, symbols and spaces.
 
 """
 
+
 class Solution:
-    def lengthOfLongestSubstring(self, s: str) -> int:    
-        # Using set to store characters in current window
-        # Initialize an empty set to track characters in the current window
-        seen = set()  
-        
-        # Initializing two pointers and maxLength to keep track of longest substring length
-        # 'l' and 'r' are the left and right of our current window, respectively
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        # Use an empty set, named seen, to keep track of non-repeating characters within the current substring
+        seen = set()
+
+        # Use two pointers, l and r, to define the left and right boundaries of the current substring
+        # Initialize both l and r to 0
         l = 0
         r = 0
+        # Let maxLength represent the length of the longest substring without repeating characters
+        # Initialize maxLength to 0
         maxLength = 0
-        
-        # While our right pointer hasn't reached the end of the string
-        while r < len(s):  
-            # If the current character at 'r' is not in our 'seen' set
-            if s[r] not in seen:  
-                # Add the current character to our set
-                seen.add(s[r])  
-                # Update maxLength with the length of the current window
-                maxLength = max(maxLength, r - l + 1)  
-                # Move the 'r' pointer to the right to expand the window
-                r += 1  
-            # If the current character at 'r' is in our 'seen' set (a repeating character)
-            else:  
-                # Remove the leftmost character of the current window from our set
-                seen.remove(s[l]) 
-                # Move the 'l' pointer to the right to shrink the window and remove the repeating character 
-                l += 1  
-        # Return the length of the longest substring without repeating characters     
-        return maxLength  
+
+        # Execute a while loop as long as the right pointer r has not reached the end of the string
+        while r < len(s):
+            # If the character at the right pointer is not in the seen set
+            # It means we have found a new non-repeating character
+            if s[r] not in seen:
+                # Add this character to the seen set
+                seen.add(s[r])
+                # Update the maxLength if the current substring’s length (r - l + 1) is greater than maxLength
+                maxLength = max(maxLength, r - l + 1)
+                # Move the right pointer, r, one step to the right to expand the current sliding window
+                r += 1
+            # If the character at the right pointer is already in the seen set, this indicates a repetition
+            else:
+                # Remove the character at the left pointer, l, from the seen set
+                seen.remove(s[l])
+                # Move the left pointer, l,  one step to the right to shrink the current sliding window
+                l += 1
+        # Once the while loop completes, return maxLength
+        return maxLength
