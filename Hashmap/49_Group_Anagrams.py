@@ -31,14 +31,16 @@ from typing import List
 
 class SolutionOne:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-	# Create an empty dictionary with key as the sorted string and value as the list of its anagrams
-    anagramGroups = collections.defaultdict(list)
-    # iterate over the list of all strings
-    for s in strs:
-	    # Use the sorted string as the dictionary key and append the original string to the list of anagrams under that key
-        anagramGroups[tuple(sorted(s))].append(s)
-    # return the values of the dictionary as a list
-    return anagramGroups.values()
+	    
+     # Create an empty dictionary with key as the sorted string and value as the list of its anagrams
+        anagramGroups = collections.defaultdict(list)
+        # iterate over the list of all strings
+        for s in strs:
+	        # Use the sorted string as the dictionary key and append the original string to the list of anagrams under that key
+            anagramGroups[tuple(sorted(s))].append(s)
+    
+        # return the values of the dictionary as a list
+        return anagramGroups.values()
 
 
 class SolutionTwo:
