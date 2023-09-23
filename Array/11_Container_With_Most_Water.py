@@ -27,3 +27,33 @@ n == height.length
 0 <= height[i] <= 104
     
 """
+from typing import List
+
+class Solution:
+    
+    def maxArea(self, height: List[int]) -> int:
+        # We initialize the maximum area to 0
+        area = 0
+        # We start the left and right boundaries at the leftmost and rightmost elements of the list
+        left = 0
+        right = len(height) - 1
+
+        # As long as the left boundary is smaller than the right boundary, we continue the following while loop
+        while left < right:
+            # Calculate width of container by subtracting the left boundary from the right boundary
+            width = right - left
+            # Calculate the new area of the container by multiplying the width and the height of the container
+            # Set the new maximum area to the greater of the new area and the previous maximum area.
+            area = max(area, min(height[left], height[right]) * width)
+
+            # If the left boundary is shorter than or equal to the right boundary
+            if height[left] <= height[right]:
+                # It is better to increase the left boundary by one, to increase the space
+                left += 1
+            # If the left boundary is taller than the right boundary
+            else:
+                # It is better to decrease the right boundary by one to increase the space
+                right -= 1
+        
+        # After the while loop exits, return the maximum area
+        return area
