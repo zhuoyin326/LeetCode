@@ -55,9 +55,9 @@ class Solution:
             string = queue.popleft()
 
             # If the length of string is 2 * n, add it to `answer` if it's valid.
-            # This length means we've added `n` open and `n` close brackets, so it's a complete combination.
+            # This length means we've added `n` open and `n` close brackets, so it's a complete string.
             if len(string) == 2 * n:
-                # Use the helper function to check if it's a valid combination.
+                # Use the helper function to check if it's a valid string.
                 if isValid(string):
                     answer.append(string)
                 # If it's not valid or once added, skip to the next iteration.
@@ -78,31 +78,31 @@ class Solution:
     def generateParenthesis(self, n: int) -> List[str]:
         
         # Define a helper function for backtracking
-        def backtrack(combination, open, close):
+        def backtrack(string, open, close):
             
-            # Base condition: If the current combination's length is equal to 2n (n pairs of parentheses)
-            if len(combination) == 2 * n:
+            # Base condition: If the current string's length is equal to 2n (n pairs of parentheses)
+            if len(string) == 2 * n:
                 
-                # Add the valid combination to the result list
-                result.append(combination)
+                # Add the valid string to the result list
+                result.append(string)
                 return
             
             # If the count of open brackets used so far is less than n
             if open < n:
                 
                 # Append a open bracket and make a recursive call to continue the exploration
-                backtrack(combination + "(", open + 1, close)
+                backtrack(string + "(", open + 1, close)
             
             # If the count of close brackets used so far is less than the count of open brackets
             if close < open:
                 
                 # Append a close bracket and make a recursive call to continue the exploration
-                backtrack(combination + ")", open, close + 1)
+                backtrack(string + ")", open, close + 1)
 
         # Initialize the result list to store all valid combinations
         result = []
         
-        # Start the backtracking with an empty combination and 0 counts for both open and close brackets
+        # Start the backtracking with an empty string and 0 counts for both open and close brackets
         backtrack("", 0, 0)
         
         # Return the final list of valid combinations
