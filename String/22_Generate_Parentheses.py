@@ -20,59 +20,67 @@ Constraints:
    
 """
 from typing import List
-import collections
 
-# Define the main class Solution.
+# Define the main class, Solution.
 class Solution:
-    # Define the primary function to generate parenthesis combinations.
+    # Define the primary function to generate parentheses combinations.
     def generateParenthesis(self, n: int) -> List[str]:
-        
-        # Nested helper function to check if a given parenthesis string is valid.
+        # Define a function to check if a certain string is valid.
         def isValid(string):
-            # Initialize a counter to keep track of unmatched open parentheses.
+            # Initialize a balance to keep track of the balance between open and close parentheses.
             balance = 0
             # Iterate over each character in the string.
             for char in string:
-                # If the character is an opening parenthesis, increment the counter.
+                # If the character is an open parenthesis
                 if char == '(':
+                    #  Increase the balance by one
                     balance += 1
-                # If it's a closing parenthesis, decrement the counter.
+                # If the character is a close parenthesis
                 else:
+                    # Decrease the balance by one
                     balance -= 1
-                # If at any point there are more closing than opening parentheses, it's invalid.
+                # If the balance is less than 0, it indicates the closed parenthesis count is more than the open parenthesis count
                 if balance < 0:
+                    # resulting in an invalid string
                     return False
-            # If after processing all characters, the count is 0, then it's a valid string.
+            # After iterating over all characters in the string, if the balance is 0, then it's a valid string.
             return balance == 0
-        
-        # Initialize a list to store all valid parenthesis combinations.
-        answer = []
-        # Initialize a queue using deque to assist in generating the combinations.
+
+        # Initialize an empty list to store the results.
+        result = []
+        # Initialize a queue using deque with an empty string.
         queue = collections.deque([""])
-        # Continue processing until all combinations in the queue have been evaluated.
+        # Generate all parentheses combinations without considering their validity.
+        # Continue the while loop as long as there is at least one element within the queue.
         while queue:
             # Remove and process the first string from the queue.
             string = queue.popleft()
 
-            # If the length of string is 2 * n, add it to `answer` if it's valid.
-            # This length means we've added `n` open and `n` close brackets, so it's a complete string.
+            # If the length of the string is 2 * n
             if len(string) == 2 * n:
-                # Use the helper function to check if it's a valid string.
+            # If the string is valid
                 if isValid(string):
-                    answer.append(string)
+                    # Add the string to the result.
+                    result.append(string)
                 # If it's not valid or once added, skip to the next iteration.
                 continue
-            # If the string is not of length 2*n, then add a closing parenthesis and enqueue.
+            # If the length of the string is less than 2*n, add a close parenthesis and enqueue.
             queue.append(string + ")")
-            # Also, add an opening parenthesis and enqueue.
+            # If the length of the string is less than 2*n, add an open parenthesis and enqueue.
             queue.append(string + "(")
-            
-        # Once all possible combinations have been evaluated, return the valid ones.
-        return answer
+                    
+        # Once all possible combinations have been evaluated, return the result.
+        return result
 
+# Create a Solution object
+s = Solution()
+# generate all combinations of well-formed parentheses
+result = s.generateParenthesis(3)
+# Print the final results
+print("result:", result)
 
 # Define the Solution class
-class Solution:
+class Solution2:
     
     # Define the main function to generate all combinations of well-formed parentheses
     def generateParenthesis(self, n: int) -> List[str]:
