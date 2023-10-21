@@ -27,3 +27,29 @@ All the integers in nums are unique.
 nums is sorted in ascending order.
     
 """
+
+# Define the binary search function with a sorted sequence and target.
+def binarySearch(nums, target):
+	# Define the left boundary.
+	left = 0
+	# Define the right boundary.
+	right = len(nums) - 1
+	
+# Continue the while loop as long as the left boundary is less than or equal to the right boundary.
+	while left <= right:
+		# Calculate the middle index using the left and right boundaries. 
+		mid = (left + right)//2
+		# Situation 1: If the number at the middle index is equal to the target.
+		if nums[mid] == target:
+			# Target found, return middle index.
+			return mid
+		# Situation 2: If the number at the middle index is greater than the target.
+		elif nums[mid] > target:
+			# Search in the lower range by updating the right boundary to mid-1. 
+			right = mid - 1
+		# Situation 3: If the number at the middle index is less than the target.
+		else:
+			# Search in the upper range by updating the left boundary to mid+1.
+			left = mid + 1
+	# If the target was not found after the while loop,  return -1.
+	return -1
