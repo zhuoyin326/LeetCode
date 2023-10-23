@@ -64,7 +64,7 @@ class Solution:
                 if isValid(string):
                     # Add the string to the result.
                     result.append(string)
-                # If it's not valid or once added, skip to the next iteration.
+                # If the string reaches a length of 2n or if it is invalid, skip the next two lines of code and proceed to the next iteration.
                 continue
             # If the length of the string is less than 2*n, add a close parenthesis and enqueue.
             queue.append(string + ")")
