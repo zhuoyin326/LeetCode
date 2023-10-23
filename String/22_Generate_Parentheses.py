@@ -85,7 +85,7 @@ print("result:", result)
 class Solution2:
     # Define the main function to generate all combinations of well-formed parentheses.
     def generateParenthesis(self, n: int) -> List[str]:
-        # Define the backtrack function.
+        # Define the backtrack function that tracks the three variables: the current string, the number of open parentheses, and the number of close parentheses.
         def backtrack(string, open, close):
             # If the current string reaches a length of 2n.
             if len(string) == 2 * n:
@@ -93,6 +93,7 @@ class Solution2:
                 result.append(string)
                 # Use a return without any expression when exiting a function early without returning any value.
                 return
+            # If the length of the current string is less than 2n, continue adding either open or close parentheses:
             # If the number of open parentheses is less than n.
             if open < n:
                 # Append an open parenthesis to the current string and increase the count of open parentheses by one.
