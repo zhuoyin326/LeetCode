@@ -20,6 +20,7 @@ Constraints:
    
 """
 from typing import List
+import collections
 
 # Define the main class, Solution.
 class Solution:
@@ -79,39 +80,37 @@ result = s.generateParenthesis(3)
 # Print the final results
 print("result:", result)
 
-# Define the Solution class
+# Define the Solution class.
 class Solution2:
-    
-    # Define the main function to generate all combinations of well-formed parentheses
+    # Define the main function to generate all combinations of well-formed parentheses.
     def generateParenthesis(self, n: int) -> List[str]:
-        
-        # Define a helper function for backtracking
+        # Define the backtrack function.
         def backtrack(string, open, close):
-            
-            # Base condition: If the current string's length is equal to 2n (n pairs of parentheses)
+            # If the current string reaches a length of 2n.
             if len(string) == 2 * n:
-                
-                # Add the valid string to the result list
+                # Add this valid string to the result.
                 result.append(string)
+                # Use a return without any expression when exiting a function early without returning any value.
                 return
-            
-            # If the count of open brackets used so far is less than n
+            # If the number of open parentheses is less than n.
             if open < n:
-                
-                # Append a open bracket and make a recursive call to continue the exploration
+                # Append an open parenthesis to the current string and increase the count of open parentheses by one.
                 backtrack(string + "(", open + 1, close)
-            
-            # If the count of close brackets used so far is less than the count of open brackets
+            # If the number of close parentheses is less than the number of open parentheses.
             if close < open:
-                
-                # Append a close bracket and make a recursive call to continue the exploration
+                # Append a close parentheses to the current string and increase the count of close parentheses by one.
                 backtrack(string + ")", open, close + 1)
-
-        # Initialize the result list to store all valid combinations
-        result = []
-        
-        # Start the backtracking with an empty string and 0 counts for both open and close brackets
-        backtrack("", 0, 0)
-        
-        # Return the final list of valid combinations
+            # Initialize an empty list to store all valid parentheses.
+            result = []
+            # Initialize the backtrack function with an empty string and 0 for both open and close parentheses.
+            backtrack("", 0, 0)
+        # Return the final result.
         return result
+
+# Create a Solution object
+s2 = Solution2()
+# generate all combinations of well-formed parentheses
+result = s2.generateParenthesis(3)
+# Print the final results
+print("result:", result)
+
