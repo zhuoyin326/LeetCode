@@ -1,6 +1,7 @@
 """
 
 Joe’s code problem on September 30th, 2023
+
 Title: 22. Generate Parentheses
 Tag: String, Dynamic Programming, Backtracking
 Difficulty: Medium
@@ -110,7 +111,7 @@ class Solution2:
 # Create a Solution object
 s2 = Solution2()
 # generate all combinations of well-formed parentheses
-result = s2.generateParenthesis(3)
+result2 = s2.generateParenthesis(3)
 # Print the final results
-print("result:", result)
+print("result 2:", result2)
 
