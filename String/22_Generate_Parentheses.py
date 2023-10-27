@@ -116,3 +116,29 @@ result2 = s2.generateParenthesis(3)
 # Print the final results
 print("result 2:", result2)
 
+class Solution3:
+    def generateParenthesis(self, n: int) -> List[str]:
+        # The base case: 0 pairs of parentheses. 
+        if n == 0:
+        # Return a list containing an empty string.
+            return [""]
+                    # Create an empty list to store all combinations of valid parentheses.
+        answer = []
+
+        # ‘k’ refers to the number  of valid left parentheses pairs; iterate ‘k’ from 0 to n-1.
+        for k in range(n):
+            # Generate ‘k’ pairs of valid left parentheses and iterate through them.
+            for leftString in self.generateParenthesis(k):
+                # Generate ‘n-1-k’ pairs of valid right parentheses and iterate through them.
+                for rightString in self.generateParenthesis(n - 1 - k):
+                    # Enclose ‘k’ pairs of valid left parentheses within another pair of parentheses, and concatenate them with ‘n-1-k’ pairs of valid right parentheses,
+                    answer.append("(" + leftString + ")" + rightString)
+                    # Return the final list of all valid combinations of parentheses. 
+        return answer
+
+# Create a Solution object
+s3 = Solution3()
+# generate all combinations of well-formed parentheses
+result3 = s3.generateParenthesis(3)
+# Print the final results
+print("result 3:", result3)
