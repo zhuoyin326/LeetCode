@@ -78,3 +78,27 @@ class Solution:
 		# Otherwise, if we did not find the insertion position, we return ‘-1’.
 		else:
 			return -1
+
+# Binary Search Upper Bound Code:
+class Solution:
+	def Search(nums, target):
+		# we initialize the left pointer to 0.
+		left = 0
+		# Therefore, we initialize the right pointer to the length of the list.
+		right = len(nums)
+		# The while loop continues as long as the index of the left pointer is less than the index of the right pointer:
+		while left < right:
+			# Calculate the midpoint using the left and right pointers.
+			mid = left + (right - left)/2
+			# If the element at the midpoint is less than or equal to the target, move the left pointer to  ‘mid+1’.
+			if nums[mid] < target:
+				left = mid +1
+			# If the element at the midpoint is greater than the target, the midpoint can be a potential insertion position, so we move the right pointer to ‘mid’ instead of ‘mid-1’.
+			else:
+				right = mid
+		# If the left pointer is greater than 0 and the element at the left-1 is equal to the target, we have found the leftmost insertion position for the target and return ‘left-1’.
+		if left > 0 and nums[left-1] == target:
+			return left-1
+		# Otherwise, if we did not find the insertion position, we return ‘-1’.
+		else:
+			return -1
