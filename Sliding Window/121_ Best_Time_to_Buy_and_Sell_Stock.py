@@ -34,10 +34,15 @@ class Solution:
         maxProfit = 0
         # As we iterate over the prices list, we encounter two scenarios:
         for i in range(len(prices)):
-            # Scenario A: If the current price is less than the minimum price, we should update the minimum price to the current price. However, in this scenario, we cannot generate a profit here.
+            # Scenario A: If the current price is less than the minimum price, 
+            # we should update the minimum price to the current price. 
+            # However, in this scenario, we cannot generate a profit here.
             if prices[i] < minPrice:
                 minPrice = prices[i]
-            # If the current price is higher than or equal to the minimum price, there is potential for making a profit. Moreover, if the difference between the current price and the minimum price exceeds the current maximum profit, we should update the maximum profit to this new difference.
+            # If the current price is higher than or equal to the minimum price, 
+            # there is potential for making a profit. 
+            # Moreover, if the difference between the current price and the minimum price exceeds the current maximum profit, 
+            # we should update the maximum profit to this new difference.
             elif prices[i] - minPrice > maxProfit:
                 maxProfit = prices[i] - minPrice
         # By the end of the iteration, we return the maximum profit.
