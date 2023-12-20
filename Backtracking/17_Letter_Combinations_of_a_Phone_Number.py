@@ -48,7 +48,7 @@ class Solution:
             # If the current string is the same length as digits, we have a complete combination
             if len(currString) == len(digits):
                 combinations.append("".join(currString))
-                print("combinations:", combinations)
+                print("combinations:", combinations, '\n')
                 return  # Backtrack
 
             # Get the letters that the current digit maps to, and loop through them
@@ -56,17 +56,29 @@ class Solution:
                 # Add the letter to our current string
                 print("index:", index)
                 print("digits:", digits)
-                print("current string:", currString)
+                print("current string:", currString, '\n')
                 print("letter:", letter)
                 currString.append(letter)
-                print("current string after append:", currString)
+                print("current string after append:", currString, '\n')
                 # Move on to the next digit
                 backtrack(index + 1, currString)
                 # Backtrack by removing the letter before moving onto the next
                 currString.pop()
-                print("current string:", currString)
+                print("current string after popping:", currString, '\n')
 
         # Initiate backtracking with an empty string and starting index of 0
         combinations = []
         backtrack(0, [])
         return combinations
+
+
+S = Solution()
+
+# combinations1 = S.letterCombinations("789")
+# print(combinations1)
+
+# combinations2 = S.letterCombinations("23")
+# print(combinations2)
+
+combinations3 = S.letterCombinations("2")
+print(combinations3)
