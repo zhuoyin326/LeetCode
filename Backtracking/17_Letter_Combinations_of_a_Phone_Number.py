@@ -43,19 +43,28 @@ class Solution:
                    "6": "mno", "7": "pqrs", "8": "tuv", "9": "wxyz"}
 
         def backtrack(index, currString):
+            print("current string:", currString)
+            print("combinations:", combinations)
             # If the current string is the same length as digits, we have a complete combination
             if len(currString) == len(digits):
                 combinations.append("".join(currString))
+                print("combinations:", combinations)
                 return  # Backtrack
 
             # Get the letters that the current digit maps to, and loop through them
             for letter in num2letters[digits[index]]:
                 # Add the letter to our current string
+                print("index:", index)
+                print("digits:", digits)
+                print("current string:", currString)
+                print("letter:", letter)
                 currString.append(letter)
+                print("current string after append:", currString)
                 # Move on to the next digit
                 backtrack(index + 1, currString)
                 # Backtrack by removing the letter before moving onto the next
                 currString.pop()
+                print("current string:", currString)
 
         # Initiate backtracking with an empty string and starting index of 0
         combinations = []
