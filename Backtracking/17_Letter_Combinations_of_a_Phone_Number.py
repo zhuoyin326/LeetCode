@@ -6,7 +6,7 @@ Title: 17. Letter Combinations of a Phone Number
 Tag: Hash Table, String, Backtracking
 Difficulty: Medium
 
-Given a string containing digits from 2-9 inclusive, return all possible letter combinations that the number could represent. Return the answer in any order.
+Given a string containing digits from 2-9 inclusive, return all possible letter stringList that the number could represent. Return the answer in any order.
 A mapping of digits to num2letters (just like on the telephone buttons) is given below. Note that 1 does not map to any num2letters.
 
 
@@ -42,13 +42,13 @@ class Solution:
         num2letters = {"2": "abc", "3": "def", "4": "ghi", "5": "jkl",
                    "6": "mno", "7": "pqrs", "8": "tuv", "9": "wxyz"}
 
-        def backtrack(index, currString):
-            print("current string:", currString)
-            print("combinations:", combinations)
+        def backtrack(index, letterList):
+            print("letter list:", letterList)
+            print("string list:", stringList)
             # If the current string is the same length as digits, we have a complete combination
-            if len(currString) == len(digits):
-                combinations.append("".join(currString))
-                print("combinations:", combinations, '\n')
+            if len(letterList) == len(digits):
+                stringList.append("".join(letterList))
+                print("string list:", stringList, '\n')
                 return  # Backtrack
 
             # Get the letters that the current digit maps to, and loop through them
@@ -57,20 +57,20 @@ class Solution:
                 print("current index:", index)
                 print("current digits[index]", digits[index])
                 print("current digits:", digits)
-                print("current string:", currString, '\n')
+                print("letter list:", letterList, '\n')
                 print("current letter:", letter)
-                currString.append(letter)
-                print("current string after append:", currString, '\n')
+                letterList.append(letter)
+                print("letter list after appending:", letterList, '\n')
                 # Move on to the next digit
-                backtrack(index + 1, currString)
+                backtrack(index + 1, letterList)
                 # Backtrack by removing the letter before moving onto the next
-                currString.pop()
-                print("current string after popping:", currString, '\n')
+                letterList.pop()
+                print("letter list after popping:", letterList, '\n')
 
         # Initiate backtracking with an empty string and starting index of 0
-        combinations = []
+        stringList = []
         backtrack(0, [])
-        return combinations
+        return stringList
 
 
 S = Solution()
