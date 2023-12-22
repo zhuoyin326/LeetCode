@@ -7,7 +7,7 @@ Tag: Hash Table, String, Backtracking
 Difficulty: Medium
 
 Given a string containing digits from 2-9 inclusive, return all possible letter stringList that the number could represent. Return the answer in any order.
-A mapping of digits to num2letters (just like on the telephone buttons) is given below. Note that 1 does not map to any num2letters.
+A mapping of digits to digit2letters (just like on the telephone buttons) is given below. Note that 1 does not map to any digit2letters.
 
 
 Example 1:
@@ -39,7 +39,7 @@ class Solution:
             return []
 
         # Map all the numbers to their corresponding letters
-        num2letters = {"2": "abc", "3": "def", "4": "ghi", "5": "jkl",
+        digit2letters = {"2": "abc", "3": "def", "4": "ghi", "5": "jkl",
                    "6": "mno", "7": "pqrs", "8": "tuv", "9": "wxyz"}
 
         def backtrack(index, letterList):
@@ -52,7 +52,7 @@ class Solution:
                 return  # Backtrack
 
             # Get the letters that the current digit maps to, and loop through them
-            for letter in num2letters[digits[index]]:
+            for letter in digit2letters[digits[index]]:
                 # Add the letter to our current string
                 print("current index:", index)
                 print("current digits[index]", digits[index])
