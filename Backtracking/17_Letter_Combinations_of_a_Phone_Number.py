@@ -48,7 +48,7 @@ class Solution:
             # If the current string is the same length as digits, we have a complete combination
             if len(letterList) == len(digits):
                 stringList.append("".join(letterList))
-                print("string list:", stringList, '\n')
+                print("string list after joining letter list:", stringList, '\n')
                 return  # Backtrack
 
             # Get the letters that the current digit maps to, and loop through them
