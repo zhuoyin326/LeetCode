@@ -54,10 +54,11 @@ class Solution:
             # Get the letters that the current digit maps to, and loop through them
             for letter in num2letters[digits[index]]:
                 # Add the letter to our current string
-                print("index:", index)
-                print("digits:", digits)
+                print("current index:", index)
+                print("current digits[index]", digits[index])
+                print("current digits:", digits)
                 print("current string:", currString, '\n')
-                print("letter:", letter)
+                print("current letter:", letter)
                 currString.append(letter)
                 print("current string after append:", currString, '\n')
                 # Move on to the next digit
@@ -77,8 +78,8 @@ S = Solution()
 # combinations1 = S.letterCombinations("789")
 # print(combinations1)
 
-# combinations2 = S.letterCombinations("23")
-# print(combinations2)
+combinations2 = S.letterCombinations("23")
+print(combinations2)
 
-combinations3 = S.letterCombinations("2")
-print(combinations3)
+# combinations3 = S.letterCombinations("2")
+# print(combinations3)
