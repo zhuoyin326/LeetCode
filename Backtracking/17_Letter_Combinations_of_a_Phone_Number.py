@@ -47,11 +47,11 @@ class Solution:
             print("letter list:", letterList)
             print("string list:", stringList)
             # If the length of letterList is equal to the length of digits, 
-            # join all letters within the letterList to form a complete string list and return it.
             if len(letterList) == len(digits):
+                # join all letters within the letterList to form a complete string list and return it.
                 stringList.append("".join(letterList))
                 print("string list after joining letter list:", stringList, '\n')
-                return  # Backtrack
+                return
 
             # Iterate over the letters corresponding to a certain digit’s letters inside the hashmap. 
             # For each letter, perform the following steps to form different string combinations:
