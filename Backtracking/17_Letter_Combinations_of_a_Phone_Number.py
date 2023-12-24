@@ -34,42 +34,49 @@ from typing import List
 
 class Solution:
     def letterCombinations(self, digits: str) -> List[str]:
-        # If the input is empty, immediately return an empty answer array
+        # If the length of the digits is equal to 0, return an empty list.
         if len(digits) == 0:
             return []
 
-        # Map all the numbers to their corresponding letters
+        # Create a hashmap with a key representing the digit and a value representing its corresponding letters.
         digit2letters = {"2": "abc", "3": "def", "4": "ghi", "5": "jkl",
                    "6": "mno", "7": "pqrs", "8": "tuv", "9": "wxyz"}
 
+        # Define a backtrack function with two arguments: index and letterList.
         def backtrack(index, letterList):
             print("letter list:", letterList)
             print("string list:", stringList)
-            # If the current string is the same length as digits, we have a complete combination
+            # If the length of letterList is equal to the length of digits, 
+            # join all letters within the letterList to form a complete string list and return it.
             if len(letterList) == len(digits):
                 stringList.append("".join(letterList))
                 print("string list after joining letter list:", stringList, '\n')
                 return  # Backtrack
 
-            # Get the letters that the current digit maps to, and loop through them
+            # Iterate over the letters corresponding to a certain digit’s letters inside the hashmap. 
+            # For each letter, perform the following steps to form different string combinations:
             for letter in digit2letters[digits[index]]:
-                # Add the letter to our current string
                 print("current index:", index)
                 print("current digits[index]", digits[index])
                 print("current digits:", digits)
                 print("letter list:", letterList, '\n')
                 print("current letter:", letter)
+                # Append the letter to the letterList.
                 letterList.append(letter)
                 print("letter list after appending:", letterList, '\n')
-                # Move on to the next digit
+                # Call the backtrack function again, 
+                # increasing the index by one to add a different letter corresponding to a different digit.
                 backtrack(index + 1, letterList)
-                # Backtrack by removing the letter before moving onto the next
+                # Before adding a different letter corresponding to the same digit, 
+                # remove the last letter in the letterList.
                 letterList.pop()
                 print("letter list after popping:", letterList, '\n')
 
-        # Initiate backtracking with an empty string and starting index of 0
+        # Initialize an empty list for stringList.
         stringList = []
+        # For the backtrack function, initially assign 0 to index and an empty list to letterList.
         backtrack(0, [])
+        # Return the stringList.
         return stringList
 
 
