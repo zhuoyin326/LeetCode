@@ -34,3 +34,20 @@ Constraints:
 0 <= cost[i] <= 999
   
 """
+
+class Solution:
+    def minCostClimbingStairs(self, cost):
+        minCost = [0]*(len(cost)+1)
+        for i in range(2, len(cost)+1):
+            minCost[i] = min(minCost[i-1]+cost[i-1],minCost[i-2]+cost[i-2])
+        return minCost[-1]
+ 
+class Solution:   
+    def minCostClimbingStairs(self, cost):
+        one = 0
+        two = 0
+        for i in range(2, len(cost)+1):
+            temp = one
+            one = min(one+cost[i-1], two+cost[i-2])
+            two = temp
+        return one
