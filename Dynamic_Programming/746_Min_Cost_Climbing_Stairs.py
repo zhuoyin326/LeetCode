@@ -53,13 +53,21 @@ class Solution:
 # Bottom-up Dynamic Programming (Constant Space)
 class Solution:   
     def minCostClimbingStairs(self, cost):
+        # Initialize the minimum cost to reach one step below the current step as 0
         one = 0
+        # Initialize the minimum cost to reach two steps below the current step as 0
         two = 0
+        # Start iterating from the 2nd stair (index 2) because the minimum cost to reach the first two stairs (index 0 and 1) is already known.
         for i in range(2, len(cost) + 1):
+            # Save the temporary minimum cost to reach one step below the current step
             temp = one
+            # Calculate the minimum cost for the current step by comparing the cost of taking a single step from the previous stair or a two-step jump from two stairs back
             one = min(one + cost[i-1], two + cost[i-2])
+            # Update the minimum cost to reach two steps below the current step using the previously saved temporary minimum cost
             two = temp
+        # Return the minimum cost to reach the top of the stairs
         return one
+
     
 # Top-Down Dynamic Programming (Recursion and Memoization)
 class Solution:
