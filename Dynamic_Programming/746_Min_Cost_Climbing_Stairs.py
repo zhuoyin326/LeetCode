@@ -38,9 +38,16 @@ Constraints:
 # Bottom-up Dynamic Programming (Tabulation)
 class Solution:
     def minCostClimbingStairs(self, cost):
-        minCost = [0]*(len(cost) + 1)
+        # Initialize an array to store the minimum cost to reach each stair.
+        # The length is len(cost) + 1 because we consider the "top" of the staircase as a step beyond the last.
+        minCost = [0] * (len(cost) + 1)
+
+        # Start iterating from the 2nd stair (index 2) because the minimum cost to reach the first two stairs (index 0 and 1) is 0.
         for i in range(2, len(cost) + 1):
-            minCost[i] = min(minCost[i-1] + cost[i-1], minCost[i-2] + cost[i-2])
+            # For each stair, calculate the minimum cost by comparing the cost of taking a single step from the previous stair or taking a two-step jump from two stairs back.
+            minCost[i] = min(minCost[i - 1] + cost[i - 1], minCost[i - 2] + cost[i - 2])
+
+        # Return the minimum cost to reach the top of the staircase, which is beyond the last step in the cost list.
         return minCost[-1]
 
 # Bottom-up Dynamic Programming (Constant Space)
