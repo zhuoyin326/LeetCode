@@ -72,12 +72,28 @@ class Solution:
 # Top-Down Dynamic Programming (Recursion and Memoization)
 class Solution:
     def minCostClimbingStairs(self, cost):
+        # Define a dictionary 'minCostDict' to store the minimum cost to reach each stair.
+        # The keys are stair indices, and values are the corresponding minimum costs.
         minCostDict = {}
+
+        # Define a helper function 'minCost' that calculates the minimum cost to reach a given stair 'i'.
         def minCost(i):
+            # If the stair index 'i' is 0 or 1, the cost is 0, as we can start from either of the first two stairs.
             if i <= 1:
                 return 0
+
+            # If the minimum cost for stair 'i' is already calculated, return it from 'minCostDict'.
             if i in minCostDict:
                 return minCostDict[i]
-            minCostDict[i] = min(cost[i-1] + minCost(i-1), cost[i-2] + minCost(i-2))
+
+            # Otherwise, calculate the minimum cost recursively using the formula:
+            # cost to reach 'i' = min(cost of 'i-1' + cost to reach 'i-1', cost of 'i-2' + cost to reach 'i-2').
+            minCostDict[i] = min(cost[i-1] + minCost(i-1),
+                                 cost[i-2] + minCost(i-2))
+
+            # Return the calculated minimum cost for stair 'i'.
             return minCostDict[i]
+
+        # Return the minimum cost to reach the top of the staircase.
+        # The top is considered to be one step beyond the last step, hence the length of the 'cost' array.
         return minCost(len(cost))
