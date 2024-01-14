@@ -88,12 +88,11 @@ class Solution:
 
             # Otherwise, calculate the minimum cost recursively using the formula:
             # cost to reach 'i' = min(cost of 'i-1' + cost to reach 'i-1', cost of 'i-2' + cost to reach 'i-2').
-            minCostDict[i] = min(cost[i-1] + minCost(i-1),
-                                 cost[i-2] + minCost(i-2))
+            minCostDict[i] = min(cost[i-1] + minCost(i-1), cost[i-2] + minCost(i-2))
 
             # Return the calculated minimum cost for stair 'i'.
             return minCostDict[i]
 
         # Return the minimum cost to reach the top of the staircase.
-        # The top is considered to be one step beyond the last step, hence the length of the 'cost' array.
+        # The top is considered to be one step beyond the last step, hence the length of the 'cost' list.
         return minCost(len(cost))
