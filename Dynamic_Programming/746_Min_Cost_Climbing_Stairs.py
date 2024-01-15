@@ -36,6 +36,8 @@ Constraints:
 """
 
 # Bottom-up Dynamic Programming (Tabulation)
+
+
 class Solution:
     def minCostClimbingStairs(self, cost):
         # Initialize an array to store the minimum cost to reach each stair.
@@ -44,14 +46,19 @@ class Solution:
 
         # Start iterating from the 2nd stair (index 2) because the minimum cost to reach the first two stairs (index 0 and 1) is 0.
         for i in range(2, len(cost) + 1):
-            # For each stair, calculate the minimum cost by comparing the cost of taking a single step from the previous stair or taking a two-step jump from two stairs back.
+            # calculate the minimum cost recursively using the formula:
+            # cost to reach 'i' from index 0 or 1
+            # = min(cost of reaching index 'i' from 'i-1' + cost to reach 'i-1' from index 0 or 1,
+            # cost of reaching index 'i' from 'i-2' + cost to reach 'i-2' from index 0 or 1).
             minCost[i] = min(minCost[i - 1] + cost[i - 1], minCost[i - 2] + cost[i - 2])
 
         # Return the minimum cost to reach the top of the staircase, which is beyond the last step in the cost list.
         return minCost[-1]
 
 # Bottom-up Dynamic Programming (Constant Space)
-class Solution:   
+
+
+class Solution:
     def minCostClimbingStairs(self, cost):
         # Initialize the minimum cost to reach one step below the current step as 0
         one = 0
@@ -68,7 +75,7 @@ class Solution:
         # Return the minimum cost to reach the top of the stairs
         return one
 
-    
+
 # Top-Down Dynamic Programming (Recursion and Memoization)
 class Solution:
     def minCostClimbingStairs(self, cost):
@@ -87,7 +94,9 @@ class Solution:
                 return minCostDict[i]
 
             # Otherwise, calculate the minimum cost recursively using the formula:
-            # cost to reach 'i' = min(cost of 'i-1' + cost to reach 'i-1', cost of 'i-2' + cost to reach 'i-2').
+            # cost to reach 'i' from index 0 or 1
+            # = min(cost of reaching index 'i' from 'i-1' + cost to reach 'i-1' from index 0 or 1,
+            # cost of reaching index 'i' from 'i-2' + cost to reach 'i-2' from index 0 or 1).
             minCostDict[i] = min(cost[i-1] + minCost(i-1), cost[i-2] + minCost(i-2))
 
             # Return the calculated minimum cost for stair 'i'.
