@@ -32,7 +32,7 @@ At most 3 * 104 calls in total will be made to insert, search, and startsWith.
 """
 
 
-# define a class named TrieNode
+# Define a class named TrieNode
 class TrieNode:
     # Initialize a TrieNode instance
     # self refers to the instance of the TrieNode class
@@ -43,7 +43,7 @@ class TrieNode:
         self.EndOfWord = False
 
 
-# define a class named Trie
+# Define a class named Trie
 class Trie:
 	# Initialize a Trie instance
 	# self refers to the instance of the Trie class
@@ -54,7 +54,7 @@ class Trie:
     # Inserts a word into the trie
     # self refers to the instance of the Trie class
     def insert(self, word: str) -> None:
-        # Start at the root trie node
+        # Start at the root of the trie node
         # We use 'node' to keep track of the current character corresponding to the inserted word
         node = self.root
         # Iterate over each character in the word
@@ -70,7 +70,7 @@ class Trie:
     # Search for a word in the trie.
     # self refers to the instance of the Trie class
     def search(self, word: str) -> bool:
-        # Start at the trie root
+        # Start at the root of the trie node
         # We use 'node' to keep track of the current character corresponding to the searched word
         node = self.root
         # Iterate over each character in the word
@@ -87,7 +87,7 @@ class Trie:
     # Search for a prefix in the trie.
     # self refers to the instance of the Trie class
     def startsWith(self, prefix: str) -> bool:
-        # Start at the trie root
+        # Start at the root of the trie node
         # We use 'node' to keep track of the current character corresponding to the prefix
         node = self.root
         # Iterate over each character in the prefix
