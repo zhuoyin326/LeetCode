@@ -32,68 +32,70 @@ At most 3 * 104 calls in total will be made to insert, search, and startsWith.
 """
 
 
+# define a class named TrieNode
 class TrieNode:
-    # Initialize your data structure here.
+    # Initialize a TrieNode instance
+    # self refers to the instance of the TrieNode class
     def __init__(self):
-        # Each node will store a dictionary of its children
+        # Each trie node will store a dictionary of its children
         self.children = {}
-        # Indicates if the node represents the end of a word
-        self.isEndOfWord = False
+        # Indicates if the trie node represents the end of a word
+        self.EndOfWord = False
 
 
+# define a class named Trie
 class Trie:
-
+	# Initialize a Trie instance
+	# self refers to the instance of the Trie class
     def __init__(self):
-        """
-        Initialize your data structure here.
-        """
-        # The trie is initialized with a root node
+        # The trie is initialized with a root trie node
         self.root = TrieNode()
 
+    # Inserts a word into the trie
+    # self refers to the instance of the Trie class
     def insert(self, word: str) -> None:
-        """
-        Inserts a word into the trie.
-        """
-        # Start at the root
+        # Start at the root trie node
+        # We use 'node' to keep track of the current character corresponding to the inserted word
         node = self.root
         # Iterate over each character in the word
         for char in word:
-            # If the character is not in the node's children, add a new node
+            # If the character is not in the node's children, add a new trie node
             if char not in node.children:
                 node.children[char] = TrieNode()
-            # Move to the child node
+            # If the character is in the node's children, we use the child node to update 'node'
             node = node.children[char]
-        # Mark the end of a word
-        node.isEndOfWord = True
+        # mark endOfWord of the last node as True after for loop
+        node.EndOfWord = True
 
+    # Search for a word in the trie.
+    # self refers to the instance of the Trie class
     def search(self, word: str) -> bool:
-        """
-        Returns if the word is in the trie.
-        """
-        # Start at the root
+        # Start at the trie root
+        # We use 'node' to keep track of the current character corresponding to the searched word
         node = self.root
         # Iterate over each character in the word
         for char in word:
-            # If the character is not in the node's children, the word is not in the trie
+            # If the character is not in the node's children, the word is not in the trie, so return False.
             if char not in node.children:
                 return False
-            # Move to the child node
+            # If the character is in the node's children, we use the child node to update 'node'
             node = node.children[char]
-        # Check if we are at the end of a word
-        return node.isEndOfWord
+        # After the for loop, if we are at the end of the word, it means we have found the word in the trie; return True.
+        # After the for loop, if we are in the middle of the word, it means we did not find the word in the trie; return False.
+        return node.EndOfWord
 
+    # Search for a prefix in the trie.
+    # self refers to the instance of the Trie class
     def startsWith(self, prefix: str) -> bool:
-        """
-        Returns if there is any word in the trie that starts with the given prefix.
-        """
-        # Start at the root
+        # Start at the trie root
+        # We use 'node' to keep track of the current character corresponding to the prefix
         node = self.root
         # Iterate over each character in the prefix
         for char in prefix:
-            # If the character is not in the node's children, no word starts with this prefix
+            # If the character is not in the node's children, then no word starts with this prefix, so return False.
             if char not in node.children:
                 return False
-            # Move to the child node
+            # If the character is in the node's children, we use the child node to update 'node'
             node = node.children[char]
-        # If we complete the loop, it means the prefix is in the trie
+        # Return True if the for loop completes without returning False, indicating the prefix is in the trie
         return True
