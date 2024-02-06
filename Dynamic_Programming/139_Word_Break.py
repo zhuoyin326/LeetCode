@@ -33,3 +33,53 @@ All the strings of wordDict are unique.
 
     
 """
+
+
+# Top-Down Approach (Memoization)
+def wordBreak(s, wordDict):
+    # Convert wordDict to a set for O(1) lookups
+    wordSet = set(wordDict)
+    memo = {}
+
+    def dp(start):
+        # If the start index reaches the end of the string, return True
+        if start == len(s):
+            return True
+
+        # If the result is already in the memo, return it
+        if start in memo:
+            return memo[start]
+
+        # Try every possible end index for the current substring
+        for end in range(start + 1, len(s) + 1):
+            # If the substring is in the wordSet and the remaining string can be broken, return True
+            if s[start:end] in wordSet and dp(end):
+                memo[start] = True
+                return True
+
+        # If no solution found, store False in the memo and return
+        memo[start] = False
+        return False
+
+    return dp(0)
+
+
+# Bottom-Up Approach
+def wordBreak(s, wordDict):
+    # Convert wordDict to a set for O(1) lookups
+    wordSet = set(wordDict)
+    n = len(s)
+    # Initialize dp array where dp[end] is True if the first end characters can form a word
+    dp = [False] * (n + 1)
+    dp[0] = True  # Empty string can always be segmented
+
+    # Iterate over the string
+    for end in range(1, n + 1):
+        # Check each substring ending at end
+        for start in range(end):
+            # If the substring s[start:end] is a word and dp[start] is True, set dp[end] to True
+            if dp[start] and s[start:end] in wordSet:
+                dp[end] = True
+                break
+
+    return dp[n]
