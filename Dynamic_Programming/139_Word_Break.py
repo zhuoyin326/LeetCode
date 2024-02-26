@@ -53,7 +53,7 @@ def wordBreak(s, wordDict):
         # Try every possible end index for the current substring
         for end in range(start + 1, len(s) + 1):
             # If the substring is in the wordSet and the remaining string can be broken, return True
-            if s[start:end] in wordSet and dp(end):
+            if dp(end) and s[start:end] in wordSet:
                 memo[start] = True
                 return True
 
