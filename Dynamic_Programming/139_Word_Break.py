@@ -31,55 +31,72 @@ Constraints:
 s and wordDict[i] consist of only lowercase English letters.
 All the strings of wordDict are unique.
 
-    
 """
 
-
 # Top-Down Approach (Memoization)
-def wordBreak(s, wordDict):
-    # Convert wordDict to a set for O(1) lookups
-    wordSet = set(wordDict)
-    memo = {}
+class Solution1:
+    def wordBreak(self, s, wordDict):
+        # Convert wordDict to a set for O(1) lookups
+        wordSet = set(wordDict)
+        memo = {}
 
-    def dp(start):
-        # If the start index reaches the end of the string, return True
-        if start == len(s):
-            return True
-
-        # If the result is already in the memo, return it
-        if start in memo:
-            return memo[start]
-
-        # Try every possible end index for the current substring
-        for end in range(start + 1, len(s) + 1):
-            # If the substring is in the wordSet and the remaining string can be broken, return True
-            if dp(end) and s[start:end] in wordSet:
-                memo[start] = True
+        def dp(start):
+            
+            # If the start index reaches the end of the string, return True
+            if start == len(s):
                 return True
 
-        # If no solution found, store False in the memo and return
-        memo[start] = False
-        return False
+            # If the result is already in the memo, return it
+            if start in memo:
+                return memo[start]
 
-    return dp(0)
+            # Try every possible end index for the current substring
+            for end in range(start + 1, len(s) + 1):
+                print("start:", start, "end:", end, "dp(end):", dp(end), "s[start:end]", s[start:end])
+                # If the substring is in the wordSet and the remaining string can be broken, return True
+                if dp(end) and s[start:end] in wordSet:
+                    print("start:", start, "end:", end, "dp(end):", dp(end), "s[start:end]", s[start:end])
+                    memo[start] = True
+                    print("start:", start, "memo:", memo)
+                    return True
 
+            # If no solution found, store False in the memo and return
+            memo[start] = False
+            print("start:", start, "memo:", memo)
+            
+            return False
+
+        return dp(0)
+
+s1 = Solution1()
+result1 = s1.wordBreak("leetcode",["leet", "code"])
+print("result1:", result1) 
+
+"""
 
 # Bottom-Up Approach
-def wordBreak(s, wordDict):
-    # Convert wordDict to a set for O(1) lookups
-    wordSet = set(wordDict)
-    n = len(s)
-    # Initialize dp array where dp[end] is True if the first end characters can form a word
-    dp = [False] * (n + 1)
-    dp[0] = True  # Empty string can always be segmented
+class Solution2:
+    def wordBreak(self, s, wordDict):
+        # Convert wordDict to a set for O(1) lookups
+        wordSet = set(wordDict)
+        n = len(s)
+        # Initialize dp array where dp[end] is True if the first end characters can form a word
+        dp = [False] * (n + 1)
+        dp[0] = True  # Empty string can always be segmented
 
-    # Iterate over the string
-    for end in range(1, n + 1):
-        # Check each substring ending at end
-        for start in range(end):
-            # If the substring s[start:end] is a word and dp[start] is True, set dp[end] to True
-            if dp[start] and s[start:end] in wordSet:
-                dp[end] = True
-                break
+        # Iterate over the string
+        for end in range(1, n + 1):
+            # Check each substring ending at end
+            for start in range(end):
+                # If the substring s[start:end] is a word and dp[start] is True, set dp[end] to True
+                if dp[start] and s[start:end] in wordSet:
+                    dp[end] = True
+                    break
 
-    return dp[n]
+        return dp[n]
+
+s2 = Solution2()
+result2 = s2.wordBreak("leetcode",["leet", "code"])
+print("result2:", result2) 
+
+"""
