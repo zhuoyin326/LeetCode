@@ -128,12 +128,14 @@ class Trie:
             stack.append((node, char))  
             # If the character is in the node's children, we use the child node to update 'node'.
             node = node.children[char]
-        # Only decrement if word exists
+        # After the for loop, we are at the end of the word.
+        # If the count of words ending at the last node is larger than 0, the count of words decrease by 1.
         if node.endOfWord > 0:
             node.endOfWord -= 1
             # Walk back and update prefixCounts
             for node, char in reversed(stack):
                 node.children[char].prefixCount -= 1
+                # If the prefixCount is equal to 0
                 if node.children[char].prefixCount == 0:
-                    # Remove the node if no longer needed
+                    # Remove the trie node becasue it is no longer needed
                     del node.children[char]
