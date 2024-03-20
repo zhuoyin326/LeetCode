@@ -60,26 +60,26 @@ class Trie:
         node = self.root
         # Iterate over each character in the word
         for char in word:
-            # If the character is not in the node's children, add a new trie node
+            # If the character is not in the node's children, add a new trie node.
             if char not in node.children:
                 node.children[char] = TrieNode()
             # If the character is in the node's children, we use the child node to update 'node'
             node = node.children[char]
-        # mark endOfWord of the last node as True after for loop
+        # Mark endOfWord of the last node as True after for loop
         node.EndOfWord = True
 
     # Search for a word in the trie.
     # self refers to the instance of the Trie class
     def search(self, word: str) -> bool:
         # Start at the root of the trie node
-        # We use 'node' to keep track of the current character corresponding to the searched word
+        # We use 'node' to keep track of the current character corresponding to the searched word.
         node = self.root
         # Iterate over each character in the word
         for char in word:
             # If the character is not in the node's children, the word is not in the trie, so return False.
             if char not in node.children:
                 return False
-            # If the character is in the node's children, we use the child node to update 'node'
+            # If the character is in the node's children, we use the child node to update 'node'.
             node = node.children[char]
         # After the for loop, if we are at the end of the word, it means we have found the word in the trie; return True.
         # After the for loop, if we are in the middle of the word, it means we did not find the word in the trie; return False.
@@ -96,7 +96,7 @@ class Trie:
             # If the character is not in the node's children, then no word starts with this prefix, so return False.
             if char not in node.children:
                 return False
-            # If the character is in the node's children, we use the child node to update 'node'
+            # If the character is in the node's children, we use the child node to update 'node'.
             node = node.children[char]
-        # Return True if the for loop completes without returning False, indicating the prefix is in the trie
+        # Return True if the for loop completes without returning False, indicating the prefix is in the trie.
         return True
