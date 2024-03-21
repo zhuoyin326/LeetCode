@@ -41,101 +41,101 @@ It is guaranteed that for any function call to erase, the string word will exist
 
 """
 
-# Define a class named TrieNode
+# Define a class named TrieNode to represent nodes in a Trie.
 class TrieNode:
-    # Initialize a TrieNode instance
-    # self refers to the instance of the TrieNode class
+    # Constructor to initialize a TrieNode instance.
+    # 'self' refers to the instance of the TrieNode class.
     def __init__(self):
-        # Each trie node will store a dictionary of its children
+        # Each trie node has a dictionary 'children' to store its child nodes.
         self.children = {}
-        # Count of words ending at this node
+        # Integer 'endOfWord' to count the number of words ending at this node.
         self.endOfWord = 0
-        # Count of words having this node as prefix
+        # Integer 'prefixCount' to count the number of words that have this node as a prefix.
         self.prefixCount = 0
 
-# Define a class named Trie
+# Define a class named Trie for the trie data structure.
 class Trie:
-    # Initialize a Trie instance
-    # self refers to the instance of the Trie class
+    # Constructor to initialize a Trie instance.
+    # 'self' refers to the instance of the Trie class.
     def __init__(self):
-        # The trie is initialized with a root trie node
+        # Initialize the trie with a root node.
         self.root = TrieNode()
     
-    # Insert a word into the trie
-    # self refers to the instance of the Trie class
+    # Method to insert a word into the trie.
+    # 'self' refers to the instance of the Trie class.
     def insert(self, word: str) -> None:
-        # Start at the root of the trie node
-        # We use 'node' to keep track of the current character corresponding to the inserted word
+        # Begin traversal from the root node.
+        # 'node' keeps track of the traversal's current node.
         node = self.root
-        # Iterate over each character in the word
+        # Traverse each character in 'word'.
         for char in word:
-            # If the character is not in the node's children, add a new trie node
+            # If the character is not present, add a new TrieNode as its child.
             if char not in node.children:
                 node.children[char] = TrieNode()
-            # If the character is in the node's children, we use the child node to update 'node'
+            # Move to the child node corresponding to the character.
             node = node.children[char]
-            # Increment prefix count for the current node by one
+            # Increment 'prefixCount' of the current node.
             node.prefixCount += 1
-        # Increase endOfWord of the last node by one after the for loop
+        # Increment 'endOfWord' to signify the end of a word.
         node.endOfWord += 1
     
-    # Count the number of times a word is inserted in the trie
-    # self refers to the instance of the Trie class
+    # Method to count the occurrences of a word in the trie.
+    # 'self' refers to the instance of the Trie class.
     def countWordsEqualTo(self, word: str) -> int:
-        # Start at the root of the trie node.
-        # We use 'node' to keep track of the current character corresponding to the searched word.
+        # Begin traversal from the root node.
+        # 'node' keeps track of the current node for the search.
         node = self.root
-        # Iterate over each character in the word
+        # Traverse each character in 'word'.
         for char in word:
-            # If the character is not in the node's children, the word is not in the trie, so return 0.
+            # If the character is missing, the word does not exist in the trie.
             if char not in node.children:
                 return 0
-            # If the character is in the node's children, we use the child node to update 'node'.
+            # Move to the child node corresponding to the character.
             node = node.children[char]
-        # After the for loop, we are at the end of the word, return the number of times a word is inserted. 
+        # Return the count of the word's occurrences.
         return node.endOfWord
     
-    # Count the number of words having the given prefix in the trie.
-    # self refers to the instance of the Trie class
+    # Method to count words that start with a given prefix in the trie.
+    # 'self' refers to the instance of the Trie class.
     def countWordsStartingWith(self, prefix: str) -> int:
-        # Start at the root of the trie node
-        # We use 'node' to keep track of the current character corresponding to the prefix.
+        # Begin traversal from the root node.
+        # 'node' keeps track of the current node for the search.
         node = self.root
-        # Iterate over each character in the prefix
+        # Traverse each character in 'prefix'.
         for char in prefix:
-            # If the character is not in the node's children, then no word starts with this prefix, so return 0.
+            # If the character is missing, no word starts with the prefix.
             if char not in node.children:
                 return 0
-            # If the character is in the node's children, we use the child node to update 'node'.
+            # Move to the child node corresponding to the character.
             node = node.children[char]
-        # After the for loop, we are at the end of the prefix, return the number of words having the given prefix. 
+        # Return the count of words starting with the prefix.
         return node.prefixCount
     
-    # Remove a word from the tire.
-    # self refers to the instance of the Trie class
+    # Method to remove a word from the trie.
+    # 'self' refers to the instance of the Trie class.
     def erase(self, word: str) -> None:
-        # Start at the root of the trie node.
-        # We use 'node' to keep track of the current character corresponding to the searched word.
+        # Begin traversal from the root node.
+        # 'node' keeps track of the current node for the search.
         node = self.root
-        # To keep track of nodes visited
+        # Stack to keep track of nodes visited during traversal.
         stack = []
-        # Iterate over each character in the word
+        # Traverse each character in 'word'.
         for char in word:
-            # If the character is not in the node's children, nothing to erase.
+            # If the character is missing, the word is not present.
             if char not in node.children:
                 return
-            # Add current node and character to stack.
-            stack.append((node, char))  
-            # If the character is in the node's children, we use the child node to update 'node'.
+            # Add the current node and character to the stack.
+            stack.append((node, char))
+            # Move to the child node corresponding to the character.
             node = node.children[char]
-        # After the for loop, we are at the end of the word.
-        # If the count of words ending at the last node is larger than 0, the count of words decrease by 1.
+            
+        # At the end of the word, if 'endOfWord' > 0, the word exists.
         if node.endOfWord > 0:
+            # Decrement 'endOfWord' to remove one occurrence of the word.
             node.endOfWord -= 1
-            # Walk back and update prefixCounts
+            # Walk back through the stack to update 'prefixCount's.
             for node, char in reversed(stack):
                 node.children[char].prefixCount -= 1
-                # If the prefixCount is equal to 0
+                # If 'prefixCount' reaches 0, remove the child node as it's unnecessary.
                 if node.children[char].prefixCount == 0:
-                    # Remove the trie node becasue it is no longer needed
                     del node.children[char]
