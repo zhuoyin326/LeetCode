@@ -41,8 +41,10 @@ from typing import List
 class Solution:
     # This function finds all unique triplets in the array which gives the sum of zero.
     def threeSum(self, nums: List[int]) -> List[List[int]]:
-        res = []  # Initialize an empty list to store the results (triplets).
-        nums.sort()  # Sort the numbers to use two-pointer technique efficiently.
+        # Initialize an empty list to store the results (triplets).
+        res = []  
+        # Sort the numbers to use two-pointer technique efficiently.
+        nums.sort()  
         
         # Iterate through the list to find the triplets.
         for i in range(len(nums)):
@@ -54,7 +56,8 @@ class Solution:
             if i == 0 or nums[i - 1] != nums[i]:
                 # Call the helper function to find two numbers that, along with nums[i], sum to 0.
                 self.twoSumII(nums, i, res)
-        return res  # Return the list of triplets found.
+        # Return the list of triplets found.
+        return res  
 
     # Helper function to find two numbers such that they add up to the negative of the current number.
     def twoSumII(self, nums: List[int], i: int, res: List[List[int]]):
@@ -82,8 +85,10 @@ class Solution:
 class Solution:
     # The function aims to find all unique triplets in the list that sum up to zero.
     def threeSum(self, nums: List[int]) -> List[List[int]]:
-        res = []  # This will hold the final list of triplets.
-        nums.sort()  # Sort the numbers to simplify finding triplets.
+        # This will hold the final list of triplets.
+        res = []  
+        # Sort the numbers to simplify finding triplets.
+        nums.sort()  
 
         # Iterate over the list, using each number as a potential start of a triplet.
         for i in range(len(nums)):
@@ -95,16 +100,20 @@ class Solution:
             if i == 0 or nums[i - 1] != nums[i]:
                 # Call the helper function to find two additional numbers to complete the triplet.
                 self.twoSum(nums, i, res)
-        return res  # Return the list of triplets.
+        # Return the list of triplets.
+        return res  
 
     # Helper function to find pairs of numbers that, along with nums[i], sum to 0.
     def twoSum(self, nums: List[int], i: int, res: List[List[int]]):
-        seen = set()  # A set to store numbers we've seen so far, for constant-time look-up.
-        j = i + 1  # Start searching for the second number of the triplet from the next index.
+        # A set to store numbers we've seen so far, for constant-time look-up.
+        seen = set()  
+        # Start searching for the second number of the triplet from the next index.
+        j = i + 1  
 
         # Iterate over the remaining numbers in the list.
         while j < len(nums):
-            complement = -nums[i] - nums[j]  # Calculate the value needed to complete the triplet.
+            # Calculate the value needed to complete the triplet.
+            complement = -nums[i] - nums[j]  
             
             # If the needed value to complete the triplet is in the seen set,
             # it means we've found a valid triplet.
@@ -117,4 +126,5 @@ class Solution:
             
             # Mark the current number as seen.
             seen.add(nums[j])
-            j += 1  # Move to the next number.
+            # Move to the next number.
+            j += 1  
