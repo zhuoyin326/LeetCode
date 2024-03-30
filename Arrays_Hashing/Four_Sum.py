@@ -1,42 +1,32 @@
 """
-Joe’s code problem on July 3rd, 2022
+Joe’s code problem on March 30th, 2024
 
-Title: 15. 3Sum
+Title: 18. 4Sum
 Tag: Array, Two Pointers, Sorting
 Difficulty: Medium
 
-Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]] such that i != j, i != k, and j != k, and nums[i] + nums[j] + nums[k] == 0.
-Notice that the solution set must not contain duplicate triplets.
+Given an array nums of n integers, return an array of all the unique quadruplets [nums[a], nums[b], nums[c], nums[d]] such that:
+0 <= a, b, c, d < n
+a, b, c, and d are distinct.
+nums[a] + nums[b] + nums[c] + nums[d] == target
+You may return the answer in any order.
 
 Example 1:
-Input: nums = [-1,0,1,2,-1,-4]
-Output: [[-1,-1,2],[-1,0,1]]
-Explanation: 
-nums[0] + nums[1] + nums[2] = (-1) + 0 + 1 = 0.
-nums[1] + nums[2] + nums[4] = 0 + 1 + (-1) = 0.
-nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0.
-The distinct triplets are [-1,0,1] and [-1,-1,2].
-Notice that the order of the output and the order of the triplets does not matter.
+Input: nums = [1,0,-1,0,-2,2], target = 0
+Output: [[-2,-1,1,2],[-2,0,0,2],[-1,0,0,1]]
 
 Example 2:
-Input: nums = [0,1,1]
-Output: []
-Explanation: The only possible triplet does not sum up to 0.
-
-Example 3:
-Input: nums = [0,0,0]
-Output: [[0,0,0]]
-Explanation: The only possible triplet sums up to 0.
+Input: nums = [2,2,2,2,2], target = 8
+Output: [[2,2,2,2]]
 
 Constraints:
-3 <= nums.length <= 3000
--105 <= nums[i] <= 105
-
+1 <= nums.length <= 200
+-109 <= nums[i] <= 109
+-109 <= target <= 109
 """
 
 # Two Pointers Code:
 from typing import List
-
 class Solution:
     # Define a method fourSum inside the Solution class. It takes a list of integers and a target integer, returning a list of lists of integers.
     def fourSum(self, nums: List[int], target: int) -> List[List[int]]:
@@ -96,7 +86,6 @@ class Solution:
         # Call the kSum function initially for k=4 to find quadruplets.
         return kSum(nums, target, 4)  
 
-
 # Hashmap Code:
 class Solution:
     def fourSum(self, nums: List[int], target: int) -> List[List[int]]:
@@ -129,7 +118,6 @@ class Solution:
                     for subset in kSum(nums[i + 1:], target - nums[i], k - 1):
                         # If a valid subset is found, add the current number to it.
                         res.append([nums[i]] + subset)
-    
             return res
 
         # Helper function to solve two-Sum problem.
@@ -145,9 +133,7 @@ class Solution:
                 s.add(nums[i])  # Add the current number to the set.
     
             return res
-
         # Sort the nums list to facilitate the twoSum approach and make it easier to avoid duplicates.
         nums.sort()
         # Call the kSum function initially for k=4 to find quadruplets.
         return kSum(nums, target, 4)
-
