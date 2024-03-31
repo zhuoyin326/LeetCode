@@ -33,7 +33,8 @@ class Solution:
 	
         # Define a helper function for finding k-sum combinations. It is a recursive function that reduces the problem of k-sum to 2-sum.
         def kSum(nums: List[int], target: int, k: int) -> List[List[int]]:
-            res = []  # This will hold the result of the k-sum combinations
+            # This will hold the result of the k-sum combinations
+            res = []  
             
             # Base case: if nums is empty, simply return an empty list since no sums can be found.
             if not nums:
@@ -62,11 +63,14 @@ class Solution:
 
         # Define a twoSum function, used as the base case for the kSum function.
         def twoSum(nums: List[int], target: int) -> List[List[int]]:
-            res = []  # Result list for storing pairs
-            left, right = 0, len(nums) - 1  # Two-pointer approach
+            # Result list for storing pairs
+            res = []  
+            # Two-pointer approach
+            left, right = 0, len(nums) - 1  
     
             while (left < right):
-                curr_sum = nums[left] + nums[right]  # Calculate current sum of the pair
+                # Calculate current sum of the pair
+                curr_sum = nums[left] + nums[right]  
                 # If current sum is less than target, move the lower pointer up. Avoid duplicates.
                 if curr_sum < target or (left > 0 and nums[left] == nums[left - 1]):
                     left += 1
@@ -91,7 +95,8 @@ class Solution:
     def fourSum(self, nums: List[int], target: int) -> List[List[int]]:
         # Helper function to solve k-Sum problem.
         def kSum(nums: List[int], target: int, k: int) -> List[List[int]]:
-            res = []  # Initialize the result list.
+            # Initialize the result list.
+            res = []  
             
             # Base case: if nums is empty, return the empty result list.
             if not nums:
@@ -122,15 +127,18 @@ class Solution:
 
         # Helper function to solve two-Sum problem.
         def twoSum(nums: List[int], target: int) -> List[List[int]]:
-            res = []  # Initialize the result list.
-            s = set()  # Use a set to track numbers we've seen.
+            # Initialize the result list.
+            res = []
+            # Use a set to track numbers we've seen.  
+            s = set()  
     
             for i in range(len(nums)):
                 # Check if the complement exists in the set to form a pair with the current number.
                 if len(res) == 0 or res[-1][1] != nums[i]:
                     if target - nums[i] in s:
                         res.append([target - nums[i], nums[i]])
-                s.add(nums[i])  # Add the current number to the set.
+                # Add the current number to the set.
+                s.add(nums[i])  
     
             return res
         # Sort the nums list to facilitate the twoSum approach and make it easier to avoid duplicates.
