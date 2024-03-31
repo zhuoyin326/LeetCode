@@ -40,11 +40,11 @@ class Solution:
             if not nums:
                 return res
             
-            # Calculate the average value needed per number to reach target. This helps in pruning the search.
-            average_value = target // k
-            
-            # If the smallest number is greater than the average value needed or the largest is smaller, no solution exists.
-            if average_value < nums[0] or nums[-1] < average_value:
+            # Check if the target value is achievable with the current k elements. 
+            # The lowest possible sum is obtained by adding the smallest k numbers (k*nums[0]) and the highest by adding the largest k numbers (k*nums[-1]). 
+            # If the target is smaller than the smallest possible sum or larger than the largest possible sum, 
+            # it's impossible to find a combination that meets the target, so return an empty list as there are no valid combinations.
+            if target < k*nums[0] or k*nums[-1] < target:
                 return res
             
             # Base case of recursion: when k is 2, use the twoSum method to find pairs that sum to target.
@@ -90,6 +90,11 @@ class Solution:
         # Call the kSum function initially for k=4 to find quadruplets.
         return kSum(nums, target, 4)  
 
+s1 = Solution()
+results = s1.fourSum( [1,0,-1,0,-2,2], 0)
+print(results)
+ 
+
 # Hashmap Code:
 class Solution:
     def fourSum(self, nums: List[int], target: int) -> List[List[int]]:
@@ -101,14 +106,12 @@ class Solution:
             # Base case: if nums is empty, return the empty result list.
             if not nums:
                 return res
-            
-            # Calculate the average value needed per number to reach the target sum.
-            average_value = target // k
-            
-            # If the smallest number is greater than the average needed or
-            # the largest number is smaller than the average needed, it's not possible
-            # to reach target, so return empty result list.
-            if average_value < nums[0] or nums[-1] < average_value:
+    
+            # Check if the target value is achievable with the current k elements. 
+            # The lowest possible sum is obtained by adding the smallest k numbers (k*nums[0]) and the highest by adding the largest k numbers (k*nums[-1]). 
+            # If the target is smaller than the smallest possible sum or larger than the largest possible sum, 
+            # it's impossible to find a combination that meets the target, so return an empty list as there are no valid combinations.
+            if target < k*nums[0] or k*nums[-1] < target:
                 return res
             
             # Base case for recursion: when k equals 2, solve using twoSum method.
