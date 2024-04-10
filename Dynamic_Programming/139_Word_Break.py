@@ -33,6 +33,8 @@ All the strings of wordDict are unique.
 
 """
 
+"""
+
 # Top-Down Approach (Memoization)
 class Solution1:
     def wordBreak(self, s, wordDict):
@@ -86,17 +88,19 @@ class Solution2:
 
         # Iterate over the string
         for end in range(1, n + 1):
+            print("end:", end)
             # Check each substring ending at end
             for start in range(end):
+                # print("start:", start, "end:", end, "dp[end]:", dp[end], "s[start:end]", s[start:end])
                 # If the substring s[start:end] is a word and dp[start] is True, set dp[end] to True
                 if dp[start] and s[start:end] in wordSet:
+                    print("start:", start, "end:", end, "s[0:start]:", s[0:start], "s[start:end]", s[start:end])
                     dp[end] = True
                     break
 
         return dp[n]
 
 s2 = Solution2()
-result2 = s2.wordBreak("leetcode",["leet", "code"])
+result2 = s2.wordBreak("leetcodeleetcode",["leet", "code"])
 print("result2:", result2) 
 
-"""
