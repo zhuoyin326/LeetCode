@@ -22,6 +22,7 @@ Constraints:
 1 <= temperatures.length <= 105
 30 <= temperatures[i] <= 100
 """
+
 from typing import List
 
 class Solution:
@@ -50,3 +51,34 @@ class Solution:
 s = Solution()
 result = s.dailyTemperatures([73,74,75,71,69,72,76,73])
 print("result:", result)
+
+class Solution:
+    def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
+        # Calculate the length of the temperature list.
+        n = len(temperatures)
+        # Initialize the variable to store the highest temperature observed as we iterate.
+        hottest = 0
+        # Initialize the answer list with zeros, where each zero represents the number of days until a warmer temperature.
+        answer = [0] * n
+        
+        # Iterate over the temperature list in reverse order.
+        for curr_day in range(n - 1, -1, -1):
+            # Obtain the current day's temperature.
+            current_temp = temperatures[curr_day]
+            # Check if the current temperature is equal to or greater than the hottest temperature seen so far.
+            if current_temp >= hottest:
+                # Update the hottest temperature.
+                hottest = current_temp
+                # Since no warmer day is expected after the current hottest day, continue to the next iteration.
+                continue
+            
+            # Initialize days counter to find the next warmer day.
+            days = 1
+            # Use previously calculated results to skip days that don't have a warmer temperature.
+            while temperatures[curr_day + days] <= current_temp:
+                # Skip the number of days until the next warmer day is found as per the 'answer' array.
+                days += answer[curr_day + days]
+            # Store the counted days in the answer for the current day.
+            answer[curr_day] = days
+
+        return answer
