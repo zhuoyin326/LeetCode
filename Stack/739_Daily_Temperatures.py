@@ -27,29 +27,46 @@ from typing import List
 
 class Solution:
     def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
+        # Initialize the length of the temperatures list
         n = len(temperatures)
+        # Create a result list initialized with 0's for each temperature
         answer = [0] * n
+        # Use a stack to keep track of the indices of the days' temperatures
         stack = []
         
+        # Loop over each day, using enumerate to get both index (curr_day) and value (curr_temp)
         for curr_day, curr_temp in enumerate(temperatures):
-            # Pop until the current day's temperature is not
-            # warmer than the temperature at the top of the stack
+            # Debug print current day and temperature
             print("curr_day:", curr_day, "curr_temp:", curr_temp)
+            
+            # While there are indices in the stack and the current temperature is greater than
+            # the temperature at the index at the top of the stack, process the stack
             while stack and temperatures[stack[-1]] < curr_temp:
+                # Debug print the current state of stack
                 print("stack:", stack, "stack[-1]:", stack[-1])
+                # More debug prints for clarity
                 print("temperatures[stack[-1]]:", temperatures[stack[-1]], "curr_temp:", curr_temp)
+                # Pop the top element from the stack as prev_day
                 prev_day = stack.pop()
+                # Debug print the popped day
                 print("prev_day:", prev_day)
+                # Calculate how many days it took for a warmer temperature and update answer list
                 answer[prev_day] = curr_day - prev_day
+                # Debug print the calculated answer for previous day
                 print("answer[prev_day]:", answer[prev_day], "curr_day - prev_day:", curr_day - prev_day)
+                # Debug print the current state of answer list
                 print("answer:", answer)
+            # Push the current day onto the stack
             stack.append(curr_day)
+            # Debug print the updated state of stack
             print("stack:", stack)
         
+        # Return the list of answers
         return answer
     
+# Example usage
 s = Solution()
-result = s.dailyTemperatures([73,74,75,71,69,72,76,73])
+result = s.dailyTemperatures([73, 74, 75, 71, 69, 72, 76, 73])
 print("result:", result)
 
 class Solution:
