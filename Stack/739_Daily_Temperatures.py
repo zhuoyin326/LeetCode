@@ -37,13 +37,14 @@ class Solution:
         # Loop over each day, using enumerate to get both index (curr_day) and value (curr_temp)
         for curr_day, curr_temp in enumerate(temperatures):
             
-            # While there are indices in the stack and the current temperature is greater than
-            # the temperature at the index at the top of the stack, process the stack
+            # While the stack is not empty, which means there are previous days that we have not seen a warmer day.
+            # While the current temperature is greater than the temperature of the previous day (the day corresponding to the top of the stack)
             while stack and temperatures[stack[-1]] < curr_temp:
                 # Pop the top element from the stack as prev_day
                 prev_day = stack.pop()
-                # Calculate how many days it took for a warmer temperature and update answer list
+                # Calculate how many days it took for a warmer temperature and update the answer list
                 answer[prev_day] = curr_day - prev_day
+            # If the stack is empty or the current temperature is lower than the temperature of the previous day (the day corresponding to the top of the stack)
             # Push the current day onto the stack
             stack.append(curr_day)
         
