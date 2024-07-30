@@ -70,12 +70,12 @@ class Solution:
     
             while (left < right):
                 # Calculate current sum of the pair
-                curr_sum = nums[left] + nums[right]  
+                sum = nums[left] + nums[right]  
                 # If current sum is less than target, move the lower pointer up. Avoid duplicates.
-                if curr_sum < target or (left > 0 and nums[left] == nums[left - 1]):
+                if sum < target or (left > 0 and nums[left] == nums[left - 1]):
                     left += 1
                 # If current sum is greater than target, move the higher pointer down. Avoid duplicates.
-                elif curr_sum > target or (right < len(nums) - 1 and nums[right] == nums[right + 1]):
+                elif sum > target or (right < len(nums) - 1 and nums[right] == nums[right + 1]):
                     right -= 1
                 else:
                     # If a pair is found, add it to the result list and move both pointers.
