@@ -49,14 +49,14 @@ class Solution:
         # Loop until the left pointer is to the left of the right pointer.
         while left < right:
             # Calculate the sum using the elements at the left and right pointers.
-            current_sum = numbers[left] + numbers[right]
+            sum = numbers[left] + numbers[right]
             
             # If the sum equals the target, return the indices (adjusted for 1-based indexing).
-            if current_sum == target:
+            if sum == target:
                 return [left + 1, right + 1]
             
             # If the sum is less than the target, move the left pointer to the right to increase the sum.
-            elif current_sum < target:
+            elif sum < target:
                 left += 1
             
             # If the sum is greater than the target, move the right pointer to the left to decrease the sum.
