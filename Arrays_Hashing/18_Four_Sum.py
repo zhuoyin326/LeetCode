@@ -31,9 +31,10 @@ class Solution:
     # Define a method fourSum inside the Solution class. It takes a list of integers and a target integer, returning a list of lists of integers.
     def fourSum(self, nums: List[int], target: int) -> List[List[int]]:
 	
-        # Define a helper function for finding k-sum combinations. It is a recursive function that reduces the problem of k-sum to 2-sum.
+        # Define a helper function for finding k-sum combinations. 
+        # It is a recursive function that reduces the problem of k-sum to 2-sum.
         def kSum(nums: List[int], target: int, k: int) -> List[List[int]]:
-            # This will hold the result of the k-sum combinations
+            # This will hold the result of the k-sum combinations.
             res = []  
             
             # Base case: if nums is empty, simply return an empty list since no sums can be found.
@@ -51,12 +52,13 @@ class Solution:
             if k == 2:
                 return twoSum(nums, target)
     
-            # For each number in nums, try to find (k-1)-sums in the remaining list that sum up with nums[i] to target.
+            # Recursive case: for each number in nums, try to find (k-1)-sums in the remaining list that sum up with nums[i] to target.
             for i in range(len(nums)):
                 # To avoid duplicate results, skip numbers that are the same as the previous number.
                 if i == 0 or nums[i - 1] != nums[i]:
-                    # For each number, find k-1 sums in the remainder of the list and add the current number to them.
+                    # Recursive call for (k-1)-Sum with the remaining list and adjusted target.
                     for subset in kSum(nums[i + 1:], target - nums[i], k - 1):
+                        # If a valid subset is found, add the current number to it.
                         res.append([nums[i]] + subset)
     
             return res
@@ -65,20 +67,31 @@ class Solution:
         def twoSum(nums: List[int], target: int) -> List[List[int]]:
             # Result list for storing pairs
             res = []  
-            # Two-pointer approach
-            left, right = 0, len(nums) - 1  
+            
+            # The left pointer starts at the beginning of the list.
+            left = 0
+        
+            # The right pointer starts at the end of the list.
+            right = len(nums) - 1
     
-            while (left < right):
-                # Calculate current sum of the pair
+            # Loop until the left pointer is to the left of the right pointer.
+            while left < right:
+                # Calculate the sum using the elements at the left and right pointers.
                 sum = nums[left] + nums[right]  
-                # If current sum is less than target, move the lower pointer up. Avoid duplicates.
+                
+                # If the sum is less than the target, move the left pointer to the right to increase the sum.
+                # Avoid duplicates.
                 if sum < target or (left > 0 and nums[left] == nums[left - 1]):
                     left += 1
-                # If current sum is greater than target, move the higher pointer down. Avoid duplicates.
+                    
+                # If the sum is greater than the target, move the right pointer to the left to decrease the sum.
+                # Avoid duplicates.
                 elif sum > target or (right < len(nums) - 1 and nums[right] == nums[right + 1]):
                     right -= 1
+                    
+                # If the sum equals the target, a pair is found.
                 else:
-                    # If a pair is found, add it to the result list and move both pointers.
+                    # Add it to the result list and move both pointers.
                     res.append([nums[left], nums[right]])
                     left += 1
                     right -= 1
@@ -98,12 +111,14 @@ print(results)
 # Hashmap Code:
 class Solution:
     def fourSum(self, nums: List[int], target: int) -> List[List[int]]:
-        # Helper function to solve k-Sum problem.
+        
+        # Define a helper function for finding k-sum combinations. 
+        # It is a recursive function that reduces the problem of k-sum to 2-sum.
         def kSum(nums: List[int], target: int, k: int) -> List[List[int]]:
-            # Initialize the result list.
+            # This will hold the result of the k-sum combinations.
             res = []  
             
-            # Base case: if nums is empty, return the empty result list.
+            # Base case: if nums is empty, simply return an empty list since no sums can be found.
             if not nums:
                 return res
     
@@ -114,13 +129,13 @@ class Solution:
             if target < k*nums[0] or k*nums[-1] < target:
                 return res
             
-            # Base case for recursion: when k equals 2, solve using twoSum method.
+            # Base case for recursion: when k is 2, use the twoSum method to find pairs that sum to target.
             if k == 2:
                 return twoSum(nums, target)
     
-            # Recursive case: try to find (k-1)-Sum solutions for the current number.
+            #  Recursive case: for each number in nums, try to find (k-1)-sums in the remaining list that sum up with nums[i] to target.
             for i in range(len(nums)):
-                # Ensure we only use each number once to start a new sequence.
+                # To avoid duplicate results, skip numbers that are the same as the previous number.
                 if i == 0 or nums[i - 1] != nums[i]:
                     # Recursive call for (k-1)-Sum with the remaining list and adjusted target.
                     for subset in kSum(nums[i + 1:], target - nums[i], k - 1):
@@ -128,9 +143,9 @@ class Solution:
                         res.append([nums[i]] + subset)
             return res
 
-        # Helper function to solve two-Sum problem.
+        # Define a twoSum function, used as the base case for the kSum function.
         def twoSum(nums: List[int], target: int) -> List[List[int]]:
-            # Initialize the result list.
+            # Result list for storing pairs
             res = []
             # Use a set to track numbers we've seen.  
             s = set()  
