@@ -37,7 +37,7 @@ The tests are generated such that there is exactly one solution.
 from typing import List
 
 class Solution:
-    def twoSum(self, numbers: List[int], target: int) -> List[int]:
+    def twoSumII(self, numbers: List[int], target: int) -> List[int]:
         # self refers to an instance of the Solution class.
         
         # The left pointer starts at the beginning of the list.
