@@ -42,7 +42,7 @@ class Solution:
     # This function finds all unique triplets in the array which gives the sum of zero.
     def threeSum(self, nums: List[int]) -> List[List[int]]:
         # Initialize an empty list to store the results (triplets).
-        res = []  
+        threeSumList = []  
         # Sort the numbers to use two-pointer technique efficiently.
         nums.sort()  
         
@@ -55,16 +55,24 @@ class Solution:
             # Avoid duplicates: Skip the same number to prevent duplicate triplets.
             if i == 0 or nums[i - 1] != nums[i]:
                 # Call the helper function to find two numbers that, along with nums[i], sum to 0.
-                self.twoSumII(nums, i, res)
+                self.twoSumII(nums, i, threeSumList)
         # Return the list of triplets found.
-        return res  
+        return threeSumList  
 
     # Helper function to find two numbers such that they add up to the negative of the current number.
-    def twoSumII(self, nums: List[int], i: int, res: List[List[int]]):
-        left, right = i + 1, len(nums) - 1  # Initialize two pointers.
+    def twoSumII(self, nums: List[int], i: int, threeSumList: List[List[int]]):
+        
+        # Start the left pointer just after index i.
+        left = i + 1
+        
+        # Start the right pointer at the end of the list.
+        right = len(nums) - 1
+        
         # Continue until the two pointers meet.
         while (left < right):
-            sum = nums[i] + nums[left] + nums[right]  # Calculate the sum of the current triplet.
+            
+            # Calculate the sum of the current triplet.
+            sum = nums[i] + nums[left] + nums[right]  
             # If the sum is less than 0, move the left pointer to the right to increase the sum.
             if sum < 0:
                 left += 1
@@ -73,7 +81,7 @@ class Solution:
                 right -= 1
             else:
                 # Found a triplet that sums up to 0, add it to the result list.
-                res.append([nums[i], nums[left], nums[right]])
+                threeSumList.append([nums[i], nums[left], nums[right]])
                 left += 1
                 right -= 1
                 # Skip duplicate numbers to avoid duplicate triplets in the result.
@@ -86,7 +94,7 @@ class Solution:
     # The function aims to find all unique triplets in the list that sum up to zero.
     def threeSum(self, nums: List[int]) -> List[List[int]]:
         # This will hold the final list of triplets.
-        res = []  
+        threeSumList = []  
         # Sort the numbers to simplify finding triplets.
         nums.sort()  
 
@@ -99,12 +107,12 @@ class Solution:
             # Skip duplicate values to avoid repeating the same triplet in the result.
             if i == 0 or nums[i - 1] != nums[i]:
                 # Call the helper function to find two additional numbers to complete the triplet.
-                self.twoSum(nums, i, res)
+                self.twoSum(nums, i, threeSumList)
         # Return the list of triplets.
-        return res  
+        return threeSumList  
 
     # Helper function to find pairs of numbers that, along with nums[i], sum to 0.
-    def twoSum(self, nums: List[int], i: int, res: List[List[int]]):
+    def twoSum(self, nums: List[int], i: int, threeSumList: List[List[int]]):
         # A set to store numbers we've seen so far, for constant-time look-up.
         seen = set()  
         # Start searching for the second number of the triplet from the next index.
@@ -118,7 +126,7 @@ class Solution:
             # If the needed value to complete the triplet is in the seen set,
             # it means we've found a valid triplet.
             if complement in seen:
-                res.append([nums[i], nums[j], complement])  # Add the triplet to the result list.
+                threeSumList.append([nums[i], nums[j], complement])  # Add the triplet to the result list.
                 
                 # Move past duplicate values to avoid duplicate triplets in the result.
                 while j + 1 < len(nums) and nums[j] == nums[j + 1]:

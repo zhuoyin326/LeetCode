@@ -35,18 +35,18 @@ class Solution:
         # It is a recursive function that reduces the problem of k-sum to 2-sum.
         def kSum(nums: List[int], target: int, k: int) -> List[List[int]]:
             # This will hold the result of the k-sum combinations.
-            res = []  
+            kSumList = []  
             
             # Base case: if nums is empty, simply return an empty list since no sums can be found.
             if not nums:
-                return res
+                return kSumList
             
             # Check if the target value is achievable with the current k elements. 
             # The lowest possible sum is obtained by adding the smallest k numbers (k*nums[0]) and the highest by adding the largest k numbers (k*nums[-1]). 
             # If the target is smaller than the smallest possible sum or larger than the largest possible sum, 
             # it's impossible to find a combination that meets the target, so return an empty list as there are no valid combinations.
             if target < k*nums[0] or k*nums[-1] < target:
-                return res
+                return kSumList
             
             # Base case of recursion: when k is 2, use the twoSum method to find pairs that sum to target.
             if k == 2:
@@ -57,16 +57,16 @@ class Solution:
                 # To avoid duplicate results, skip numbers that are the same as the previous number.
                 if i == 0 or nums[i - 1] != nums[i]:
                     # Recursive call for (k-1)-Sum with the remaining list and adjusted target.
-                    for subset in kSum(nums[i + 1:], target - nums[i], k - 1):
+                    for remainingList in kSum(nums[i + 1:], target - nums[i], k - 1):
                         # If a valid subset is found, add the current number to it.
-                        res.append([nums[i]] + subset)
+                        kSumList.append([nums[i]] + remainingList)
     
-            return res
+            return kSumList
 
         # Define a twoSum function, used as the base case for the kSum function.
         def twoSum(nums: List[int], target: int) -> List[List[int]]:
             # Result list for storing pairs
-            res = []  
+            twoSumList = []  
             
             # The left pointer starts at the beginning of the list.
             left = 0
@@ -92,11 +92,11 @@ class Solution:
                 # If the sum equals the target, a pair is found.
                 else:
                     # Add it to the result list and move both pointers.
-                    res.append([nums[left], nums[right]])
+                    twoSumList.append([nums[left], nums[right]])
                     left += 1
                     right -= 1
                                                          
-            return res
+            return twoSumList
 
         # Sort the nums list to facilitate the twoSum approach and make it easier to avoid duplicates.
         nums.sort()  
@@ -106,7 +106,7 @@ class Solution:
 s1 = Solution()
 results = s1.fourSum( [1,0,-1,0,-2,2], 0)
 print(results)
- 
+
 
 # Hashmap Code:
 class Solution:
@@ -116,18 +116,18 @@ class Solution:
         # It is a recursive function that reduces the problem of k-sum to 2-sum.
         def kSum(nums: List[int], target: int, k: int) -> List[List[int]]:
             # This will hold the result of the k-sum combinations.
-            res = []  
+            kSumList = []  
             
             # Base case: if nums is empty, simply return an empty list since no sums can be found.
             if not nums:
-                return res
+                return kSumList
     
             # Check if the target value is achievable with the current k elements. 
             # The lowest possible sum is obtained by adding the smallest k numbers (k*nums[0]) and the highest by adding the largest k numbers (k*nums[-1]). 
             # If the target is smaller than the smallest possible sum or larger than the largest possible sum, 
             # it's impossible to find a combination that meets the target, so return an empty list as there are no valid combinations.
             if target < k*nums[0] or k*nums[-1] < target:
-                return res
+                return kSumList
             
             # Base case for recursion: when k is 2, use the twoSum method to find pairs that sum to target.
             if k == 2:
@@ -138,27 +138,27 @@ class Solution:
                 # To avoid duplicate results, skip numbers that are the same as the previous number.
                 if i == 0 or nums[i - 1] != nums[i]:
                     # Recursive call for (k-1)-Sum with the remaining list and adjusted target.
-                    for subset in kSum(nums[i + 1:], target - nums[i], k - 1):
+                    for remainingList in kSum(nums[i + 1:], target - nums[i], k - 1):
                         # If a valid subset is found, add the current number to it.
-                        res.append([nums[i]] + subset)
-            return res
+                        kSumList.append([nums[i]] + remainingList)
+            return kSumList
 
         # Define a twoSum function, used as the base case for the kSum function.
         def twoSumII(nums: List[int], target: int) -> List[List[int]]:
             # Result list for storing pairs
-            res = []
+            twoSumList = []
             # Use a set to track numbers we've seen.  
             s = set()  
     
             for i in range(len(nums)):
                 # Check if the complement exists in the set to form a pair with the current number.
-                if len(res) == 0 or res[-1][1] != nums[i]:
+                if len(twoSumList) == 0 or twoSumList[-1][1] != nums[i]:
                     if target - nums[i] in s:
-                        res.append([target - nums[i], nums[i]])
+                        twoSumList.append([target - nums[i], nums[i]])
                 # Add the current number to the set.
                 s.add(nums[i])  
     
-            return res
+            return twoSumList
         # Sort the nums list to facilitate the twoSum approach and make it easier to avoid duplicates.
         nums.sort()
         # Call the kSum function initially for k=4 to find quadruplets.
