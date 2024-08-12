@@ -41,7 +41,7 @@ from typing import List
 class Solution:
     # This function finds all unique triplets in the array which gives the sum of zero.
     def threeSum(self, nums: List[int]) -> List[List[int]]:
-        # Initialize an empty list to store the results (triplets).
+        # Initialize an empty list to store the triplet results.
         threeSumList = []  
         # Sort the numbers to use two-pointer technique efficiently.
         nums.sort()  
@@ -126,7 +126,8 @@ class Solution:
             # If the needed value to complete the triplet is in the seen set,
             # it means we've found a valid triplet.
             if complement in seen:
-                threeSumList.append([nums[i], nums[j], complement])  # Add the triplet to the result list.
+                # Add the triplet to the result list.
+                threeSumList.append([nums[i], nums[j], complement])  
                 
                 # Move past duplicate values to avoid duplicate triplets in the result.
                 while j + 1 < len(nums) and nums[j] == nums[j + 1]:
