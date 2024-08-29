@@ -47,6 +47,7 @@ class Solution:
         nums.sort()  
         
         # Iterate through the list to find the triplets.
+        # The index 'i' is the first number.
         for i in range(len(nums)):
             # Since the list is sorted, if the current number is greater than 0, 
             # we won't find any triplets that sum up to 0.
@@ -63,13 +64,15 @@ class Solution:
     def twoSumII(self, nums: List[int], i: int, threeSumList: List[List[int]]):
         
         # Start the left pointer just after index i.
+        # 'left' is the index of the second number. 
         left = i + 1
         
         # Start the right pointer at the end of the list.
+        # 'right' is the index of the third number.
         right = len(nums) - 1
         
         # Continue until the two pointers meet.
-        while (left < right):
+        while left < right:
             
             # Calculate the sum of the current triplet.
             sum = nums[i] + nums[left] + nums[right]  
@@ -87,6 +90,7 @@ class Solution:
                 # Skip duplicate numbers to avoid duplicate triplets in the result.
                 while left < right and nums[left] == nums[left - 1]:
                     left += 1
+
 
 
 # Hashmap Code:
