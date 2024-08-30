@@ -51,14 +51,14 @@ class Solution:
             # Calculate the sum using the elements at the left and right pointers.
             sum = numbers[left] + numbers[right]
             
-            # If the sum equals the target, return the indices (adjusted for 1-based indexing).
-            if sum == target:
-                return [left + 1, right + 1]
-            
             # If the sum is less than the target, move the left pointer to the right to increase the sum.
-            elif sum < target:
+            if sum < target:
                 left += 1
-            
+ 
             # If the sum is greater than the target, move the right pointer to the left to decrease the sum.
-            else:
+            elif sum < target:
                 right -= 1
+
+            # If the sum equals the target, return the indices (adjusted for 1-based indexing).
+            else:
+                return [left + 1, right + 1]
