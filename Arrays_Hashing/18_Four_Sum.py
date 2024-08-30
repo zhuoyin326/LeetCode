@@ -50,7 +50,7 @@ class Solution:
             
             # Base case of recursion: when k is 2, use the twoSum method to find pairs that sum to target.
             if k == 2:
-                return twoSum(nums, target)
+                return twoSumII(nums, target)
     
             # Recursive case: for each number in nums, try to find (k-1)-sums in the remaining list that sum up with nums[i] to target.
             for i in range(len(nums)):
@@ -64,7 +64,7 @@ class Solution:
             return kSumList
 
         # Define a twoSum function, used as the base case for the kSum function.
-        def twoSum(nums: List[int], target: int) -> List[List[int]]:
+        def twoSumII(nums: List[int], target: int) -> List[List[int]]:
             # Result list for storing pairs
             twoSumList = []  
             
@@ -131,7 +131,7 @@ class Solution:
             
             # Base case for recursion: when k is 2, use the twoSum method to find pairs that sum to target.
             if k == 2:
-                return twoSumII(nums, target)
+                return twoSum(nums, target)
     
             #  Recursive case: for each number in nums, try to find (k-1)-sums in the remaining list that sum up with nums[i] to target.
             for i in range(len(nums)):
@@ -144,7 +144,7 @@ class Solution:
             return kSumList
 
         # Define a twoSum function, used as the base case for the kSum function.
-        def twoSumII(nums: List[int], target: int) -> List[List[int]]:
+        def twoSum(nums: List[int], target: int) -> List[List[int]]:
             # Result list for storing pairs
             twoSumList = []
             # Use a set to track numbers we've seen.  
