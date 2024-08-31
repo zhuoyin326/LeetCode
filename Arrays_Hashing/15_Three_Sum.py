@@ -39,7 +39,7 @@ Constraints:
 from typing import List
 
 class Solution:
-    # This function finds all unique triplets in the array which gives the sum of zero.
+    # Three Sum Function: finds all unique triplets in the array which gives the sum of zero.
     def threeSum(self, nums: List[int]) -> List[List[int]]:
         # Initialize an empty list to store the triplet results.
         threeSumList = []  
@@ -60,7 +60,7 @@ class Solution:
         # Return the list of triplets found.
         return threeSumList  
 
-    # Helper function to find two numbers such that they add up to the negative of the current number.
+    # Two Sum Function: finds two numbers such that they add up to the negative of the current number.
     def twoSumII(self, nums: List[int], i: int, threeSumList: List[List[int]]):
         
         # Start the left pointer just after index i.
@@ -83,8 +83,9 @@ class Solution:
             elif sum > 0:
                 right -= 1
             else:
-                # Found a triplet that sums up to 0, add it to the result list.
+                # Find a triplet that sums up to 0, add it to the result list.
                 threeSumList.append([nums[i], nums[left], nums[right]])
+                # # Move both the left and right pointers to explore the next potential triplet.
                 left += 1
                 right -= 1
                 # Skip duplicate numbers to avoid duplicate triplets in the result.
