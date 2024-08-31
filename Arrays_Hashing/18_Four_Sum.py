@@ -76,23 +76,24 @@ class Solution:
     
             # Loop until the left pointer is to the left of the right pointer.
             while left < right:
-                # Calculate the sum using the elements at the left and right pointers.
-                sum = nums[left] + nums[right]  
+                # Calculate the two sum using the elements at the left and right pointers.
+                two_sum = nums[left] + nums[right]  
                 
-                # If the sum is less than the target, move the left pointer to the right to increase the sum.
+                # If the two sum is less than the target, move the left pointer to the right to increase the sum.
                 # Avoid duplicates.
-                if sum < target or (left > 0 and nums[left] == nums[left - 1]):
+                if two_sum < target or (left > 0 and nums[left] == nums[left - 1]):
                     left += 1
                     
-                # If the sum is greater than the target, move the right pointer to the left to decrease the sum.
+                # If the two sum is greater than the target, move the right pointer to the left to decrease the sum.
                 # Avoid duplicates.
-                elif sum > target or (right < len(nums) - 1 and nums[right] == nums[right + 1]):
+                elif two_sum > target or (right < len(nums) - 1 and nums[right] == nums[right + 1]):
                     right -= 1
                     
-                # If the sum equals the target, a pair is found.
+                # If the two sum equals the target, a pair is found.
                 else:
                     # Add it to the result list and move both pointers.
                     twoSumList.append([nums[left], nums[right]])
+                    # Move both the left and right pointers to explore the next potential pair.
                     left += 1
                     right -= 1
                                                          
