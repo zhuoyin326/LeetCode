@@ -58,7 +58,7 @@ class Solution:
                 if i == 0 or nums[i - 1] != nums[i]:
                     # Recursive call for (k-1)-Sum with the remaining list and adjusted target.
                     for remainingList in kSum(nums[i + 1:], target - nums[i], k - 1):
-                        # If a valid subset is found, add the current number to it.
+                        # If a valid remaining list is found, add the current number to it.
                         kSumList.append([nums[i]] + remainingList)
     
             # Return k-sum combinations.
@@ -77,7 +77,7 @@ class Solution:
     
             # Loop until the left pointer is to the left of the right pointer.
             while left < right:
-                # Calculate the two sum using the elements at the left and right pointers.
+                # Calculate the two-sum using the elements at the left and right pointers.
                 two_sum = nums[left] + nums[right]  
                 
                 # If the two-sum is less than the target, move the left pointer to the right to increase the sum.
@@ -103,7 +103,7 @@ class Solution:
 
         # Sort the nums list to facilitate the twoSum approach and make it easier to avoid duplicates.
         nums.sort()  
-        # Call the kSum function initially for k=4 to find quadruplets.
+        # Call the k-Sum function initially for k=4 to find quadruplets.
         return kSum(nums, target, 4)  
 
 s1 = Solution()

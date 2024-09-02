@@ -82,8 +82,8 @@ class Solution:
             # If the three-sum is more than 0, move the right pointer to the left to decrease the sum.
             elif three_sum > 0:
                 right -= 1
+            # If the three-sum equals to 0, add it to the result list.  
             else:
-                # If the three-sum equals to 0, add it to the result list.
                 threeSumList.append([nums[i], nums[left], nums[right]])
                 # Move both the left and right pointers to explore the next potential triplet.
                 left += 1
