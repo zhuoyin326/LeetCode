@@ -74,16 +74,16 @@ class Solution:
         # Continue until the two pointers meet.
         while left < right:
             
-            # Calculate the three sum of the current triplet.
+            # Calculate the three-sum of the current triplet.
             three_sum = nums[i] + nums[left] + nums[right]  
-            # If the three sum is less than 0, move the left pointer to the right to increase the sum.
+            # If the three-sum is less than 0, move the left pointer to the right to increase the sum.
             if three_sum < 0:
                 left += 1
-            # If the three sum is more than 0, move the right pointer to the left to decrease the sum.
+            # If the three-sum is more than 0, move the right pointer to the left to decrease the sum.
             elif three_sum > 0:
                 right -= 1
             else:
-                # Find a triplet that sums up to 0, add it to the result list.
+                # If the three-sum equals to 0, add it to the result list.
                 threeSumList.append([nums[i], nums[left], nums[right]])
                 # Move both the left and right pointers to explore the next potential triplet.
                 left += 1

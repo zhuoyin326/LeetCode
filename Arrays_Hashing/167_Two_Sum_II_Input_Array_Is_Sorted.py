@@ -48,17 +48,17 @@ class Solution:
         
         # Loop until the left pointer is to the left of the right pointer.
         while left < right:
-            # Calculate the two sum using the elements at the left and right pointers.
+            # Calculate the two-sum using the elements at the left and right pointers.
             two_sum = numbers[left] + numbers[right]
             
-            # If the two sum is less than the target, move the left pointer to the right to increase the sum.
+            # If the two-sum is less than the target, move the left pointer to the right to increase the sum.
             if two_sum < target:
                 left += 1
  
-            # If the two sum is greater than the target, move the right pointer to the left to decrease the sum.
+            # If the two-sum is greater than the target, move the right pointer to the left to decrease the sum.
             elif two_sum < target:
                 right -= 1
 
-            # If the two sum equals the target, return the indices (adjusted for 1-based indexing).
+            # If the two-sum equals the target, return the indices (adjusted for 1-based indexing).
             else:
                 return [left + 1, right + 1]

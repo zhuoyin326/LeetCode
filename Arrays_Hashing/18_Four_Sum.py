@@ -34,7 +34,7 @@ class Solution:
         # Define a helper function for finding k-sum combinations. 
         # It is a recursive function that reduces the problem of k-sum to 2-sum.
         def kSum(nums: List[int], target: int, k: int) -> List[List[int]]:
-            # This will hold the result of the k-sum combinations.
+            # Create a list to hold the k-sum combinations.
             kSumList = []  
             
             # Base case: if nums is empty, simply return an empty list since no sums can be found.
@@ -61,11 +61,12 @@ class Solution:
                         # If a valid subset is found, add the current number to it.
                         kSumList.append([nums[i]] + remainingList)
     
+            # Return k-sum combinations.
             return kSumList
 
         # Define a twoSum function, used as the base case for the kSum function.
         def twoSumII(nums: List[int], target: int) -> List[List[int]]:
-            # Result list for storing pairs
+            # Creat a list to store two-sum pairs.
             twoSumList = []  
             
             # The left pointer starts at the beginning of the list.
@@ -79,24 +80,25 @@ class Solution:
                 # Calculate the two sum using the elements at the left and right pointers.
                 two_sum = nums[left] + nums[right]  
                 
-                # If the two sum is less than the target, move the left pointer to the right to increase the sum.
+                # If the two-sum is less than the target, move the left pointer to the right to increase the sum.
                 # Avoid duplicates.
                 if two_sum < target or (left > 0 and nums[left] == nums[left - 1]):
                     left += 1
                     
-                # If the two sum is greater than the target, move the right pointer to the left to decrease the sum.
+                # If the two-sum is greater than the target, move the right pointer to the left to decrease the sum.
                 # Avoid duplicates.
                 elif two_sum > target or (right < len(nums) - 1 and nums[right] == nums[right + 1]):
                     right -= 1
                     
-                # If the two sum equals the target, a pair is found.
+                # If the two-sum equals the target, a pair is found.
                 else:
                     # Add it to the result list and move both pointers.
                     twoSumList.append([nums[left], nums[right]])
                     # Move both the left and right pointers to explore the next potential pair.
                     left += 1
                     right -= 1
-                                                         
+            
+            # Return two-sum pairs.                                 
             return twoSumList
 
         # Sort the nums list to facilitate the twoSum approach and make it easier to avoid duplicates.
