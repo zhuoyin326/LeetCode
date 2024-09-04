@@ -37,7 +37,8 @@ def twoSum(nums, target):
 	for i in range(0, len(nums)):
         # The complement value is calculated as the difference between the target sum and the current element's value for each index.
 		complement = target - nums[i]
-		# If the complement value exists, the pair is found; the index of the complement value and the current index of the element are returned.
+		# If the complement value exists, the pair is found; 
+  		# the index of the complement value and the current index of the element are returned.
 		if complement in dict:
 			return [dict[complement], i]
 		# If the complement value does not exist, nothing is returned.

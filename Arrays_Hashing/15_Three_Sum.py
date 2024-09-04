@@ -104,6 +104,7 @@ class Solution:
         nums.sort()  
 
         # Iterate over the list, using each number as a potential start of a triplet.
+        # The index 'i' is the first number.
         for i in range(len(nums)):
             # If the current number is greater than 0, stop the loop.
             # Since the array is sorted, no further triplets that sum to 0 can be found.
@@ -120,7 +121,7 @@ class Solution:
     def twoSum(self, nums: List[int], i: int, threeSumList: List[List[int]]):
         # A set to store numbers we've seen so far, for constant-time look-up.
         seen = set()  
-        # Start searching for the second number of the triplet from the next index.
+        # 'j' represents the second number, starting right after 'i'.
         j = i + 1  
 
         # Iterate over the remaining numbers in the list.
@@ -128,17 +129,16 @@ class Solution:
             # Calculate the value needed to complete the triplet.
             complement = -nums[i] - nums[j]  
             
-            # If the needed value to complete the triplet is in the seen set,
-            # it means we've found a valid triplet.
+            # If the complement exists in the seen set, we have found a valid triplet.
             if complement in seen:
                 # Add the triplet to the result list.
                 threeSumList.append([nums[i], nums[j], complement])  
                 
-                # Move past duplicate values to avoid duplicate triplets in the result.
+                # Skip over duplicate values for the second element to avoid duplicate triplets.
                 while j + 1 < len(nums) and nums[j] == nums[j + 1]:
                     j += 1
             
-            # Mark the current number as seen.
+            # If the complement does not exist in the seen set, add the current number to the seen set.
             seen.add(nums[j])
-            # Move to the next number.
+            # Move to the next number for the second element in the triplet.
             j += 1  
