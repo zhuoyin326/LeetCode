@@ -60,7 +60,7 @@ class Solution:
         # Return the list of triplets found.
         return threeSumList  
 
-    # Two Sum Function: finds two numbers such that they add up to the negative of the current number.
+    # Two Sum II Function: finds two numbers such that they add up to the negative of the current number.
     def twoSumII(self, nums: List[int], i: int, threeSumList: List[List[int]]):
         
         # Start the left pointer just after index i.
@@ -96,7 +96,7 @@ class Solution:
 
 # Hashmap Code:
 class Solution:
-    # The function aims to find all unique triplets in the list that sum up to zero.
+    # Three Sum Function: finds all unique triplets in the list that sum up to zero.
     def threeSum(self, nums: List[int]) -> List[List[int]]:
         # This will hold the final list of triplets.
         threeSumList = []  
@@ -117,7 +117,7 @@ class Solution:
         # Return the list of triplets.
         return threeSumList  
 
-    # Helper function to find pairs of numbers that, along with nums[i], sum to 0.
+    # Two Sum Function: finds pairs of numbers that, along with nums[i], sum to 0.
     def twoSum(self, nums: List[int], i: int, threeSumList: List[List[int]]):
         # A set to store numbers we've seen so far, for constant-time look-up.
         seen = set()  
@@ -126,7 +126,7 @@ class Solution:
 
         # Iterate over the remaining numbers in the list.
         while j < len(nums):
-            # Calculate the value needed to complete the triplet.
+            # Calculate the complement needed to complete the triplet.
             complement = -nums[i] - nums[j]  
             
             # If the complement exists in the seen set, we have found a valid triplet.

@@ -28,10 +28,10 @@ Constraints:
 # Two Pointers Code:
 from typing import List
 class Solution:
-    # Define a method fourSum inside the Solution class. It takes a list of integers and a target integer, returning a list of lists of integers.
+    # Four Sum Function: takes a list of integers and a target integer, returning a list of lists of integers.
     def fourSum(self, nums: List[int], target: int) -> List[List[int]]:
 	
-        # Define a helper function for finding k-sum combinations. 
+        # K-Sum Function: finds k-sum combinations. 
         # It is a recursive function that reduces the problem of k-sum to 2-sum.
         def kSum(nums: List[int], target: int, k: int) -> List[List[int]]:
             # Create a list to hold the k-sum combinations.
@@ -64,7 +64,7 @@ class Solution:
             # Return k-sum combinations.
             return kSumList
 
-        # Define a twoSum function, used as the base case for the kSum function.
+        # Two Sum II function: the base case for the kSum function.
         def twoSumII(nums: List[int], target: int) -> List[List[int]]:
             # Creat a list to store two-sum pairs.
             twoSumList = []  
@@ -113,9 +113,10 @@ print(results)
 
 # Hashmap Code:
 class Solution:
+    # Four Sum Function: takes a list of integers and a target integer, returning a list of lists of integers.
     def fourSum(self, nums: List[int], target: int) -> List[List[int]]:
         
-        # Define a helper function for finding k-sum combinations. 
+         # K-Sum Function: finds k-sum combinations. 
         # It is a recursive function that reduces the problem of k-sum to 2-sum.
         def kSum(nums: List[int], target: int, k: int) -> List[List[int]]:
             # This will hold the result of the k-sum combinations.
@@ -146,20 +147,22 @@ class Solution:
                         kSumList.append([nums[i]] + remainingList)
             return kSumList
 
-        # Define a twoSum function, used as the base case for the kSum function.
+        # Two Sum Function: the base case for the kSum function.
         def twoSum(nums: List[int], target: int) -> List[List[int]]:
             # Result list for storing pairs
             twoSumList = []
             # Use a set to track numbers we've seen.  
-            s = set()  
+            seen = set()  
     
             for i in range(len(nums)):
-                # Check if the complement exists in the set to form a pair with the current number.
+                # Calculate the complement.
+                complement = target - nums[i]
+                # If the complement exists in the set to form a pair with the current number.
                 if len(twoSumList) == 0 or twoSumList[-1][1] != nums[i]:
-                    if target - nums[i] in s:
-                        twoSumList.append([target - nums[i], nums[i]])
-                # Add the current number to the set.
-                s.add(nums[i])  
+                    if complement in seen:
+                        twoSumList.append([complement, nums[i]])
+                # If the complement does not exist in the seen set, add the current number to the seen set.
+                seen.add(nums[i])  
     
             return twoSumList
         # Sort the nums list to facilitate the twoSum approach and make it easier to avoid duplicates.
