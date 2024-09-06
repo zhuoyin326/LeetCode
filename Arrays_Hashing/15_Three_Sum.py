@@ -55,7 +55,7 @@ class Solution:
                 break
             # Avoid duplicates: Skip the same number to prevent duplicate triplets.
             if i == 0 or nums[i - 1] != nums[i]:
-                # Call the helper function to find two numbers that, along with nums[i], sum to 0.
+                # Call two sum II function to find two numbers that, along with nums[i], sum to 0.
                 self.twoSumII(nums, i, threeSumList)
         # Return the list of triplets found.
         return threeSumList  
@@ -112,7 +112,7 @@ class Solution:
                 break
             # Skip duplicate values to avoid repeating the same triplet in the result.
             if i == 0 or nums[i - 1] != nums[i]:
-                # Call the helper function to find two additional numbers to complete the triplet.
+                # Call two sum function to find two additional numbers to complete the triplet.
                 self.twoSum(nums, i, threeSumList)
         # Return the list of triplets.
         return threeSumList  
