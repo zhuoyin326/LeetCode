@@ -119,7 +119,7 @@ class Solution:
          # K-Sum Function: finds k-sum combinations. 
         # It is a recursive function that reduces the problem of k-sum to 2-sum.
         def kSum(nums: List[int], target: int, k: int) -> List[List[int]]:
-            # This will hold the result of the k-sum combinations.
+            # Create a list to hold the k-sum combinations.
             kSumList = []  
             
             # Base case: if nums is empty, simply return an empty list since no sums can be found.
@@ -145,6 +145,7 @@ class Solution:
                     for remainingList in kSum(nums[i + 1:], target - nums[i], k - 1):
                         # If a valid remaining list is found, add the current number to it.
                         kSumList.append([nums[i]] + remainingList)
+            # Return k-sum combinations.
             return kSumList
 
         # Two Sum Function: the base case for the kSum function.
@@ -163,7 +164,8 @@ class Solution:
                         twoSumList.append([complement, nums[i]])
                 # If the complement does not exist in the seen set, add the current number to the seen set.
                 seen.add(nums[i])  
-    
+
+            # Return two-sum pairs. 
             return twoSumList
         # Sort the nums list to facilitate the twoSum approach and make it easier to avoid duplicates.
         nums.sort()
