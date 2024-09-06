@@ -143,7 +143,7 @@ class Solution:
                 if i == 0 or nums[i - 1] != nums[i]:
                     # Recursive call for (k-1)-Sum with the remaining list and adjusted target.
                     for remainingList in kSum(nums[i + 1:], target - nums[i], k - 1):
-                        # If a valid subset is found, add the current number to it.
+                        # If a valid remaining list is found, add the current number to it.
                         kSumList.append([nums[i]] + remainingList)
             return kSumList
 
