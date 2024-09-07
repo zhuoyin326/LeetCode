@@ -150,7 +150,7 @@ class Solution:
 
         # Two Sum Function: the base case for the kSum function.
         def twoSum(nums: List[int], target: int) -> List[List[int]]:
-            # Result list for storing pairs
+            # Create a list for storing pairs
             twoSumList = []
             # Use a set to track numbers we've seen.  
             seen = set()  
