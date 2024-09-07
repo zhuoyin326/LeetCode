@@ -101,7 +101,7 @@ class Solution:
             # Return two-sum pairs.                                 
             return twoSumList
 
-        # Sort the nums list to facilitate the twoSum approach and make it easier to avoid duplicates.
+        # Sort the nums list to facilitate the two-sum approach and make it easier to avoid duplicates.
         nums.sort()  
         # Call the k-Sum function initially for k=4 to find quadruplets.
         return kSum(nums, target, 4)  
@@ -167,7 +167,7 @@ class Solution:
 
             # Return two-sum pairs. 
             return twoSumList
-        # Sort the nums list to facilitate the twoSum approach and make it easier to avoid duplicates.
+        # Sort the nums list to facilitate the two-sum approach and make it easier to avoid duplicates.
         nums.sort()
-        # Call the kSum function initially for k=4 to find quadruplets.
+        # Call the k-Sum function initially for k=4 to find quadruplets.
         return kSum(nums, target, 4)
