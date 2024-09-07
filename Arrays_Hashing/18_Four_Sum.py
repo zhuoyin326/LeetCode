@@ -48,7 +48,7 @@ class Solution:
             if target < k*nums[0] or k*nums[-1] < target:
                 return kSumList
             
-            # Base case of recursion: when k is 2, use the twoSum method to find pairs that sum to target.
+            # Base case of recursion: when k is 2, use the two-sum method to find pairs that sum to target.
             if k == 2:
                 return twoSumII(nums, target)
     
@@ -133,7 +133,7 @@ class Solution:
             if target < k*nums[0] or k*nums[-1] < target:
                 return kSumList
             
-            # Base case for recursion: when k is 2, use the twoSum method to find pairs that sum to target.
+            # Base case for recursion: when k is 2, use the two-sum method to find pairs that sum to target.
             if k == 2:
                 return twoSum(nums, target)
     
@@ -155,6 +155,7 @@ class Solution:
             # Use a set to track numbers we've seen.  
             seen = set()  
     
+            # A for loop traverses the list.
             for i in range(len(nums)):
                 # Calculate the complement.
                 complement = target - nums[i]
