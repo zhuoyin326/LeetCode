@@ -66,7 +66,7 @@ class Solution:
 
         # Two Sum II function: the base case for the kSum function.
         def twoSumII(nums: List[int], target: int) -> List[List[int]]:
-            # Creat a list to store two-sum pairs.
+            # Create a list to store two-sum pairs.
             twoSumList = []  
             
             # The left pointer starts at the beginning of the list.
