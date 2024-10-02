@@ -28,3 +28,29 @@ Constraints:
 
     
 """
+
+from typing import List
+
+# Naive Code:
+class Solution:
+    def fizzBuzz(self, n: int) -> List[str]:
+        # Initialize an empty list to store the answer.
+        answer = []
+
+        # Iterate i from 1 to n.
+        for i in range(1, n+1):
+            # If i is divisible by both 3 and 5, append "FizzBuzz" to the list.
+            if i % 3 == 0 and i % 5 == 0:
+                answer.append("FizzBuzz")
+            # Else, if i is divisible by 3, append "Fizz" to the list.
+            elif i % 3 == 0:
+                answer.append("Fizz")
+            # Else, if i is divisible by 5, append "Buzz" to the list.
+            elif i % 5 == 0:
+                answer.append("Buzz")
+            # Else, when none of the above conditions are true, append i as a string to the list.
+            else:
+                answer.append(str(i))
+
+        # By the end of the for loop, return the answer list.
+        return answer
