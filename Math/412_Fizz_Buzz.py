@@ -54,3 +54,32 @@ class Solution:
 
         # At the end of the loop, return the answer list.
         return answer
+    
+    
+# String Concatenation Code:
+class Solution:
+    def fizzBuzz(self, n: int) -> List[str]:
+        # Initialize an empty list to store the answers.
+        answer = []
+
+        # Iterate i from 1 to n.
+        for i in range(1, n + 1):
+            # Create an empty string for the current element.
+            stringElement = ""
+
+            # If i is divisible by 3, add "Fizz" to the current string.
+            if i % 3 == 0:
+                stringElement += "Fizz"
+            # If i is divisible by 5, add "Buzz" to the current string.
+            if i % 5 == 0:
+                stringElement += "Buzz"
+            # If the current string is still empty (i.e., i is not divisible by 3 or 5),
+            # assign the string representation of i to the current string.
+            if not stringElement:
+                stringElement = str(i)
+            # Append the current string to the answer list.
+            answer.append(stringElement)
+            
+        # At the end of the loop, return the list of answers.
+        return answer
+
