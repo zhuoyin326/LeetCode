@@ -34,7 +34,7 @@ from typing import List
 # Naive Code:
 class Solution:
     def fizzBuzz(self, n: int) -> List[str]:
-        # Initialize an empty list to store the answer.
+        # Initialize an empty list to store the answers.
         answer = []
 
         # Iterate i from 1 to n.
@@ -52,5 +52,5 @@ class Solution:
             else:
                 answer.append(str(i))
 
-        # By the end of the for loop, return the answer list.
+        # At the end of the loop, return the answer list.
         return answer
