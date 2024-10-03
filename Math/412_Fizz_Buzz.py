@@ -83,3 +83,30 @@ class Solution:
         # At the end of the loop, return the list of answers.
         return answer
 
+# Hashmap Code:
+class Solution:
+    def fizzBuzz(self, n: int) -> List[str]:
+        # Initialize an empty list to store the answer.
+        answer = []
+        # Create a dictionary to store all the mappings.
+        mapping_dict = {3 : "Fizz", 5 : "Buzz"}
+                
+        # Iterate i from 1 to n.
+        for i in range(1, n + 1):
+            # Create an empty string for the current string.
+            stringElement = ""
+            # Iterate over all the keys in the mapping dictionary.
+            for key in list(mapping_dict.keys()):
+                # If i is divisible by key, add the corresponding value from the dictionary to the current string.
+                if i % key == 0:
+                    stringElement += mapping_dict[key]
+            
+            # If the current string is still empty (i.e., i is not divisible by 3 or 5),
+            # assign the string representation of i to the current string.
+            if not stringElement:
+                stringElement = str(i)
+            # Append the current string to the answer list.
+            answer.append(stringElement)
+
+        # At the end of the loop, return the list of answers.
+        return answer
