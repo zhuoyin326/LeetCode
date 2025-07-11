@@ -13,4 +13,6 @@ class Solution:
                 l += 1
                 r -= 1
         
-            return True
+        return True
+
+Solution().isPalindrome(1000021)
